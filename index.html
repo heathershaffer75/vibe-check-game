@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Red Flag Dating Game: Set 1</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+  padding: 20px;
+}
+.profile {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 950px;
+  display: flex;
+  gap: 20px;
+  border: 10px double #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+  background-image: radial-gradient(circle at top left, #fffbea, #f0f4f8);
+}
+.profile img.profile-photo {
+  border-radius: 10px;
+  border: 3px solid #1f2937;
+  width: 320px;
+}
+.logo-under-pic img {
+  margin-top: 8px;
+  width: 320px;
+}
+.profile-details {
+  flex: 1;
+}
+.profile-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+.profile-tagline {
+  font-size: 20px;
+  font-style: italic;
+  margin: 8px 0;
+}
+.profile-section {
+  margin-top: 10px;
+}
+.flag-block button {
+  margin: 4px 6px 4px 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+.red-btn { background: #ef4444; color: white; }
+.yellow-btn { background: #facc15; color: black; }
+.green-btn { background: #22c55e; color: white; }
+.blue-btn { background: #3b82f6; color: white; }
+.flag-red, .flag-yellow, .flag-green, .flag-blue {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 6px;
+}
+.flag-red { background-color: #fecaca; color: #7f1d1d; }
+.flag-yellow { background-color: #fef9c3; color: #78350f; }
+.flag-green { background-color: #bbf7d0; color: #065f46; }
+.flag-blue { background-color: #bfdbfe; color: #1e3a8a; }
+.reflection-box {
+  background-color: #f3f4f6;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+</style>
+<script>
+function revealFlag(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+}
+</script>
+</head>
+<body>
+<h1>Red Flag Dating Game: Set 1 – Vibe Check Edition</h1>
+
+<!-- Profiles -->
+
+<div class="profile">
+  <div class="left-column">
+    <img alt="ScrollQueen87" class="profile-photo" src="images/scrollqueen87.png" />
+    <div class="logo-under-pic">
+      <img alt="Vibe Check Logo" src="images/logo.png" />
+    </div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ScrollQueen87, 30</div>
+    <div class="profile-tagline">"DMs open, heart TBD."</div>
+    <div class="profile-bio">I live online. My life is curated, filtered, and fully documented...</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Her</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Alexis Rose (Schitt’s Creek)</div>
+    <div class="profile-section"><strong>Interests:</strong> TikTok trends, aesthetic boards</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Equates digital connection with emotional depth</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red0')">Red Flag</button>
+      <div class="flag-red" id="red0" style="display:none;">Struggles to disconnect from social media; avoids emotional presence</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow0')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow0" style="display:none;">May value public image over private intimacy</div>
+      <button class="green-btn" onclick="revealFlag('green0')">Green Flag</button>
+      <div class="flag-green" id="green0" style="display:none;">Expressive, engaging, responsive communicator</div>
+      <button class="blue-btn" onclick="revealFlag('blue0')">Why It Matters</button>
+      <div class="flag-blue" id="blue0" style="display:none;">Digital expression isn’t the same as emotional vulnerability.</div>
+    </div>
+    <div class="profile-section reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Do you find yourself using distractions like social media to avoid deeper emotional experiences?</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Add other 9 profiles here with lowercase image filenames -->
+
+
+</body>
+</html>
