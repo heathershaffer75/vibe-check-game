@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SET2 Image Probe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body{font-family:system-ui,Arial,sans-serif;background:#fff;padding:16px}
+table{border-collapse:collapse;width:100%;max-width:900px}
+th,td{border:1px solid #ddd;padding:8px;font-size:14px}
+th{background:#f3f4f6;text-align:left}
+.bad{color:#b91c1c;font-weight:700}
+.good{color:#166534;font-weight:700}
+code{background:#f1f5f9;padding:2px 4px;border-radius:4px}
+img.thumb{max-height:80px;max-width:120px;border:1px solid #ddd;border-radius:4px;padding:2px}
+.small{font-size:12px;color:#555}
+</style>
+</head>
+<body>
+<h1>SET2 Image Probe</h1>
+<p class="small">This page tests each image in <code>/set2/images/</code> by trying multiple extensions. It reports the first that loads.</p>
+<table>
+<thead>
+<tr><th>Name</th><th>Tested</th><th>Status</th><th>Preview</th></tr>
+</thead>
+<tbody id="rows"></tbody>
+</table>
+<script>
+const rows = document.getElementById('rows');
+const items = [('highvibehealer', ['jpg', 'png']), ('bananabreadben', ['png', 'jpg']), ('hungryformore', ['png', 'jpg']), ('codeswitchcasey', ['png', 'jpg']), ('evensteven', ['png', 'jpg']), ('empathyeater', ['png', 'jpg']), ('simplesarah', ['png', 'jpg']), ('mrfixit', ['png', 'jpg']), ('funnowcrylater', ['png', 'jpg']), ('tedtalktom', ['png', 'jpg']), ('logo', ['png', 'jpg'])];
+function testOne(name, exts){
+  const tr = document.createElement('tr');
+  const tdName = document.createElement('td'); tdName.textContent = name; tr.appendChild(tdName);
+  const tdTried = document.createElement('td'); tr.appendChild(tdTried);
+  const tdStatus = document.createElement('td'); tr.appendChild(tdStatus);
+  const tdPrev = document.createElement('td'); tr.appendChild(tdPrev);
+  let tried = [];
+  tdTried.textContent = '';
+  function tryNext(i){
+    if(i>=exts.length){
+      tdStatus.innerHTML = '<span class="bad">FAIL</span>';
+      tdPrev.textContent = '—';
+      tdTried.innerHTML = tried.join(', ');
+      return;
+    }
+    const ext = exts[i];
+    const url = 'images/'+name+'.'+ext+'?v=' + Date.now();
+    tried.push(ext);
+    const img = new Image();
+    img.onload = ()=>{
+      tdStatus.innerHTML = '<span class="good">PASS</span> .' + ext;
+      img.className = 'thumb';
+      tdPrev.appendChild(img);
+      img.src = url;
+      tdTried.innerHTML = tried.join(', ');
+    };
+    img.onerror = ()=> tryNext(i+1);
+    img.src = url;
+  }
+  tryNext(0);
+  rows.appendChild(tr);
+}
+items.forEach(([n, exts])=> testOne(n, exts));
+</script>
+</body>
+</html>
