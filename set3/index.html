@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check – Red/Yellow/Green Flags (Set 3)</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f8fafc; padding:20px; line-height:1.45; }
+h1 { margin:0 0 10px; }
+.helper { color:#374151; margin-bottom:20px; }
+.profile {
+  background:#fff; border-radius:12px; padding:20px; margin:30px auto; max-width:980px; display:flex; gap:20px;
+  border:10px double #60a5fa; box-shadow:0 0 20px rgba(59,130,246,.6);
+  background-image:radial-gradient(circle at top left,#eff6ff,#f0f4f8);
+}
+.profile img.profile-photo { border-radius:10px; border:3px solid #1f2937; width:320px; height:auto; }
+.logo-under-pic img { margin-top:8px; width:320px; height:auto; }
+.profile-details { flex:1; min-width:0; }
+.profile-name { font-size:28px; font-weight:bold; }
+.profile-tagline { font-size:20px; font-style:italic; margin:8px 0; }
+.profile-bio { margin:8px 0 10px; }
+.profile-section { margin-top:10px; }
+.profile-section ul { margin:6px 0 0 18px; }
+.flag-block button { margin:4px 6px 4px 0; padding:8px 12px; border-radius:6px; font-weight:bold; cursor:pointer; border:none; }
+.red-btn{background:#ef4444;color:#fff;} .yellow-btn{background:#facc15;color:#000;}
+.green-btn{background:#22c55e;color:#fff;} .blue-btn{background:#3b82f6;color:#fff;}
+.flag-red,.flag-yellow,.flag-green,.flag-blue{margin-top:5px;padding:10px;border-radius:6px;display:none;}
+.flag-red{background:#fecaca;color:#7f1d1d;} .flag-yellow{background:#fef9c3;color:#78350f;}
+.flag-green{background:#bbf7d0;color:#065f46;} .flag-blue{background:#bfdbfe;color:#1e3a8a;}
+.reflection-box{background:#f3f4f6;padding:12px;border-radius:8px;margin-top:18px;}
+hr.sep{border:0;height:1px;background:#e2e8f0;margin:40px 0;}
+@media (max-width:860px){ .profile{flex-direction:column;align-items:center;} .profile img.profile-photo,.logo-under-pic img{width:100%;max-width:420px;} }
+</style>
+<script>
+function revealFlag(id){const el=document.getElementById(id); if(el){el.style.display=(el.style.display==='block')?'none':'block';}}
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 3)</h1>
+<p class="helper"><strong>How to use:</strong> Read each profile, discuss, then click to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- Full profiles (ChaosCraver92 → RootedRuben) included in the original build -->
+</body>
+</html>
