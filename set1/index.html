@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vibe Check – Red/Yellow/Green Flags (Set 1)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body { font-family: Arial, sans-serif; background:#f8fafc; padding:20px; line-height:1.45; }
+h1 { margin:0 0 10px; }
+.profile { background:#fff; border-radius:12px; padding:20px; margin:30px auto; max-width:980px; display:flex; gap:20px;
+  border:10px double #34d399; box-shadow:0 0 20px rgba(16,185,129,.5); background-image:radial-gradient(circle at top left,#ecfdf5,#f0f4f8); }
+.profile img.profile-photo { border-radius:10px; border:3px solid #1f2937; width:320px; height:auto; }
+.logo-under-pic img { margin-top:8px; width:320px; height:auto; }
+.profile-details { flex:1; min-width:0; }
+.profile-name { font-size:28px; font-weight:bold; }
+.profile-tagline { font-size:20px; font-style:italic; margin:8px 0; }
+.profile-section { margin-top:10px; }
+.flag-block button { margin:4px 6px 4px 0; padding:8px 12px; border-radius:6px; font-weight:bold; cursor:pointer; border:none; }
+.red-btn{background:#ef4444;color:#fff;} .yellow-btn{background:#facc15;color:#000;}
+.green-btn{background:#22c55e;color:#fff;} .blue-btn{background:#3b82f6;color:#fff;}
+.flag-red,.flag-yellow,.flag-green,.flag-blue{margin-top:5px;padding:10px;border-radius:6px;display:none;}
+.flag-red{background:#fecaca;color:#7f1d1d;} .flag-yellow{background:#fef9c3;color:#78350f;}
+.flag-green{background:#bbf7d0;color:#065f46;} .flag-blue{background:#bfdbfe;color:#1e3a8a;}
+.reflection-box{background:#f3f4f6;padding:12px;border-radius:8px;margin-top:18px;}
+hr.sep{border:0;height:1px;background:#e2e8f0;margin:40px 0;}
+@media (max-width:860px){ .profile{flex-direction:column;align-items:center;} .profile img.profile-photo,.logo-under-pic img{width:100%;max-width:420px;} }
+</style>
+<script>
+function revealFlag(id){const el=document.getElementById(id); if(el){el.style.display=(el.style.display==='block')?'none':'block';}}
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 1)</h1>
+<p class="helper"><strong>How to use:</strong> Read each profile, discuss, then click the buttons to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- 1 ScrollQueen87 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ScrollQueen87" class="profile-photo" src="images/scrollqueen87.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ScrollQueen87, 30</div>
+    <div class="profile-tagline">"DMs open, heart TBD."</div>
+    <div class="profile-bio">I live online. My life is curated, filtered, and fully documented. I thrive on likes, laughs, and late-night doomscrolling. Text me—just don’t call. IRL can wait. Connection feels safer with a screen in between.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Her</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Alexis Rose (Schitt’s Creek)</div>
+    <div class="profile-section"><strong>Interests:</strong> TikTok trends, aesthetic boards, digital journaling, online quizzes</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Equates digital connection with emotional depth</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red0')">Red Flag</button>
+      <div class="flag-red" id="red0">Struggles to disconnect from social media; avoids emotional presence</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow0')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow0">May value public image over private intimacy</div>
+      <button class="green-btn" onclick="revealFlag('green0')">Green Flag</button>
+      <div class="flag-green" id="green0">Expressive, engaging, responsive communicator</div>
+      <button class="blue-btn" onclick="revealFlag('blue0')">Why It Matters</button>
+      <div class="flag-blue" id="blue0">Digital expression isn’t the same as emotional vulnerability. When identity is curated for likes, intimacy can feel unsafe.<br><em><strong>Attachment Style Insight:</strong> Likely anxious-avoidant (disorganized)</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Do you find yourself using distractions like social media to avoid deeper emotional experiences?</li><li>Have you ever been drawn to someone who was emotionally unavailable but highly engaging online?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 2 GrindSetGreg -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="GrindSetGreg" class="profile-photo" src="images/grindsetgreg.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">GrindSetGreg, 36</div>
+    <div class="profile-tagline">"Success is the love language."</div>
+    <div class="profile-bio">Entrepreneur. Gym rat. Coffee-fueled achiever. I work hard because I want a life of freedom—but I haven’t taken a vacation since 2017. I schedule everything—except emotional presence. You’ll always come second… to my calendar.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Wolf of Wall Street</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Harvey Specter (Suits)</div>
+    <div class="profile-section"><strong>Interests:</strong> Productivity podcasts, gym selfies, audiobooks at 2x speed</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Mistakes control for safety, productivity for worth</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red1')">Red Flag</button>
+      <div class="flag-red" id="red1">Over-identifies with work; intimacy may be low-priority or performative</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow1')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow1">Struggles to make space for others' emotional needs</div>
+      <button class="green-btn" onclick="revealFlag('green1')">Green Flag</button>
+      <div class="flag-green" id="green1">Driven, disciplined, financially secure</div>
+      <button class="blue-btn" onclick="revealFlag('blue1')">Why It Matters</button>
+      <div class="flag-blue" id="blue1">When achievement becomes identity, relationships can feel like inefficiencies. Beneath the grind may be fear of failure, abandonment, or emotional dependence.<br><em><strong>Attachment Style Insight:</strong> Likely avoidant</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Have you ever prioritized productivity or success at the cost of emotional connection?</li><li>What does 'being enough' mean to you—and where did that belief come from?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 3 YesGirlJess -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="YesGirlJess" class="profile-photo" src="images/yesgirljess.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">YesGirlJess, 29</div>
+    <div class="profile-tagline">"I just want you to be happy."</div>
+    <div class="profile-bio">Whatever you like—I like. I’m chill, easygoing, and always down to try what you want. My favorite color? Hmm… what’s yours? I lose myself in love and then wonder why I feel invisible.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Runaway Bride</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Bubbles (The Powerpuff Girls)</div>
+    <div class="profile-section"><strong>Interests:</strong> Trying new things (for others), quiet time, Pinterest boards</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Mistakes pleasing others for connection and worth</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red2')">Red Flag</button>
+      <div class="flag-red" id="red2">Loses identity in relationships; difficulty setting boundaries</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow2')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow2">Low self-expression; may hide preferences</div>
+      <button class="green-btn" onclick="revealFlag('green2')">Green Flag</button>
+      <div class="flag-green" id="green2">Flexible, generous, conflict-avoidant</div>
+      <button class="blue-btn" onclick="revealFlag('blue2')">Why It Matters</button>
+      <div class="flag-blue" id="blue2">When identity is shaped around others, the relationship lacks authenticity. Appeasing isn’t the same as loving.<br><em><strong>Attachment Style Insight:</strong> Likely anxious/preoccupied</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>In relationships, do you voice your needs—or do you default to keeping the peace?</li><li>What’s the difference between kindness and self-abandonment?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 4 MrSteadyEddy -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="MrSteadyEddy" class="profile-photo" src="images/mrsteadyeddy.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">MrSteadyEddy, 42</div>
+    <div class="profile-tagline">"Predictable? Maybe. Present? Always."</div>
+    <div class="profile-bio">I work in logistics. I get up at 6, walk the dog, make coffee, and go to work. Weekends are for errands and laundry. I’m emotionally available, debt-free, and never ghost. May contain traces of dad jokes.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> A Beautiful Day in the Neighborhood</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Samwise Gamgee (Lord of the Rings)</div>
+    <div class="profile-section"><strong>Interests:</strong> Cooking, crossword puzzles, early morning walks</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> May assume emotional consistency is enough for intimacy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red3')">Red Flag</button>
+      <div class="flag-red" id="red3">None obvious—potential mismatch only if you're seeking drama or chaos</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow3')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow3">May lack spontaneity or emotional intensity</div>
+      <button class="green-btn" onclick="revealFlag('green3')">Green Flag</button>
+      <div class="flag-green" id="green3">Reliable, mature, emotionally secure</div>
+      <button class="blue-btn" onclick="revealFlag('blue3')">Why It Matters</button>
+      <div class="flag-blue" id="blue3">Stability can be mistaken for “boring,” especially if you’ve been conditioned for chaos. But steady presence is often a hallmark of healthy relationships.<br><em><strong>Attachment Style Insight:</strong> Secure</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Are you drawn to drama and intensity because calm feels unfamiliar?</li><li>Could 'boring' actually be a sign of emotional safety?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 5 FireHeart19 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="FireHeart19" class="profile-photo" src="images/fireheart19.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">FireHeart19, 33</div>
+    <div class="profile-tagline">"If it’s not intense, is it even real?"</div>
+    <div class="profile-bio">I love big. First dates feel like soul connections. If I don’t hear from you in 4 hours, I assume you died. I’ll make you playlists, pasta, and promises by week two. I crave closeness—but sometimes I smother.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Eternal Sunshine of the Spotless Mind</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Marianne (Normal People)</div>
+    <div class="profile-section"><strong>Interests:</strong> Poetry, cooking, late-night texting, passion projects</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Mistakes emotional highs for healthy connection</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red4')">Red Flag</button>
+      <div class="flag-red" id="red4">Emotional enmeshment, possible trauma bonding or boundary issues</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow4')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow4">Fast-moving intensity may be anxiety-driven</div>
+      <button class="green-btn" onclick="revealFlag('green4')">Green Flag</button>
+      <div class="flag-green" id="green4">Passionate, emotionally expressive, creative</div>
+      <button class="blue-btn" onclick="revealFlag('blue4')">Why It Matters</button>
+      <div class="flag-blue" id="blue4">Intensity isn’t always intimacy. Fast connections can mask deep fears of abandonment or being alone.<br><em><strong>Attachment Style Insight:</strong> Likely anxious/preoccupied</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Have you ever mistaken emotional intensity for love or security?</li><li>What pace of connection feels safe and sustainable for you?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 6 PlantLadyPaige -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="PlantLadyPaige" class="profile-photo" src="images/plantladypaige.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">PlantLadyPaige, 31</div>
+    <div class="profile-tagline">"I nurture everything… except my own needs."</div>
+    <div class="profile-bio">My home is a jungle. I name my houseplants, talk to them daily, and panic if I’m away overnight. I say I want a relationship, but between my misting routine and grow light setup, I’m not sure there’s room for another living being.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Amélie</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Luna Lovegood (Harry Potter)</div>
+    <div class="profile-section"><strong>Interests:</strong> Urban gardening, herbal tea, aromatherapy, Etsy wishlists</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Substitutes control and caretaking for emotional risk</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red5')">Red Flag</button>
+      <div class="flag-red" id="red5">Substitutes emotional connection with caretaking; fear of unpredictability in human relationships</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow5')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow5">May avoid intimacy with people in favor of control over environment</div>
+      <button class="green-btn" onclick="revealFlag('green5')">Green Flag</button>
+      <div class="flag-green" id="green5">Nurturing, consistent, attentive to care</div>
+      <button class="blue-btn" onclick="revealFlag('blue5')">Why It Matters</button>
+      <div class="flag-blue" id="blue5">Caring for plants feels safe—people are messier. When relationships feel uncontrollable, caretaking routines can become a shield from emotional closeness.<br><em><strong>Attachment Style Insight:</strong> Likely avoidant</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Do you ever pour your care into things (plants, pets, projects) instead of people?</li><li>What makes human connection feel more risky than caretaking?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 7 JustHere4TheDog -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="JustHere4TheDog" class="profile-photo" src="images/justhere4thedog.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">JustHere4TheDog, 38</div>
+    <div class="profile-tagline">"If my dog doesn’t like you, we’re done."</div>
+    <div class="profile-bio">Not looking for anything serious… unless you love my dog, Baxter. I talk to him more than most humans. We’re a package deal, but I’ll probably trust him more than you for the first 6 months.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Homeward Bound</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Ron Swanson (Parks and Rec)</div>
+    <div class="profile-section"><strong>Interests:</strong> Long walks (with Baxter), dog parks, grilling, crime shows</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids emotional exposure by filtering connection through pet loyalty</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red6')">Red Flag</button>
+      <div class="flag-red" id="red6">May fear human intimacy; projects emotional needs onto pet</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow6')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow6">May use pet as emotional buffer or avoidant shield</div>
+      <button class="green-btn" onclick="revealFlag('green6')">Green Flag</button>
+      <div class="flag-green" id="green6">Loyal, values connection, emotionally bonded</div>
+      <button class="blue-btn" onclick="revealFlag('blue6')">Why It Matters</button>
+      <div class="flag-blue" id="blue6">Pets offer unconditional love, but relationships require vulnerability.<br><em><strong>Attachment Style Insight:</strong> Likely avoidant</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Have you ever felt safer bonding with animals than with people?</li><li>What makes trust feel risky in human relationships?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 8 MissMysticMoon -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="MissMysticMoon" class="profile-photo" src="images/missmysticmoon.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">MissMysticMoon, 26</div>
+    <div class="profile-tagline">"Vibe with me… just don’t ask too many questions."</div>
+    <div class="profile-bio">Soft-spoken stoner with big opinions I rarely say out loud. I disappear when I feel too seen. I say I hate drama but somehow always end up in emotional avalanches. My favorite emotion is nostalgia.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Virgin Suicides</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Daria Morgendorffer (Daria)</div>
+    <div class="profile-section"><strong>Interests:</strong> Astrology, incense, sad playlists, vintage sweaters</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Equates withdrawal with self-protection—even when it damages connection</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red7')">Red Flag</button>
+      <div class="flag-red" id="red7">Unstable boundaries, escapism, self-isolation</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow7')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow7">Avoids direct conflict, tends toward emotional suppression</div>
+      <button class="green-btn" onclick="revealFlag('green7')">Green Flag</button>
+      <div class="flag-green" id="green7">Reflective, sensitive, creatively expressive</div>
+      <button class="blue-btn" onclick="revealFlag('blue7')">Why It Matters</button>
+      <div class="flag-blue" id="blue7">Disappearing isn’t the same as resetting. Emotional safety means showing up even when uncomfortable.<br><em><strong>Attachment Style Insight:</strong> Likely disorganized</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>How do you typically respond when you feel emotionally overwhelmed?</li><li>Do you associate intensity or withdrawal with love—and where did that idea start?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 9 LogisticsLarry -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="LogisticsLarry" class="profile-photo" src="images/logisticslarry.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">LogisticsLarry, 41</div>
+    <div class="profile-tagline">"No frills. No drama. No BS."</div>
+    <div class="profile-bio">I’m not exciting, but I’m solid. I’ve worked in freight for 18 years. I get up at 6, walk the dog, cook dinner at 6:30. No drama, no games, no TikTok. Looking for calm. Looking for kind.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Straight Story</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Hank Hill (King of the Hill)</div>
+    <div class="profile-section"><strong>Interests:</strong> Home repairs, local diners, oldies radio, grilling</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Assumes emotional presence is demonstrated through routine, not expression</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red8')">Red Flag</button>
+      <div class="flag-red" id="red8">None obvious—but risk of feeling “flat” if partner is used to intensity</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow8')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow8">May come across emotionally muted or unadventurous</div>
+      <button class="green-btn" onclick="revealFlag('green8')">Green Flag</button>
+      <div class="flag-green" id="green8">Reliable, mature, grounded</div>
+      <button class="blue-btn" onclick="revealFlag('blue8')">Why It Matters</button>
+      <div class="flag-blue" id="blue8">If chaos feels normal, calm can seem suspicious—but it's often exactly what’s needed for healing.<br><em><strong>Attachment Style Insight:</strong> Secure</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Do you associate calm with boredom or emotional distance?</li><li>What does emotional safety look like to you?</li></ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 10 TraumaTatted -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="TraumaTatted" class="profile-photo" src="images/traumatatted.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">TraumaTatted, 34</div>
+    <div class="profile-tagline">"My scars tell stories. Some still sting."</div>
+    <div class="profile-bio">I’ve seen things. Been through hell. My tattoos are all symbols of survival. I’ve done the work, but I still live on edge. If you cancel plans, my brain says you don’t care.</div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Requiem for a Dream</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Tommy Gavin (Rescue Me)</div>
+    <div class="profile-section"><strong>Interests:</strong> Boxing, body art, trauma podcasts, memoirs</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Mistakes intensity for investment; trust for control</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red9')">Red Flag</button>
+      <div class="flag-red" id="red9">Past trauma may dominate relationship unless well-regulated</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow9')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow9">Hypervigilant, easily triggered, reactive</div>
+      <button class="green-btn" onclick="revealFlag('green9')">Green Flag</button>
+      <div class="flag-green" id="green9">Emotionally honest, self-aware, committed to healing</div>
+      <button class="blue-btn" onclick="revealFlag('blue9')">Why It Matters</button>
+      <div class="flag-blue" id="blue9">Trauma survivors may love deeply—but fear or dysregulation can sabotage the connection they crave.<br><em><strong>Attachment Style Insight:</strong> Likely disorganized or fearful-avoidant</em></div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul><li>Has trauma ever made it hard for you to trust good things?</li><li>What helps you feel grounded and safe when connection starts to feel overwhelming?</li></ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
