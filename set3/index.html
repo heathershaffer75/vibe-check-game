@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check – Red/Yellow/Green Flags (Set 3)</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f8fafc;padding:20px;line-height:1.45}
+h1{margin:0 0 10px}.helper{color:#374151;margin-bottom:20px}
+.profile{background:#fff;border-radius:12px;padding:20px;margin:30px auto;max-width:980px;display:flex;gap:20px;border:10px double #60a5fa;box-shadow:0 0 20px rgba(59,130,246,.6);background-image:radial-gradient(circle at top left,#eff6ff,#f0f4f8)}
+.profile img.profile-photo{border-radius:10px;border:3px solid #1f2937;width:320px;height:auto}
+.logo-under-pic img{margin-top:8px;width:320px;height:auto}
+.profile-details{flex:1;min-width:0}.profile-name{font-size:28px;font-weight:bold}.profile-tagline{font-size:20px;font-style:italic;margin:8px 0}
+.flag-block button{margin:4px 6px 4px 0;padding:8px 12px;border-radius:6px;font-weight:bold;cursor:pointer;border:none}
+.red-btn{background:#ef4444;color:#fff}.yellow-btn{background:#facc15;color:#000}.green-btn{background:#22c55e;color:#fff}.blue-btn{background:#3b82f6;color:#fff}
+.flag-red,.flag-yellow,.flag-green,.flag-blue{margin-top:5px;padding:10px;border-radius:6px;display:none}
+.flag-red{background:#fecaca;color:#7f1d1d}.flag-yellow{background:#fef9c3;color:#78350f}.flag-green{background:#bbf7d0;color:#065f46}.flag-blue{background:#bfdbfe;color:#1e3a8a}
+hr{border:0;height:1px;background:#e2e8f0;margin:40px 0}
+@media(max-width:860px){.profile{flex-direction:column;align-items:center}.profile img.profile-photo,.logo-under-pic img{width:100%;max-width:420px}}
+</style>
+<script>
+function revealFlag(id){const el=document.getElementById(id); if(el){el.style.display=(el.style.display==='block')?'none':'block';}}
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 3)</h1>
+<p class="helper"><strong>How to use:</strong> Read each profile, discuss, then click to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- Helper function removed; everything is static for reliability. -->
+
+<!-- 1 ChaosCraver92 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ChaosCraver92" class="profile-photo" src="images/chaoscraver92.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ChaosCraver92, 31 (M)</div>
+    <div class="profile-tagline">"Turn the volume up—life’s better loud."</div>
+    <div>Magnetic and mercurial. Lives for concerts, night lights, and last‑minute plans. Learning that stability can be its own thrill.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red0')">Red Flag</button><div class="flag-red" id="red0">Push‑pull cycles; stirs drama to feel connected</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow0')">Yellow Flag</button><div class="flag-yellow" id="yellow0">Plans shift fast; hard to anchor agreements</div>
+      <button class="green-btn" onclick="revealFlag('green0')">Green Flag</button><div class="flag-green" id="green0">Passionate, creative, brings aliveness</div>
+      <button class="blue-btn" onclick="revealFlag('blue0')">Why It Matters</button><div class="flag-blue" id="blue0">Intensity can mask fear of ordinary closeness; calm is not the enemy.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 2 GhostModeGreg -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="GhostModeGreg" class="profile-photo" src="images/ghostmodegreg.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">GhostModeGreg, 35 (M)</div>
+    <div class="profile-tagline">"Good vibes, low stakes."</div>
+    <div>Charming opener, inconsistent closer. Disappears when feelings get real; practicing staying and clarifying.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red1')">Red Flag</button><div class="flag-red" id="red1">Ghosting after intimacy; breadcrumbing</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow1')">Yellow Flag</button><div class="flag-yellow" id="yellow1">Hot‑cold communication; ambiguity</div>
+      <button class="green-btn" onclick="revealFlag('green1')">Green Flag</button><div class="flag-green" id="green1">Low‑drama, non‑reactive, respects space</div>
+      <button class="blue-btn" onclick="revealFlag('blue1')">Why It Matters</button><div class="flag-blue" id="blue1">Distance can feel safer than repair; clarity is care.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 3 SteadyAsSheGoes -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="SteadyAsSheGoes" class="profile-photo" src="images/steadyasshegoes.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">SteadyAsSheGoes, 40 (F)</div>
+    <div class="profile-tagline">"Peace is my flex."</div>
+    <div>Calm, capable, and clear. Likes ease with depth and kindness with backbone.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red2')">Red Flag</button><div class="flag-red" id="red2">Shuts down conflict to protect peace</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow2')">Yellow Flag</button><div class="flag-yellow" id="yellow2">Over‑functions; struggles to ask for help</div>
+      <button class="green-btn" onclick="revealFlag('green2')">Green Flag</button><div class="flag-green" id="green2">Reliable, self‑aware, values repair</div>
+      <button class="blue-btn" onclick="revealFlag('blue2')">Why It Matters</button><div class="flag-blue" id="blue2">True peace includes truth; avoidance grows resentment.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 4 AchievementAddict -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AchievementAddict" class="profile-photo" src="images/achievementaddict.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AchievementAddict, 33 (F)</div>
+    <div class="profile-tagline">"Goals on goals—feelings later."</div>
+    <div>Ambitious and polished. Schedules feelings; learning to let some be messy in real time.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red3')">Red Flag</button><div class="flag-red" id="red3">Treats intimacy like a task; low tolerance for mess</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow3')">Yellow Flag</button><div class="flag-yellow" id="yellow3">Work first, connection later… and later keeps moving</div>
+      <button class="green-btn" onclick="revealFlag('green3')">Green Flag</button><div class="flag-green" id="green3">Self‑motivated, reliable, intentional</div>
+      <button class="blue-btn" onclick="revealFlag('blue3')">Why It Matters</button><div class="flag-blue" id="blue3">Achievement can numb anxiety, but can’t meet attachment needs.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 5 AllGasNoBrakes -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AllGasNoBrakes" class="profile-photo" src="images/allgasnobrakes.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AllGasNoBrakes, 26 (M)</div>
+    <div class="profile-tagline">"Bookings > boundaries."</div>
+    <div>Charismatic and chronically busy. Practicing the art of the no.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red4')">Red Flag</button><div class="flag-red" id="red4">Flaky follow‑through; overpromises</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow4')">Yellow Flag</button><div class="flag-yellow" id="yellow4">FOMO‑driven choices</div>
+      <button class="green-btn" onclick="revealFlag('green4')">Green Flag</button><div class="flag-green" id="green4">Energetic, social, optimistic</div>
+      <button class="blue-btn" onclick="revealFlag('blue4')">Why It Matters</button><div class="flag-blue" id="blue4">Constant motion can hide fear of stillness and intimacy.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 6 SnackQueen91 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="SnackQueen91" class="profile-photo" src="images/snackqueen91.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">SnackQueen91, 32 (F)</div>
+    <div class="profile-tagline">"Comfort is my love language."</div>
+    <div>Baker of joy, eater of feelings. Learning to ask for care back.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red5')">Red Flag</button><div class="flag-red" id="red5">Uses caretaking to dodge conflict or needs</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow5')">Yellow Flag</button><div class="flag-yellow" id="yellow5">Comfort first; growth later</div>
+      <button class="green-btn" onclick="revealFlag('green5')">Green Flag</button><div class="flag-green" id="green5">Nurturing, generous, consistent</div>
+      <button class="blue-btn" onclick="revealFlag('blue5')">Why It Matters</button><div class="flag-blue" id="blue5">Comfort protects—but can prevent repair and honesty.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 7 BetBigBryce -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="BetBigBryce" class="profile-photo" src="images/betbigbryce.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">BetBigBryce, 39 (M)</div>
+    <div class="profile-tagline">"No risk, no story."</div>
+    <div>Calculated gambler with a soft spot for grand gestures. Learning to build slow wins too.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red6')">Red Flag</button><div class="flag-red" id="red6">High‑risk choices with relational fallout</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow6')">Yellow Flag</button><div class="flag-yellow" id="yellow6">Future‑casts big; under‑delivers on repair</div>
+      <button class="green-btn" onclick="revealFlag('green6')">Green Flag</button><div class="flag-green" id="green6">Brave, decisive, generous</div>
+      <button class="blue-btn" onclick="revealFlag('blue6')">Why It Matters</button><div class="flag-blue" id="blue6">Trust grows through consistent deposits.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 8 AdrenalineAndy -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AdrenalineAndy" class="profile-photo" src="images/adrenalineandy.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AdrenalineAndy, 30 (M)</div>
+    <div class="profile-tagline">"If it’s not scary, it’s not Saturday."</div>
+    <div>Thrill‑chaser and loyal friend. Feelings after the ride.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red7')">Red Flag</button><div class="flag-red" id="red7">Risk over reflection; dismisses fear</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow7')">Yellow Flag</button><div class="flag-yellow" id="yellow7">Hard time slowing down to connect</div>
+      <button class="green-btn" onclick="revealFlag('green7')">Green Flag</button><div class="flag-green" id="green7">Protective, loyal, brings adventure</div>
+      <button class="blue-btn" onclick="revealFlag('blue7')">Why It Matters</button><div class="flag-blue" id="blue7">Adrenaline can numb anxiety; intimacy needs stillness too.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 9 LoveOnLoan -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="LoveOnLoan" class="profile-photo" src="images/loveonloan.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">LoveOnLoan, 29 (F)</div>
+    <div class="profile-tagline">"I love the beginning best."</div>
+    <div>Romance connoisseur who’s learning to love the middle.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red8')">Red Flag</button><div class="flag-red" id="red8">Serial honeymooner; exits at first plateau</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow8')">Yellow Flag</button><div class="flag-yellow" id="yellow8">Struggles with routine intimacy</div>
+      <button class="green-btn" onclick="revealFlag('green8')">Green Flag</button><div class="flag-green" id="green8">Affectionate, attentive, romantic</div>
+      <button class="blue-btn" onclick="revealFlag('blue8')">Why It Matters</button><div class="flag-blue" id="blue8">Infatuation is a spark, not the story; security grows in the middle chapters.</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- 10 RootedRuben -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="RootedRuben" class="profile-photo" src="images/rootedruben.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">RootedRuben, 38 (M)</div>
+    <div class="profile-tagline">"Slow, steady, sincere."</div>
+    <div>Grounded, community‑minded, and warm. Shows love by showing up—over time.</div>
+    <div class="flag-block">
+      <button class="red-btn" onclick="revealFlag('red9')">Red Flag</button><div class="flag-red" id="red9">May avoid risk that growth requires</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow9')">Yellow Flag</button><div class="flag-yellow" id="yellow9">Needs time to warm up; guarded early</div>
+      <button class="green-btn" onclick="revealFlag('green9')">Green Flag</button><div class="flag-green" id="green9">Loyal, dependable, values repair and service</div>
+      <button class="blue-btn" onclick="revealFlag('blue9')">Why It Matters</button><div class="flag-blue" id="blue9">Slowness isn’t disinterest; it’s choosing roots over rush.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
