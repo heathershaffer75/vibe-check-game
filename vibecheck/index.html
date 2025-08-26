@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check — Launcher</title>
+  <style>
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#f8fafc;color:#0f172a}
+    .wrap{max-width:900px;margin:0 auto;padding:28px}
+    h1{margin:0 0 4px;font-size:clamp(24px,4vw,36px)}
+    .sub{color:#64748b;margin-bottom:16px}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;box-shadow:0 8px 18px rgba(0,0,0,.05)}
+    a.btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;font-weight:700}
+    a.btn:hover{opacity:.9}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>💖 Vibe Check</h1>
+    <div class="sub">Choose a set to play. These links assume your sets live at the repo root (`/set1`, `/set2`, `/set3`) like in your screenshot.</div>
+    <div class="grid">
+      <div class="card">
+        <h3>Set 1</h3>
+        <p>Classic profiles & scenarios.</p>
+        <a class="btn" href="../set1/index.html">Open Set 1</a>
+      </div>
+      <div class="card">
+        <h3>Set 2</h3>
+        <p>More advanced prompts.</p>
+        <a class="btn" href="../set2/index.html">Open Set 2</a>
+      </div>
+      <div class="card">
+        <h3>Set 3</h3>
+        <p>Newest batch.</p>
+        <a class="btn" href="../set3/index.html">Open Set 3</a>
+      </div>
+      <div class="card">
+        <h3>Comm Styles</h3>
+        <p>Communication styles mini-game.</p>
+        <a class="btn" href="../commstyles/index.html">Open Comm Styles</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
