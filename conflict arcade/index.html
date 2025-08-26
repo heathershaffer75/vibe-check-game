@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conflict Arcade — Triggers & Repairs</title>
+  <style>
+    :root { --bg:#f7f7fb; --card:#ffffff; --ink:#0f172a; --muted:#6b7280; --accent:#7c3aed; --edge:#e5e7eb; --repair:#0f766e; --pursue:#b91c1c; --avoid:#1f2937; --explode:#b45309; --ring:rgba(124,58,237,0.15); }
+    *{ box-sizing:border-box; } html,body{ height:100%; } body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--ink); background: linear-gradient(180deg,#fafafa 0%,#f1f5f9 100%); }
+    .wrap{ max-width:1200px; margin:0 auto; padding:24px; } header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
+    .brand{ display:flex; align-items:center; gap:12px; } .logo{ width:44px; height:44px; border-radius:12px; background: conic-gradient(from 100deg, #7c3aed, #06b6d4, #10b981, #f59e0b, #ef4444, #7c3aed); box-shadow:0 6px 16px rgba(124,58,237,0.25); position:relative; }
+    .logo::after{ content:""; position:absolute; inset:6px; border-radius:10px; background:#fff9; backdrop-filter: blur(2px); }
+    h1{ font-size: clamp(20px,3vw,28px); margin:0; } .sub{ color:var(--muted); font-size:14px; margin-top:2px; }
+    .controls{ display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:16px; } @media(min-width:900px){ .controls{ grid-template-columns:1fr auto auto; align-items:end; } }
+    .card{ background:var(--card); border:1px solid var(--edge); border-radius:16px; box-shadow:0 10px 22px rgba(15,23,42,0.06);} .pad{ padding:16px; }
+    .btn{ appearance:none; border:1px solid var(--edge); background:#fff; color:var(--ink); border-radius:12px; padding:10px 14px; font-weight:600; cursor:pointer; transition: transform .05s, box-shadow .2s, border-color .2s; box-shadow:0 2px 0 rgba(15,23,42,0.08);} .btn:hover{ box-shadow:0 6px 16px rgba(15,23,42,0.10);} .btn:active{ transform: translateY(1px);} .btn.primary{ background:var(--accent); color:#fff; border-color:transparent;} .btn.ghost{ background:transparent; }
+    .timer{ display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; } .timer .face{ width:64px; height:64px; border-radius:50%; display:grid; place-items:center; background: radial-gradient(circle at 30% 30%, #fff, #f8fafc); box-shadow: inset 0 0 0 6px var(--ring), 0 6px 16px rgba(15,23,42,0.10); font-weight:800; }
+    .grid{ display:grid; grid-template-columns:1fr; gap:16px; } @media(min-width:1000px){ .grid{ grid-template-columns:2fr 1fr; } }
+    .scenario{ display:grid; grid-template-rows:auto auto 1fr; gap:12px; min-height:360px; } .prompt{ font-size: clamp(18px, 2.4vw, 24px); line-height:1.35; }
+    .pill{ display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border-radius:99px; background:#f3e8ff; color:#4c1d95; border:1px solid #e9d5ff; }
+    .options{ display:grid; grid-template-columns:1fr; gap:10px; } @media(min-width:800px){ .options{ grid-template-columns:1fr 1fr; } }
+    .option{ text-align:left; padding:14px; border-radius:12px; border:1px solid var(--edge); background:#fff; cursor:pointer; transition: transform .05s, background .2s, border-color .2s, box-shadow .2s; box-shadow:0 4px 10px rgba(15,23,42,0.06); }
+    .option:hover{ background:#f8fafc; box-shadow:0 8px 16px rgba(15,23,42,0.08);} .option strong{ display:block; font-size:14px; margin-bottom:6px; color:var(--muted); }
+    .reveal{ border-top:1px dashed var(--edge); padding-top:12px; display:none; } .reveal.visible{ display:block; animation:pop .2s ease; } @keyframes pop{ from{ transform:scale(.98); opacity:.6; } }
+    .tag{ display:inline-block; font-weight:700; font-size:12px; padding:4px 8px; border-radius:999px; color:#fff; }
+    .tag.repair{ background:var(--repair);} .tag.pursue{ background:var(--pursue);} .tag.avoid{ background:var(--avoid);} .tag.explode{ background:var(--explode);}
+    .side{ display:grid; gap:12px; align-content:start; } .list{ display:grid; gap:8px; max-height:280px; overflow:auto; } .note{ border:1px dashed var(--edge); border-radius:12px; padding:10px; background:#fff; font-size:14px; }
+    .muted{ color:var(--muted); font-size:13px; } .kicker{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);} .footer{ margin-top:20px; text-align:center; color:var(--muted); font-size:12px; }
+    .present .side, .present .controls{ display:none; } .present .wrap{ max-width:1000px;} .present .prompt{ font-size:clamp(22px,3.5vw,36px);} .present .option{ font-size:clamp(16px,2.2vw,22px);} .present .reveal p{ font-size:clamp(16px,2vw,20px);}
+    .modal{ position:fixed; inset:0; display:none; place-items:center; background:rgba(2,6,23,0.45); padding:18px; } .modal.visible{ display:grid; } .modal .sheet{ width:min(900px,96vw); max-height:90vh; overflow:auto; }
+    .field{ display:grid; gap:6px; margin:10px 0; } .field label{ font-size:12px; color:var(--muted);} .field input,.field textarea,.field select{ width:100%; padding:10px; border-radius:10px; border:1px solid var(--edge); }
+    .tiny{ font-size:12px; color:var(--muted);} 
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Conflict Arcade</h1>
+          <div class="sub">Pick a reaction ➜ reveal the pattern ➜ practice a repair move.</div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="presentBtn">Presenter</button>
+        <button class="btn" id="shuffleBtn">Shuffle</button>
+        <button class="btn primary" id="drawBtn">Draw Scenario</button>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="card pad">
+        <div class="kicker">Facilitator Controls</div>
+        <div class="toolbar" style="margin-top:8px">
+          <button class="btn" id="resetBtn">Reset</button>
+          <button class="btn" id="revealAllBtn">Reveal Pattern Map</button>
+          <button class="btn" id="addCustomBtn">Add Custom Scenario</button>
+          <button class="btn" id="exportBtn">Export Notes</button>
+        </div>
+      </div>
+      <div class="card pad timer">
+        <div>
+          <div class="kicker">Timer</div>
+          <div class="toolbar" style="margin-top:6px">
+            <select id="timerSelect" class="btn">
+              <option value="30">30s</option>
+              <option value="45">45s</option>
+              <option value="60" selected>60s</option>
+              <option value="90">90s</option>
+              <option value="120">120s</option>
+            </select>
+            <button class="btn" id="startTimer">Start</button>
+            <button class="btn" id="stopTimer">Stop</button>
+            <button class="btn" id="resetTimer">Reset</button>
+          </div>
+        </div>
+        <div>
+          <div class="face" id="timerFace" data-running="false"><span id="timerText">60</span></div>
+        </div>
+      </div>
+      <div class="card pad">
+        <div class="kicker">How to Play</div>
+        <p class="muted" style="margin-top:6px">Draw a trigger. Players choose a reaction. Reveal the <strong>pattern</strong> (Pursue / Avoid / Explode / Repair) and discuss the <em>repair move</em>. Use Presenter for projection and the timer for quick rounds.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card pad scenario" aria-live="polite">
+        <div class="pill"><span>Trigger</span> · <span id="counter">0 / 0</span></div>
+        <div class="prompt" id="prompt">Click “Draw Scenario” to start.</div>
+        <div class="options" id="options"></div>
+        <div class="reveal" id="reveal"></div>
+      </section>
+
+      <aside class="side">
+        <div class="card pad">
+          <div class="kicker">Reflection</div>
+          <div class="field">
+            <label for="noteText">Add a quick note or takeaway</label>
+            <textarea id="noteText" rows="3" placeholder="e.g., I escalate when interrupted; repair = pause + reflective statement."></textarea>
+            <div class="toolbar">
+              <button class="btn" id="addNote">Add Note</button>
+              <button class="btn ghost" id="clearNotes">Clear Notes</button>
+            </div>
+          </div>
+          <div class="list" id="notesList" aria-live="polite"></div>
+        </div>
+
+        <div class="card pad">
+          <div class="kicker">Legend</div>
+          <div class="muted" style="display:grid; gap:6px; margin-top:8px">
+            <div><span class="tag repair">Repair</span> De-escalate, validate, set a next-step.</div>
+            <div><span class="tag pursue">Pursue</span> Chase/pressure, overtalk, insist now.</div>
+            <div><span class="tag avoid">Avoid</span> Withdraw, minimize, change subject.</div>
+            <div><span class="tag explode">Explode</span> Attack, jab, sarcasm, volume spike.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer">© Conflict Arcade · Built for in-room projection and laminated-card vibes.</div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="sheet card pad">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+        <strong>Add Custom Scenario</strong>
+        <button class="btn" id="closeModal">Close</button>
+      </div>
+      <div class="field">
+        <label>Trigger prompt</label>
+        <textarea id="customPrompt" rows="2" placeholder="e.g., They interrupt you three times in a row."></textarea>
+      </div>
+      <div class="tiny">Add up to four options. Map each to a pattern. Repair option is recommended but not required.</div>
+      <div id="customOptions"></div>
+      <div class="toolbar" style="margin-top:8px">
+        <button class="btn" id="addOptionRow">Add Option</button>
+        <button class="btn primary" id="saveScenario">Save Scenario</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PATTERN_INFO = {
+      repair: { key:'repair', label:'Repair / Collaborative', tagClass:'repair', color:getComputedStyle(document.documentElement).getPropertyValue('--repair').trim(), desc:'Slows down the cycle, names impact, validates, and proposes a next step or boundary.', move:'Pause → reflect one line of what you heard → state your need/request → set a time or boundary if needed.' },
+      pursue: { key:'pursue', label:'Pursue / Press', tagClass:'pursue', color:getComputedStyle(document.documentElement).getPropertyValue('--pursue').trim(), desc:'Closes distance with intensity to stop uncertainty. Talks over, corners, demands now.', move:'Switch to one clean question and tolerate delay. Breathe 10s before speaking.' },
+      avoid: { key:'avoid', label:'Avoid / Withdraw', tagClass:'avoid', color:getComputedStyle(document.documentElement).getPropertyValue('--avoid').trim(), desc:'Creates distance to reduce overwhelm. Minimizes, changes the subject, or disappears.', move:'Acknowledge and set a time: “I need 20 minutes; I will return at __ to finish this.”' },
+      explode: { key:'explode', label:'Explode / Attack', tagClass:'explode', color:getComputedStyle(document.documentElement).getPropertyValue('--explode').trim(), desc:'Spikes volume, uses jabs or sarcasm to regain control, which escalates the cycle.', move:'Name your arousal → step back → return with a boundary and one respectful sentence.' }
+    };
+
+    const SCENARIOS = [
+      { prompt: 'They interrupt you repeatedly when you are sharing something important.', options: [
+        { text: 'Talk louder and keep going until they stop.', pattern: 'pursue' },
+        { text: 'Say nothing and decide to stop sharing vulnerable things.', pattern: 'avoid' },
+        { text: '“You never listen—why do I bother?”', pattern: 'explode' },
+        { text: 'Hold the frame: “I want to finish this thought; then I’ll hear you.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They roll their eyes when you set a boundary.', options: [
+        { text: 'Prove your case with a 10-minute monologue.', pattern: 'pursue' },
+        { text: 'Drop the boundary to keep the peace.', pattern: 'avoid' },
+        { text: '“Wow, mature.” (heavy sarcasm)', pattern: 'explode' },
+        { text: 'Restate once: “It matters to me. I won’t argue about it.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They start walking away mid-argument.', options: [
+        { text: 'Follow them down the hall to finish now.', pattern: 'pursue' },
+        { text: 'Let them go and assume the relationship is over.', pattern: 'avoid' },
+        { text: 'Shout a parting jab from the doorway.', pattern: 'explode' },
+        { text: 'Time-out: “Let’s pause 20 minutes and come back to this.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They say, “You’re overreacting.”', options: [
+        { text: 'Stack evidence and keep debating feelings vs facts.', pattern: 'pursue' },
+        { text: 'Shut down: “Forget it.”', pattern: 'avoid' },
+        { text: 'Mock them back: “Cool, Mr. Perfect.”', pattern: 'explode' },
+        { text: 'Name impact + need: “I feel dismissed. I need us to validate before problem-solving.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They bring up an old mistake to win the present argument.', options: [
+        { text: 'Bring up two of theirs to even the score.', pattern: 'explode' },
+        { text: 'Wave it off and hope it ends soon.', pattern: 'avoid' },
+        { text: 'Refute point-by-point for 20 minutes.', pattern: 'pursue' },
+        { text: 'Boundary: “Let’s stay on today’s issue; I’m open to scheduling a time for the past.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They text “K.” after a long message from you.', options: [
+        { text: 'Call immediately and demand clarity.', pattern: 'pursue' },
+        { text: 'Mirror with one-word answers for a day.', pattern: 'avoid' },
+        { text: 'Post a cryptic story to get a reaction.', pattern: 'explode' },
+        { text: 'Ask for meaning: “Can we sync later? Your ‘K’ reads cold to me.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They laugh when you share a fear.', options: [
+        { text: 'Make a harsher joke back.', pattern: 'explode' },
+        { text: 'Change the subject and avoid vulnerability.', pattern: 'avoid' },
+        { text: 'Overexplain why it’s serious until they agree.', pattern: 'pursue' },
+        { text: 'Repair ask: “That landed as mockery. Please respond seriously or let’s pause.”', pattern: 'repair' }
+      ]},
+      { prompt: 'They cancel plans right before you leave the house.', options: [
+        { text: 'Ring their phone repeatedly to show how urgent this is.', pattern: 'pursue' },
+        { text: 'Say “whatever” and emotionally check out.', pattern: 'avoid' },
+        { text: 'Sarcastic jab: “Thanks for caring so much.”', pattern: 'explode' },
+        { text: 'Impact + request: “I’m disappointed. Can we reschedule now and set firmer plans?”', pattern: 'repair' }
+      ]},
+      { prompt: 'They read old texts out of context as “evidence.”', options: [
+        { text: 'Read theirs back even more aggressively.', pattern: 'explode' },
+        { text: 'Walk away mid-argument.', pattern: 'avoid' },
+        { text: 'Debate timestamps and commas.', pattern: 'pursue' },
+        { text: 'Name the trap: “Screenshots escalate us. Can we focus on today’s need?”', pattern: 'repair' }
+      ]},
+      { prompt: 'They accuse you of not caring when you ask for time to cool down.', options: [
+        { text: 'Stay and power through it despite overload.', pattern: 'pursue' },
+        { text: 'Disappear without a time to return.', pattern: 'avoid' },
+        { text: '“Fine, I won’t bother next time.”', pattern: 'explode' },
+        { text: 'Reassure + boundary: “I care. I’ll be back at __; I want to finish this.”', pattern: 'repair' }
+      ]}
+    ];
+
+    let deck = []; let cursor = -1; 
+    const $ = (id)=>document.getElementById(id);
+    const els = { prompt: $('prompt'), options: $('options'), reveal: $('reveal'), counter: $('counter'), drawBtn: $('drawBtn'), shuffleBtn: $('shuffleBtn'), resetBtn: $('resetBtn'), revealAllBtn: $('revealAllBtn'), presentBtn: $('presentBtn'), addCustomBtn: $('addCustomBtn'), exportBtn: $('exportBtn'), noteText: $('noteText'), addNote: $('addNote'), clearNotes: $('clearNotes'), notesList: $('notesList'), timerSelect: $('timerSelect'), startTimer: $('startTimer'), stopTimer: $('stopTimer'), resetTimer: $('resetTimer'), timerFace: $('timerFace'), timerText: $('timerText'), modal: $('modal'), closeModal: $('closeModal'), customPrompt: $('customPrompt'), customOptions: $('customOptions'), addOptionRow: $('addOptionRow'), saveScenario: $('saveScenario') };
+
+    function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+    function setCounter(){ els.counter.textContent = `${Math.max(0,cursor+1)} / ${deck.length}`; }
+    function drawScenario(){ if(deck.length===0){ deck=shuffle(SCENARIOS); cursor=-1; } if(cursor<deck.length-1){ cursor++; } else { cursor=0; } setCounter(); renderScenario(deck[cursor]); }
+    function renderScenario(s){ els.prompt.textContent=s.prompt; els.options.innerHTML=''; els.reveal.classList.remove('visible'); els.reveal.innerHTML=''; s.options.forEach((opt,idx)=>{ const b=document.createElement('button'); b.className='option'; b.innerHTML=`<strong>Option ${String.fromCharCode(65+idx)}</strong>${opt.text}`; b.addEventListener('click',()=>selectOption(opt)); els.options.appendChild(b); }); }
+    function tag(k){ const info = PATTERN_INFO[k]; return `<span class="tag ${info.tagClass}">${info.label}</span>`; }
+    function revealOne(opt){ const info = PATTERN_INFO[opt.pattern]; els.reveal.classList.add('visible'); els.reveal.innerHTML = `<div style="display:grid; gap:10px"><div>${tag(opt.pattern)}</div><p><strong>Why it fits:</strong> ${info.desc}</p><p><strong>Repair move:</strong> ${info.move}</p></div>`; }
+    function selectOption(opt){ revealOne(opt); }
+    function revealAll(){ const s=deck[cursor]; if(!s) return; els.reveal.classList.add('visible'); const groups = s.options.map((opt,i)=>{ const info=PATTERN_INFO[opt.pattern]; return `<div class="card pad" style="border-color:${info.color};"><div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px;"><div>${tag(opt.pattern)}</div><div class="muted">Option ${String.fromCharCode(65+i)}</div></div><div style="font-weight:600; margin-bottom:6px">${opt.text}</div><div class="tiny" style="margin-bottom:6px"><strong>Why it fits:</strong> ${info.desc}</div><div class="tiny"><strong>Repair move:</strong> ${info.move}</div></div>`; }).join(''); els.reveal.innerHTML = `<div style="display:grid; grid-template-columns:1fr; gap:10px;">${groups}</div>`; }
+
+    const notes=[]; function drawNotes(){ els.notesList.innerHTML = notes.map((n,i)=>`<div class="note">${i+1}. ${escapeHtml(n)}</div>`).join(''); }
+    function escapeHtml(str){ return str.replace(/[&<>\"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+    function exportNotes(){ const content = notes.map((n,i)=>`${i+1}. ${n}`).join('\n'); const blob=new Blob([content],{type:'text/plain'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='conflict-arcade-notes.txt'; a.click(); URL.revokeObjectURL(url); }
+
+    let timerId=null; let remaining=parseInt(els.timerSelect.value,10); function updateFace(){ els.timerText.textContent=remaining; }
+    function startTimer(){ if(timerId) return; els.timerFace.dataset.running='true'; timerId=setInterval(()=>{ remaining--; updateFace(); if(remaining<=0){ stopTimer(); beep(); } },1000); }
+    function stopTimer(){ if(timerId){ clearInterval(timerId); timerId=null; } els.timerFace.dataset.running='false'; }
+    function resetTimer(){ stopTimer(); remaining=parseInt(els.timerSelect.value,10); updateFace(); }
+    function beep(){ try{ const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(); const g=ctx.createGain(); o.type='square'; o.frequency.value=880; o.connect(g); g.connect(ctx.destination); o.start(); g.gain.setValueAtTime(0.2, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.3); setTimeout(()=>{ o.stop(); ctx.close(); }, 350); } catch(e){} }
+
+    function openModal(){ els.modal.classList.add('visible'); els.customOptions.innerHTML=''; addOptionRow(); addOptionRow(); }
+    function closeModal(){ els.modal.classList.remove('visible'); }
+    function addOptionRow(){ const row=document.createElement('div'); row.className='field'; row.innerHTML = `<div style="display:grid; grid-template-columns:1fr 160px auto; gap:8px; align-items:end;"><div><label>Option text</label><input type="text" class="co-text" placeholder="e.g., Ask for a pause and set a time." /></div><div><label>Pattern</label><select class="co-style"><option value="repair">Repair</option><option value="pursue">Pursue</option><option value="avoid">Avoid</option><option value="explode">Explode</option></select></div><div><button class="btn ghost co-remove">Remove</button></div></div>`; row.querySelector('.co-remove').addEventListener('click',()=>row.remove()); els.customOptions.appendChild(row); }
+    function saveCustomScenario(){ const prompt=els.customPrompt.value.trim(); const rows=Array.from(els.customOptions.querySelectorAll('.field')); const opts=rows.map(r=>({ text:r.querySelector('.co-text').value.trim(), pattern:r.querySelector('.co-style').value})).filter(o=>o.text); if(!prompt || opts.length===0){ alert('Add a prompt and at least one option.'); return; } SCENARIOS.push({ prompt, options: opts }); deck=shuffle(SCENARIOS); cursor=-1; setCounter(); closeModal(); els.customPrompt.value=''; }
+    els.drawBtn.addEventListener('click', drawScenario);
+    els.shuffleBtn.addEventListener('click', ()=>{ deck=shuffle(SCENARIOS); cursor=-1; setCounter(); drawScenario(); });
+    els.resetBtn.addEventListener('click', ()=>{ cursor=-1; setCounter(); els.prompt.textContent='Click “Draw Scenario” to start.'; els.options.innerHTML=''; els.reveal.classList.remove('visible'); els.reveal.innerHTML=''; });
+    els.revealAllBtn.addEventListener('click', revealAll);
+    els.presentBtn.addEventListener('click', ()=>{ document.documentElement.classList.toggle('present'); });
+    els.addNote.addEventListener('click', ()=>{ const t=els.noteText.value.trim(); if(!t) return; notes.push(t); els.noteText.value=''; drawNotes(); });
+    els.clearNotes.addEventListener('click', ()=>{ if(confirm('Clear all notes?')){ notes.length=0; drawNotes(); }});
+    els.exportBtn.addEventListener('click', exportNotes);
+    els.timerSelect.addEventListener('change', ()=>{ remaining=parseInt(els.timerSelect.value,10); updateFace(); });
+    els.startTimer.addEventListener('click', startTimer);
+    els.stopTimer.addEventListener('click', stopTimer);
+    els.resetTimer.addEventListener('click', resetTimer);
+    document.getElementById('addCustomBtn').addEventListener('click', openModal);
+    els.closeModal.addEventListener('click', closeModal);
+    els.addOptionRow.addEventListener('click', addOptionRow);
+    els.saveScenario.addEventListener('click', saveCustomScenario);
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target===document.getElementById('modal')) closeModal(); });
+    deck = shuffle(SCENARIOS); setCounter(); resetTimer();
+  </script>
+</body>
+</html>
