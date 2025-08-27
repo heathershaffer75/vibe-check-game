@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Channel Surfing Arcade</title>
+  <style>
+    :root{ --ink:#0f172a; --muted:#64748b; --accent:#1d4ed8; --edge:#e5e7eb; --card:#ffffff; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:#f3f4f6; color:var(--ink); }
+    header{ padding:24px; background:linear-gradient(90deg,#1d4ed8,#2563eb); color:#fff; text-align:center; }
+    h1{ margin:0; font-size:clamp(24px,4vw,36px); }
+    .sub{ font-size:14px; color:#dbeafe; margin-top:6px; }
+
+    .wrap{ max-width:1000px; margin:0 auto; padding:24px 16px; display:grid; gap:16px; }
+
+    .panel{ background:var(--card); border:1px solid var(--edge); border-radius:16px; box-shadow:0 10px 22px rgba(15,23,42,0.06); padding:16px; }
+
+    .tv{ display:grid; gap:12px; align-content:start; }
+    .screen{ border-radius:14px; border:1px solid var(--edge); background:#0b1020; color:#e5e7eb; padding:0; overflow:hidden; box-shadow: inset 0 0 0 6px rgba(29,78,216,0.12); }
+
+    /* UPDATED: show full image without cropping; allow taller display for projection */
+    .thumb{ width:100%; max-height:540px; object-fit:contain; display:block; background:#111827; }
+    .noimg{ display:none; }
+
+    .content{ padding:16px; display:grid; gap:8px; }
+    .title{ font-size:clamp(18px,2.6vw,26px); font-weight:800; color:#f8fafc; }
+    .blurb{ color:#d1d5db; font-size:clamp(14px,2vw,18px); }
+
+    .toolbar{ display:flex; flex-wrap:wrap; gap:8px; }
+    .btn{ appearance:none; border:1px solid var(--edge); background:#fff; color:var(--ink); border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer; transition: transform .05s, box-shadow .2s, border-color .2s; box-shadow:0 2px 0 rgba(15,23,42,0.08); }
+    .btn:hover{ box-shadow:0 6px 16px rgba(15,23,42,0.10); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{ background:#1d4ed8; color:#fff; border-color:transparent; }
+    .btn.ghost{ background:transparent; }
+
+    .side{ display:grid; gap:12px; align-content:start; }
+    .kicker{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#muted; }
+    .muted{ color:#64748b; font-size:14px; }
+
+    .q{ background:#fff; border:1px dashed var(--edge); border-radius:12px; padding:12px; font-size:14px; }
+
+    .present header, .present .side, .present .controls{ display:none; }
+    .present .wrap{ max-width:1100px; }
+    .present .title{ font-size:clamp(24px,4vw,48px); }
+    .present .blurb{ font-size:clamp(18px,3vw,28px); }
+
+    footer{ text-align:center; font-size:12px; color:#6b7280; padding:16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📺 Channel Surfing Arcade</h1>
+    <div class="sub">Flip channels ➜ spot the dynamic ➜ discuss the real-life pattern.</div>
+  </header>
+
+  <div class="wrap">
+    <div class="controls panel">
+      <div class="kicker">Controls</div>
+      <div class="toolbar" style="margin-top:8px">
+        <button class="btn" id="prevBtn">Prev</button>
+        <button class="btn primary" id="nextBtn">Next</button>
+        <button class="btn" id="randomBtn">Random</button>
+        <button class="btn" id="presentBtn">Presenter</button>
+        <button class="btn ghost" id="toggleQ">Discussion Prompt</button>
+      </div>
+      <div class="muted" style="margin-top:6px">Shortcuts: ←/→ navigate · R random · P presenter · ? toggle prompt</div>
+    </div>
+
+    <div class="tv panel">
+      <div class="screen">
+        <img id="thumb" class="thumb noimg" alt="Channel image" />
+        <div class="content">
+          <div class="title" id="title">Loading…</div>
+          <div class="blurb" id="blurb"></div>
+        </div>
+      </div>
+      <div id="qbox" class="q" style="display:none"></div>
+      <div class="muted" id="counter">0 / 0</div>
+    </div>
+  </div>
+
+  <footer>© Channel Surfing Arcade · Built for in-room projection and quick laughs → real insight.</footer>
+
+  <script>
+    const CHANNELS = [
+      { title: "The Self-Sabotage Sitcom", blurb: "Every time someone makes progress, cue the laugh track as they trip themselves up.", image: "self-sabotage-sitcom.png" },
+      { title: "Anxiety Cooking Show", blurb: "Today’s recipe calls for 14 cups of rumination and a dash of ‘what ifs.’", image: "anxiety-cooking-show.png" },
+      { title: "True Crime: My Last Relationship", blurb: "Every episode ends with red flags and questionable decisions.", image: "true-crime-relationship.png" },
+      { title: "Weather Channel: Forecast 100% Drama", blurb: "Storms roll in every time boundaries are mentioned.", image: "drama-weather-channel.png" },
+      { title: "The Avoidance Channel", blurb: "Tune in later… or never. Spoiler: nothing gets done.", image: "avoidance-channel.png" },
+      { title: "Recovery Network News (RNN)", blurb: "Breaking: someone actually asked for help and didn’t explode!", image: "recovery-network-news.png" },
+      { title: "Denial Documentary", blurb: "Narrated by, ‘I can quit whenever I want.’", image: "denial-documentary.png" },
+      { title: "The People-Pleasing Channel", blurb: "Broadcasting 24/7 apologies, even when nothing was your fault.", image: "people-pleasing-channel.png" },
+      { title: "Fear Factor: Family Edition", blurb: "Watch contestants dodge conversations about feelings.", image: "fear-factor-family.png" },
+      { title: "Boundary Busters Reality TV", blurb: "Contestants win by ignoring every ‘no’ they hear.", image: "boundary-busters.png" },
+      { title: "Late Night with the Inner Critic", blurb: "Tonight’s guest is every mistake you’ve ever made.", image: "inner-critic-late-night.png" },
+      { title: "Channel 404: Coping Skill Not Found", blurb: "Technical difficulties every time stress levels rise.", image: "channel-404.png" },
+      { title: "Attachment After Dark", blurb: "Tonight’s reruns: anxious pursuit and avoidant ghosting, with a surprise secure cameo.", image: "attachment-after-dark.png" },
+      { title: "The Boundary Builders", blurb: "A wholesome DIY show where ‘no’ is a complete sentence and consent is king.", image: "boundary-builders.png" },
+      { title: "Mindful Sports Network", blurb: "Live coverage of breathwork, time-outs, and respectful replays.", image: "mindful-sports-network.png" },
+      { title: "Catastrophe Theater", blurb: "Every plot twist is worst-case… until someone reality-checks.", image: "catastrophe-theater.png" },
+      { title: "Perfectionist Project Channel", blurb: "New episode weekly… unless it’s not perfect yet.", image: "perfectionist-project-channel.png" },
+      { title: "Group Chat Court", blurb: "Dramatic readings of screenshots. Objection: out of context!", image: "group-chat-court.png" },
+      { title: "The Repair Shop (Feelings Edition)", blurb: "Bring your busted apologies—leave with do-overs and plans.", image: "repair-shop-feelings.png" },
+      { title: "Calendar of Calm", blurb: "Scheduling solo time + together time like pros.", image: "calendar-of-calm.png" },
+      { title: "Trigger Warnings Live!", blurb: "Pop-up signs appear before the cycle escalates—can they catch it in time?", image: "trigger-warnings-live.png" },
+      { title: "Secure Channel Plus", blurb: "Premium programming: direct asks, clean boundaries, collaborative endings.", image: "secure-channel-plus.png" }
+    ];
+
+    const PROMPTS = [
+      "Where does this ‘channel’ show up in your life right now?",
+      "If you changed the channel mid-scene, what would you do differently?",
+      "What’s one boundary or script line you could add to this episode?",
+      "Who plays ‘guest star’ in this pattern for you, and how do you want to direct them?",
+      "What’s the smallest action that flips this from drama to growth?"
+    ];
+
+    let i = 0; const $ = (id)=>document.getElementById(id);
+    const els = { title: $('title'), blurb: $('blurb'), thumb: $('thumb'), counter: $('counter'), qbox: $('qbox') };
+
+    function fileExists(src){ return new Promise((resolve)=>{ const img = new Image(); img.onload = ()=> resolve(true); img.onerror = ()=> resolve(false); img.src = src; }); }
+
+    async function show(idx){
+      i = (idx + CHANNELS.length) % CHANNELS.length;
+      const ch = CHANNELS[i];
+      els.title.textContent = ch.title;
+      els.blurb.textContent = ch.blurb;
+      els.counter.textContent = `${i+1} / ${CHANNELS.length}`;
+      els.qbox.style.display = 'none';
+
+      const path = `images/${ch.image}`;
+      const has = await fileExists(path);
+      if(has){
+        els.thumb.src = path;
+        els.thumb.classList.remove('noimg');
+        els.thumb.alt = ch.title;
+      } else {
+        els.thumb.classList.add('noimg');
+        els.thumb.removeAttribute('src');
+        els.thumb.alt = '';
+      }
+    }
+
+    function next(){ show(i+1); }
+    function prev(){ show(i-1); }
+    function random(){ show(Math.floor(Math.random()*CHANNELS.length)); }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    document.getElementById('randomBtn').addEventListener('click', random);
+    document.getElementById('presentBtn').addEventListener('click', ()=> document.documentElement.classList.toggle('present'));
+    document.getElementById('toggleQ').addEventListener('click', ()=>{
+      if(els.qbox.style.display==='none'){
+        const q = PROMPTS[Math.floor(Math.random()*PROMPTS.length)];
+        els.qbox.textContent = '💬 ' + q;
+        els.qbox.style.display='block';
+      } else {
+        els.qbox.style.display='none';
+      }
+    });
+
+    window.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight') next();
+      if(e.key==='ArrowLeft') prev();
+      if(e.key.toLowerCase()==='r') random();
+      if(e.key.toLowerCase()==='p') document.documentElement.classList.toggle('present');
+      if(e.key==='?') document.getElementById('toggleQ').click();
+    });
+
+    show(0);
+  </script>
+</body>
+</html>
