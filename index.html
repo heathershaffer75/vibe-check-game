@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vibe Check Game — Hub</title>
+<style>
+:root{
+  --bg:#0b1220; --panel:#0f172a; --ink:#e5e7eb; --muted:#94a3b8; --hl:#38bdf8; --card:#0c1628; --border:#1f2a3a;
+  --pill:#1e293b; --shadow:rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  background:radial-gradient(1200px 800px at 80% -10%, #0b1220 0%, var(--bg) 65%); color:var(--ink);}
+.wrap{max-width:1100px; margin:0 auto; padding:28px 20px 40px}
+h1{margin:0 0 6px; font-size:clamp(28px,4.2vw,40px); font-weight:900; letter-spacing:.2px; display:flex; align-items:center; gap:12px;}
+h1 .emoji{font-size:32px; filter:drop-shadow(0 6px 16px rgba(56,189,248,.35));}
+.sub{color:var(--muted); margin-bottom:24px}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px}
+a.card{display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; background:linear-gradient(180deg, #0f172a, var(--card)); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 18px 44px var(--shadow); transition:transform .08s ease, border-color .2s ease, background .2s ease}
+a.card:hover{transform:translateY(-2px); border-color:#334155}
+.pill{width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#1f2937,var(--pill)); border:1px solid #2b3b52; font-weight:800; color:#cbd5e1; box-shadow:0 6px 18px var(--shadow)}
+.title{font-weight:800; font-size:18px}
+.desc{color:var(--muted); font-size:13px; margin-top:-2px}
+.icon{font-size:22px; margin-left:auto; opacity:.7}
+.row{display:flex; align-items:center; gap:10px}
+footer{margin-top:22px; color:var(--muted); font-size:12px}
+.warn{color:#f59e0b}
+@media (max-width:640px){ .grid{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><span class="emoji">🎮</span> Vibe Check Game Hub</h1>
+    <div class="sub">Select a set or activity to launch</div>
+
+    <section class="grid">
+      <a class="card" href="set1/index.html">
+        <div class="row"><div class="pill">1</div><div class="icon">📇</div></div>
+        <div class="title">Set 1</div>
+        <div class="desc">Dating profiles & flags</div>
+      </a>
+
+      <a class="card" href="set2/index.html">
+        <div class="row"><div class="pill">2</div><div class="icon">🧩</div></div>
+        <div class="title">Set 2</div>
+        <div class="desc">More profiles & scenarios</div>
+      </a>
+
+      <a class="card" href="set3/index.html">
+        <div class="row"><div class="pill">3</div><div class="icon">🧠</div></div>
+        <div class="title">Set 3</div>
+        <div class="desc">Expanded prompts</div>
+      </a>
+
+      <a class="card" href="set4/index.html">
+        <div class="row"><div class="pill">4</div><div class="icon">🌿</div></div>
+        <div class="title">Set 4</div>
+        <div class="desc">Fresh scenarios</div>
+      </a>
+
+      <a class="card" href="set5/index.html">
+        <div class="row"><div class="pill">5</div><div class="icon">🧭</div></div>
+        <div class="title">Set 5</div>
+        <div class="desc">Advanced insights</div>
+      </a>
+
+      <a class="card" href="set6/index.html">
+        <div class="row"><div class="pill">6</div><div class="icon">✨</div></div>
+        <div class="title">Set 6</div>
+        <div class="desc">Latest additions</div>
+      </a>
+
+      <a class="card" href="set7/index.html">
+        <div class="row"><div class="pill">7</div><div class="icon">🚀</div></div>
+        <div class="title">Set 7</div>
+        <div class="desc">Newest set (51–60)</div>
+      </a>
+
+      <a class="card" href="set8/index.html">
+        <div class="row"><div class="pill">8</div><div class="icon">🌟</div></div>
+        <div class="title">Set 8</div>
+        <div class="desc">Brand-new (61–70)</div>
+      </a>
+
+      <a class="card" href="commstyles/index.html">
+        <div class="row"><div class="pill">🗣️</div><div class="icon">🎛️</div></div>
+        <div class="title">Commstyles</div>
+        <div class="desc">Communication styles game</div>
+      </a>
+
+      <a class="card" href="attachment-arcade/index.html">
+        <div class="row"><div class="pill">❤️</div><div class="icon">🎯</div></div>
+        <div class="title">Attachment Arcade</div>
+        <div class="desc">Attachment patterns in action</div>
+      </a>
+
+      <a class="card" href="conflict-arcade/index.html">
+        <div class="row"><div class="pill">⚔️</div><div class="icon">🔧</div></div>
+        <div class="title">Conflict Arcade</div>
+        <div class="desc">Conflict & resolution scenarios</div>
+      </a>
+
+      <a class="card" href="channel-surfing/index.html">
+        <div class="row"><div class="pill">📺</div><div class="icon">🧭</div></div>
+        <div class="title">Channel Surfing</div>
+        <div class="desc">Relationship channels & themes</div>
+      </a>
+
+      <a class="card" href="vibecheck/index.html">
+        <div class="row"><div class="pill">✨</div><div class="icon">⭐</div></div>
+        <div class="title">Vibe Check (Classic)</div>
+        <div class="desc">Original dating game</div>
+      </a>
+    </section>
+
+    <footer>
+      Upload this file to your repo root as <code>index.html</code>. If a link 404s, the set folder isn’t uploaded. Ensure image filenames are lowercase (e.g., <span class="warn">checklistchloe.png</span>).
+    </footer>
+  </div>
+</body>
+</html>
