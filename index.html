@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check Game Hub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+    header {
+      text-align: center;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #22d3ee;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      transition: transform .2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card h3 {
+      margin: 12px 0 6px;
+      font-size: 20px;
+      color: #f9fafb;
+    }
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .emoji {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Vibe Check Game Hub</h1>
+    <p>Select a set or activity to launch</p>
+  </header>
+
+  <section class="grid">
+    <!-- Sets 1–6 -->
+    <a href="set1/" class="card"><div class="emoji">1️⃣</div><h3>Set 1</h3><p>Dating profiles & flags</p></a>
+    <a href="set2/" class="card"><div class="emoji">2️⃣</div><h3>Set 2</h3><p>More profiles & scenarios</p></a>
+    <a href="set3/" class="card"><div class="emoji">3️⃣</div><h3>Set 3</h3><p>Expanded prompts</p></a>
+    <a href="set4/" class="card"><div class="emoji">4️⃣</div><h3>Set 4</h3><p>Fresh scenarios</p></a>
+    <a href="set5/" class="card"><div class="emoji">5️⃣</div><h3>Set 5</h3><p>Advanced insights</p></a>
+    <a href="set6/" class="card"><div class="emoji">6️⃣</div><h3>Set 6</h3><p>Latest additions</p></a>
+
+    <!-- Commstyles -->
+    <a href="commstyles/" class="card"><div class="emoji">🗣️</div><h3>Commstyles</h3><p>Communication styles game</p></a>
+
+    <!-- Other games -->
+    <a href="attachment-arcade/" class="card"><div class="emoji">❤️</div><h3>Attachment Arcade</h3><p>Attachment patterns in action</p></a>
+    <a href="conflict-arcade/" class="card"><div class="emoji">⚔️</div><h3>Conflict Arcade</h3><p>Conflict & resolution scenarios</p></a>
+    <a href="channel-surfing/" class="card"><div class="emoji">📺</div><h3>Channel Surfing</h3><p>Relationship channels & themes</p></a>
+    <a href="vibecheck/" class="card"><div class="emoji">✨</div><h3>Vibe Check (Classic)</h3><p>Original dating game</p></a>
+  </section>
+</body>
+</html>
