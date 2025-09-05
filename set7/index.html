@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check – Set 7 (Profiles 51–60)</title>
+  <style>
+    :root { --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --chip:#1f2937; --green:#10b981; --yellow:#f59e0b; --red:#ef4444; --card:#0b1220; --shadow:rgba(0,0,0,.45); --radius:16px; }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 800px at 80% -10%, #0b1220 0%, var(--bg) 65%); color: var(--ink); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .title{ font-weight:800; letter-spacing:.2px; line-height:1.1; }
+    .title .kicker{ display:block; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:1.4px; text-transform:uppercase; }
+    .title .main{ font-size:clamp(22px,3.4vw,34px); }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    button,.ghost{ background:linear-gradient(180deg,#1f2937,#0f172a); color:var(--ink); border:1px solid #263244; padding:10px 14px; border-radius:12px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-weight:600; box-shadow:0 6px 18px var(--shadow); transition: transform .06s ease, background .2s ease, border-color .2s ease; }
+    button:hover{ transform:translateY(-1px); border-color:#334155; } button:active{ transform:translateY(0); }
+    .ghost{ text-decoration:none; opacity:.85; }
+    .grid{ display:grid; grid-template-columns:420px 1fr; gap:18px; } @media(max-width:980px){ .grid{grid-template-columns:1fr;} }
+    .card{ background:linear-gradient(180deg,#0d1527,var(--card)); border:1px solid #1f2a3a; border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px var(--shadow); }
+    .imagebox{ position:relative; aspect-ratio:4/5; background:#0b1020; display:flex; align-items:center; justify-content:center; }
+    .imagebox img{ width:100%; height:100%; object-fit:cover; }
+    .badge{ position:absolute; left:12px; top:12px; background:#0f172a; border:1px solid #223048; padding:6px 10px; border-radius:999px; font-size:12px; color:var(--muted); }
+    .panel{ padding:18px 18px 20px; }
+    .handle{ font-size:22px; font-weight:800; } .meta{ color:var(--muted); font-size:14px; margin-top:2px; } .bio{ margin:12px 0 14px; color:#d1d5db; line-height:1.55; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; } .chip{ background:var(--chip); border:1px solid #243042; color:#cbd5e1; font-size:12px; padding:6px 10px; border-radius:999px; }
+    .flags,.prompts,.interests{ background:#0c1425; border:1px solid #1a2536; padding:14px; border-radius:14px; }
+    .section-title{ font-weight:700; font-size:13px; color:var(--muted); letter-spacing:.6px; text-transform:uppercase; margin-bottom:8px; }
+    .flag-list,.prompt-list,.interest-list{ margin:0; padding-left:18px; }
+    .flag-list li{ margin:6px 0; cursor:pointer; user-select:none; border-radius:10px; padding:4px 6px; transition: background .15s ease, transform .05s ease; }
+    .flag-list li:hover{ transform: translateY(-1px); }
+    .flag-green{ color:var(--green); } .flag-yellow{ color:var(--yellow); } .flag-red{ color:var(--red); }
+    .selected{ outline:2px solid #334155; background:#0f172a; }
+    .voteBar{ display:flex; gap:10px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:8px; }
+    .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+    .g{ background:var(--green); } .y{ background:var(--yellow);} .r{ background:var(--red);} 
+    .stack{ display:grid; gap:12px; }
+    footer{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted); font-size:12px; }
+    .kbd{ background:#0b1424; border:1px solid #1a2638; padding:2px 6px; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; color:#cbd5e1; }
+    .spacer{ flex:1 1 auto; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <span class="kicker">Vibe Check Game</span>
+        <span class="main">Set 7 — Dating Profiles (51–60)</span>
+      </div>
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous profile">◀ Prev</button>
+        <button id="randomBtn" aria-label="Random profile">🔀 Random</button>
+        <button id="nextBtn" aria-label="Next profile">Next ▶</button>
+        <button id="toggleFlags">👁️ Toggle Flags</button>
+        <button id="togglePrompts">🗣️ Toggle Prompts</button>
+        <button id="resetVotes">♻️ Reset Votes</button>
+        <button id="copySelected">📋 Copy Selected Flags</button>
+        <a class="ghost" id="openImage" target="_blank" rel="noreferrer">Open Image</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="imagebox">
+          <img id="profileImg" alt="Profile image" />
+          <div class="badge" id="badge">#51</div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <div class="card panel">
+          <div class="handle" id="handle">DeepDiveDana</div>
+          <div class="meta" id="meta">F, 30</div>
+          <p class="bio" id="bio"></p>
+          <div class="chips" id="chips"></div>
+          <div class="interests">
+            <div class="section-title">Interests</div>
+            <ul class="interest-list" id="interests"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="flagsWrap">
+          <div class="flags">
+            <div class="section-title">Flag Analysis</div>
+            <div class="voteBar">
+              <span><span class="dot g"></span> Green: <strong id="countGreen">0</strong></span>
+              <span><span class="dot y"></span> Yellow: <strong id="countYellow">0</strong></span>
+              <span><span class="dot r"></span> Red: <strong id="countRed">0</strong></span>
+            </div>
+            <ul class="flag-list" id="flags"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="promptsWrap">
+          <div class="prompts">
+            <div class="section-title">Reflection Prompts</div>
+            <ul class="prompt-list" id="prompts"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Tips: Click a flag to select/deselect. Use <span class="kbd">←</span>/<span class="kbd">→</span> arrows to navigate profiles.</div>
+      <div class="spacer"></div>
+      <div id="counter">1 / 10</div>
+    </footer>
+  </div>
+
+  <script>
+    var PROFILES = [
+      { id:51, handle:"DeepDiveDana", gender:"F", age:30,
+        bio:"Let’s skip the small talk. I want to know your fears, dreams, regrets, and recurring nightmares—by the second date. Surface stuff bores me.",
+        interests:["Tarot spreads","late-night heart-to-hearts","intimacy quizzes","emotionally intense Spotify playlists"],
+        flags:{
+          green:["Emotionally open","curious","intentional"],
+          yellow:["May push emotional boundaries too soon"],
+          red:["May use vulnerability to fast-track closeness without safety"]
+        },
+        prompts:[
+          "When is vulnerability authentic, and when is it strategic?",
+          "What pace feels safe in emotional connection?",
+          "How do we build trust without skipping steps?"
+        ],
+        image:"images/deepdivedana.png"
+      },
+      { id:52, handle:"PettyPatrick", gender:"M", age:34,
+        bio:"I remember everything—especially what annoyed me. I’ll bring it up subtly... or not so subtly. I don’t hold grudges, I just categorize them alphabetically.",
+        interests:["Screenshot receipts","passive-aggressive memes","revenge playlists","“just being honest” texts"],
+        flags:{
+          green:["Detail-oriented","passionate","values fairness"],
+          yellow:["May struggle to forgive or let go"],
+          red:["May weaponize memory and sarcasm"]
+        },
+        prompts:[
+          "When does honesty cross into harm?",
+          "What’s the cost of keeping score in relationships?",
+          "Can peace exist when grudges linger?"
+        ],
+        image:"images/pettypatrick.png"
+      },
+      { id:53, handle:"WellnessWanda", gender:"F", age:31,
+        bio:"I drink green juice, track my macros, and stretch before arguments. I believe in self-regulation—but sometimes forget to feel things before optimizing them.",
+        interests:["Biohacking","smoothies","cold plunges","avoiding uncomfortable feelings by “working on herself”"],
+        flags:{
+          green:["Health-conscious","proactive","self-disciplined"],
+          yellow:["May intellectualize feelings"],
+          red:["May bypass emotional processing in pursuit of performance"]
+        },
+        prompts:[
+          "What happens when wellness becomes avoidance?",
+          "Can growth include messiness?",
+          "What does balance look like between feeling and fixing?"
+        ],
+        image:"images/wellnesswanda.png"
+      },
+      { id:54, handle:"LaughTrackLenny", gender:"M", age:32,
+        bio:"If you’re crying, I’ll crack a joke. If you’re mad, I’ll turn it into a bit. I cope with humor—but sometimes I forget that not everything’s funny.",
+        interests:["Stand-up clips","ironic dating memes","laughter-as-therapy","avoiding serious convos"],
+        flags:{
+          green:["Lighthearted","engaging","emotionally disarming"],
+          yellow:["May deflect when things get real"],
+          red:["May invalidate feelings with constant humor"]
+        },
+        prompts:[
+          "When is humor healing—and when is it deflection?",
+          "Can laughter coexist with emotional depth?",
+          "How do we stay present when someone uses jokes to escape?"
+        ],
+        image:"images/laughtracklenny.png"
+      },
+      { id:55, handle:"TherapyThesaurusTheo", gender:"M", age:29,
+        bio:"I use “gaslight,” “trauma response,” and “attachment wound” fluently. I’ve been to therapy—but sometimes I use the language more than the lessons.",
+        interests:["Psychology TikTok","armchair diagnostics","journaling","correcting others’ use of therapeutic terms"],
+        flags:{
+          green:["Emotionally literate","introspective","growth-oriented"],
+          yellow:["May pathologize normal behavior"],
+          red:["May use therapy-speak to avoid true accountability"]
+        },
+        prompts:[
+          "What’s the difference between insight and integrity?",
+          "Can language become armor?",
+          "How do we ensure healing tools are used with care?"
+        ],
+        image:"images/therapythesaurustheo.png"
+      },
+      { id:56, handle:"AlmostReadyRenee", gender:"F", age:35,
+        bio:"I want the relationship—but I still have some “work to do.” You’ll hear about my healing journey often, but I might postpone commitment indefinitely.",
+        interests:["Podcasts on healing","Pinterest quotes","“I’m not ready but don’t leave” energy","starting therapy (again)"],
+        flags:{
+          green:["Self-aware","introspective","growth-minded"],
+          yellow:["May use healing as a delay tactic"],
+          red:["May unintentionally lead others on while staying emotionally unavailable"]
+        },
+        prompts:[
+          "When is “not ready” an honest pause—and when is it a pattern?",
+          "How do you respect your pace without hurting others?",
+          "What does accountability look like in healing?"
+        ],
+        image:"images/almostreadyrenee.png"
+      },
+      { id:57, handle:"SituationshipStan", gender:"M", age:34,
+        bio:"Let’s keep it low-key, undefined, vibey. Labels freak me out, but deep emotional bonds without commitment? I’m in.",
+        interests:["Chill dates","vague texts","playlists titled “complicated”","saying “we’re just hanging out” after six months"],
+        flags:{
+          green:["Laid-back","non-pressuring","emotionally available-ish"],
+          yellow:["May send mixed signals"],
+          red:["May avoid commitment while benefiting from emotional intimacy"]
+        },
+        prompts:[
+          "What’s the cost of undefined connections?",
+          "When does “no pressure” become confusing?",
+          "Can clarity and freedom coexist?"
+        ],
+        image:"images/situationshipstan.png"
+      },
+      { id:58, handle:"SpiritualSkip", gender:"M", age:39,
+        bio:"I live in alignment—unless I’m spiraling. I quote Rumi and forget to call back. If we break up, I’ll say it’s because of divine timing.",
+        interests:["Burning sage","moon water","saying “we’re karmically complete”","avoiding texts with cosmic explanations"],
+        flags:{
+          green:["Reflective","connected to purpose","values personal growth"],
+          yellow:["May rely on spiritual bypassing"],
+          red:["May use spiritual language to justify poor boundaries or emotional inconsistency"]
+        },
+        prompts:[
+          "Can spirituality support—not replace—accountability?",
+          "What does grounded presence look like in relationships?",
+          "When do beliefs become excuses?"
+        ],
+        image:"images/spiritualskip.png"
+      },
+      { id:59, handle:"OversharerOlivia", gender:"F", age:30,
+        bio:"I’ll tell you everything—on the first date. My ex? My trauma? My weird rash? You’ll leave knowing more than my therapist does.",
+        interests:["TMI confessions","trauma dumps","treating first dates like confessional booths"],
+        flags:{
+          green:["Open","transparent","emotionally expressive"],
+          yellow:["May lack boundaries in early connection"],
+          red:["May overwhelm partners before safety is established"]
+        },
+        prompts:[
+          "When does sharing help—and when does it harm connection?",
+          "Can openness build intimacy without rushing it?",
+          "What does safe pacing look like in vulnerability?"
+        ],
+        image:"images/oversharerolivia.png"
+      },
+      { id:60, handle:"FlashbackFreddie", gender:"M", age:36,
+        bio:"Everything reminds me of my ex. That song? Her favorite. That pizza place? Our third date. I’m not with her—but she’s still in the room.",
+        interests:["Nostalgia loops","“friendly” texts with the ex","long sighs about “what could have been”"],
+        flags:{
+          green:["Sentimental","emotionally deep","loyal"],
+          yellow:["May not be emotionally finished with the past"],
+          red:["May emotionally triangulate new partners with old attachments"]
+        },
+        prompts:[
+          "How do you know when someone’s truly moved on?",
+          "What’s the impact of emotional residue from past relationships?",
+          "Can we honor the past without reliving it?"
+        ],
+        image:"images/flashbackfreddie.png"
+      }
+    ];
+
+    var index = 0;
+    var imgEl = document.getElementById('profileImg');
+    var badgeEl = document.getElementById('badge');
+    var handleEl = document.getElementById('handle');
+    var metaEl = document.getElementById('meta');
+    var bioEl = document.getElementById('bio');
+    var chipsEl = document.getElementById('chips');
+    var interestsEl = document.getElementById('interests');
+    var flagsEl = document.getElementById('flags');
+    var promptsEl = document.getElementById('prompts');
+    var counterEl = document.getElementById('counter');
+    var openImageEl = document.getElementById('openImage');
+    var flagsWrap = document.getElementById('flagsWrap');
+    var promptsWrap = document.getElementById('promptsWrap');
+    var countGreen = document.getElementById('countGreen');
+    var countYellow = document.getElementById('countYellow');
+    var countRed = document.getElementById('countRed');
+
+    var VOTES = {};
+
+    function getVoteSet(id){
+      if (!VOTES[id]) VOTES[id] = {};
+      return VOTES[id];
+    }
+
+    function updateCounts() {
+      var set = getVoteSet(PROFILES[index].id);
+      var g=0,y=0,r=0;
+      for (var key in set) {
+        if (!set[key]) continue;
+        if (key.indexOf('g-')===0) g++;
+        else if (key.indexOf('y-')===0) y++;
+        else if (key.indexOf('r-')===0) r++;
+      }
+      countGreen.textContent = g; countYellow.textContent = y; countRed.textContent = r;
+    }
+
+    function render(i) {
+      var p = PROFILES[i]; if (!p) return; index = i;
+      imgEl.src = p.image; imgEl.alt = p.handle + ' image'; openImageEl.href = p.image;
+      badgeEl.textContent = '#' + p.id; handleEl.textContent = p.handle; metaEl.textContent = p.gender + ', ' + p.age; bioEl.textContent = p.bio;
+      chipsEl.innerHTML=''; [['Green','var(--green)'],['Yellow','var(--yellow)'],['Red','var(--red)']].forEach(function(pair){ var label=pair[0], color=pair[1]; var s=document.createElement('span'); s.className='chip'; s.style.borderColor=color; s.textContent=label+' Flags'; chipsEl.appendChild(s); });
+      var ints = p.interests ? p.interests : []; interestsEl.innerHTML = ints.map(function(x){return '<li>'+x+'</li>';}).join('');
+      flagsEl.innerHTML='';
+      var current = getVoteSet(p.id);
+      function makeLi(text,color,idx){
+        var li=document.createElement('li');
+        li.textContent=(color==='g'?'✅ Green Flag: ':(color==='y'?'⚠️ Yellow Flag: ':'🚩 Red Flag: '))+text;
+        li.className=color==='g'?'flag-green':(color==='y'?'flag-yellow':'flag-red');
+        var key=color+'-'+idx; if(current[key]) li.classList.add('selected');
+        li.addEventListener('click',function(){ if(li.classList.contains('selected')){ li.classList.remove('selected'); current[key]=false;} else { li.classList.add('selected'); current[key]=true;} updateCounts(); });
+        return li;
+      }
+      var g = (p.flags && p.flags.green) ? p.flags.green : [];
+      var y = (p.flags && p.flags.yellow) ? p.flags.yellow : [];
+      var r = (p.flags && p.flags.red) ? p.flags.red : [];
+      g.forEach(function(t,i){ flagsEl.appendChild(makeLi(t,'g',i)); });
+      y.forEach(function(t,i){ flagsEl.appendChild(makeLi(t,'y',i)); });
+      r.forEach(function(t,i){ flagsEl.appendChild(makeLi(t,'r',i)); });
+      var pr = p.prompts ? p.prompts : [];
+      promptsEl.innerHTML=pr.map(function(x){return '<li>'+x+'</li>';}).join('');
+      counterEl.textContent=(i+1)+' / '+PROFILES.length; updateCounts();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click',function(){ render((index-1+PROFILES.length)%PROFILES.length); });
+    document.getElementById('nextBtn').addEventListener('click',function(){ render((index+1)%PROFILES.length); });
+    document.getElementById('randomBtn').addEventListener('click',function(){ render(Math.floor(Math.random()*PROFILES.length)); });
+    document.getElementById('toggleFlags').addEventListener('click',function(){ flagsWrap.style.display=(flagsWrap.style.display==='none')?'':'none'; });
+    document.getElementById('togglePrompts').addEventListener('click',function(){ promptsWrap.style.display=(promptsWrap.style.display==='none')?'':'none'; });
+    document.getElementById('resetVotes').addEventListener('click',function(){ delete VOTES[PROFILES[index].id]; render(index); });
+    document.getElementById('copySelected').addEventListener('click', function(){
+      var p=PROFILES[index];
+      var items=[]; var lis=flagsEl.querySelectorAll('li');
+      for (var i=0;i<lis.length;i++){ if(lis[i].classList.contains('selected')) items.push('- '+lis[i].textContent); }
+      var text='Selected Flags — '+p.handle+' (Set 7)\n\n'+(items.join('\n')||'(none selected)');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function(){
+          var btn=document.getElementById('copySelected'); btn.textContent='✅ Copied!'; setTimeout(function(){ btn.textContent='📋 Copy Selected Flags'; },1200);
+        }).catch(function(){ alert('Could not copy to clipboard.'); });
+      } else {
+        alert('Copy not supported in this browser.');
+      }
+    });
+
+    window.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') render((index-1+PROFILES.length)%PROFILES.length); if(e.key==='ArrowRight') render((index+1)%PROFILES.length); if((e.key||'').toLowerCase()==='r') render(Math.floor(Math.random()*PROFILES.length)); });
+
+    render(0);
+  </script>
+</body>
+</html>
