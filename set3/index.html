@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check – Set 3 (Profiles 21–30)</title>
+  <style>
+    :root { --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af; --accent:#60a5fa; --chip:#1f2937; --green:#10b981; --yellow:#f59e0b; --red:#ef4444; --card:#0b1220; --shadow:rgba(0,0,0,.45); --radius:16px; }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 800px at 80% -10%, #0b1220 0%, var(--bg) 65%); color: var(--ink); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .title{ font-weight:800; letter-spacing:.2px; line-height:1.1; }
+    .title .kicker{ display:block; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:1.4px; text-transform:uppercase; }
+    .title .main{ font-size:clamp(22px,3.4vw,34px); }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    button,.ghost{ background:linear-gradient(180deg,#1f2937,#0f172a); color:var(--ink); border:1px solid #263244; padding:10px 14px; border-radius:12px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-weight:600; box-shadow:0 6px 18px var(--shadow); transition: transform .06s ease, background .2s ease, border-color .2s ease; }
+    button:hover{ transform:translateY(-1px); border-color:#334155; } button:active{ transform:translateY(0); }
+    .ghost{ text-decoration:none; opacity:.85; }
+    .grid{ display:grid; grid-template-columns:420px 1fr; gap:18px; } @media(max-width:980px){ .grid{grid-template-columns:1fr;} }
+    .card{ background:linear-gradient(180deg,#0d1527,var(--card)); border:1px solid #1f2a3a; border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px var(--shadow); }
+    .imagebox{ position:relative; aspect-ratio:4/5; background:#0b1020; display:flex; align-items:center; justify-content:center; }
+    .imagebox img{ width:100%; height:100%; object-fit:cover; }
+    .badge{ position:absolute; left:12px; top:12px; background:#0f172a; border:1px solid #223048; padding:6px 10px; border-radius:999px; font-size:12px; color:var(--muted); }
+    .panel{ padding:18px 18px 20px; }
+    .handle{ font-size:22px; font-weight:800; } .meta{ color:var(--muted); font-size:14px; margin-top:2px; } .bio{ margin:12px 0 14px; color:#d1d5db; line-height:1.55; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; } .chip{ background:var(--chip); border:1px solid #243042; color:#cbd5e1; font-size:12px; padding:6px 10px; border-radius:999px; }
+    .flags,.prompts,.interests,.why{ background:#0c1425; border:1px solid #1a2536; padding:14px; border-radius:14px; }
+    .section-title{ font-weight:700; font-size:13px; color:var(--muted); letter-spacing:.6px; text-transform:uppercase; margin-bottom:8px; }
+    .flag-list,.prompt-list,.interest-list{ margin:0; padding-left:18px; }
+    .flag-list li{ margin:6px 0; cursor:pointer; user-select:none; border-radius:10px; padding:4px 6px; transition: background .15s ease, transform .05s ease; }
+    .flag-list li:hover{ transform: translateY(-1px); }
+    .flag-green{ color:var(--green); } .flag-yellow{ color:var(--yellow); } .flag-red{ color:var(--red); }
+    .selected{ outline:2px solid #334155; background:#0f172a; }
+    .voteBar{ display:flex; gap:10px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:8px; }
+    .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+    .g{ background:var(--green); } .y{ background:var(--yellow);} .r{ background:var(--red);} 
+    .stack{ display:grid; gap:12px; }
+    footer{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted); font-size:12px; }
+    .kbd{ background:#0b1424; border:1px solid #1a2638; padding:2px 6px; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; color:#cbd5e1; }
+    .spacer{ flex:1 1 auto; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <span class="kicker">Vibe Check Game</span>
+        <span class="main">Set 3 — Dating Profiles (21–30)</span>
+      </div>
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous profile">◀ Prev</button>
+        <button id="randomBtn" aria-label="Random profile">🔀 Random</button>
+        <button id="nextBtn" aria-label="Next profile">Next ▶</button>
+        <button id="toggleFlags">👁️ Toggle Flags</button>
+        <button id="togglePrompts">🗣️ Toggle Prompts</button>
+        <button id="toggleWhy">💡 Toggle Why It Matters</button>
+        <button id="resetVotes">♻️ Reset Votes</button>
+        <button id="copySelected">📋 Copy Selected Flags</button>
+        <a class="ghost" id="openImage" target="_blank" rel="noreferrer">Open Image</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="imagebox">
+          <img id="profileImg" alt="Profile image" />
+          <div class="badge" id="badge">#21</div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <div class="card panel">
+          <div class="handle" id="handle">ProfileHandle21</div>
+          <div class="meta" id="meta">F, 30</div>
+          <p class="bio" id="bio">Add your bio text here for Set 3.</p>
+          <div class="chips" id="chips"></div>
+          <div class="interests">
+            <div class="section-title">Interests</div>
+            <ul class="interest-list" id="interests"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="flagsWrap">
+          <div class="flags">
+            <div class="section-title">Flag Analysis</div>
+            <div class="voteBar">
+              <span><span class="dot g"></span> Green: <strong id="countGreen">0</strong></span>
+              <span><span class="dot y"></span> Yellow: <strong id="countYellow">0</strong></span>
+              <span><span class="dot r"></span> Red: <strong id="countRed">0</strong></span>
+            </div>
+            <ul class="flag-list" id="flags"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="whyWrap">
+          <div class="why">
+            <div class="section-title">Why It Matters</div>
+            <div id="why"></div>
+          </div>
+        </div>
+
+        <div class="card panel" id="promptsWrap">
+          <div class="prompts">
+            <div class="section-title">Reflection Prompts</div>
+            <ul class="prompt-list" id="prompts"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Tips: Click a flag to select/deselect. Use <span class="kbd">←</span>/<span class="kbd">→</span> arrows to navigate profiles.</div>
+      <div class="spacer"></div>
+      <div id="counter">1 / 10</div>
+    </footer>
+  </div>
+
+  <script>
+    // --- SET 3 DATA --------------------------------------------------------
+    const PROFILES = [
+      { id:21, handle:"ChaosCraver92", gender:"M", age:31,
+        bio:"Magnetic and mercurial. Lives for concerts, neon nights, and last‑minute plans. I’m learning that stability can be its own thrill—even if my default is louder, faster, more.",
+        interests:["Live shows","city lights","spontaneous road trips","late‑night adventures"],
+        flags:{
+          green:["Passionate","creative","brings aliveness"],
+          yellow:["Plans shift fast; hard to anchor agreements"],
+          red:["Push‑pull cycles; stirs drama to feel connected"]
+        },
+        why:"Intensity can mask fear of ordinary closeness. If calm feels uncomfortable, you’ll keep chasing spikes instead of building safety.",
+        prompts:[
+          "How do you tell the difference between passion and instability?",
+          "What does grounded excitement look like (not chaos)?",
+          "Where has calm actually improved connection in your life?"
+        ],
+        image:"images/chaoscraver92.png"
+      },
+      { id:22, handle:"GhostModeGreg", gender:"M", age:35,
+        bio:"Charming opener, inconsistent closer. I love the vibe until feelings get real—then I disappear. Practicing staying, clarifying, and repairing instead of vanishing.",
+        interests:["Low‑key hangs","movies","dry humor","leaving arguments politely"],
+        flags:{
+          green:["Low‑drama","non‑reactive","respects space"],
+          yellow:["Hot‑cold communication; ambiguity"],
+          red:["Ghosting after intimacy; breadcrumbing"]
+        },
+        why:"Distance can feel safer than repair, but clarity is care. Disappearing protects the self while destabilizing the ‘we.’",
+        prompts:[
+          "What specific signals help you stay instead of shut down?",
+          "How can you communicate your limits before you hit eject?",
+          "What does repair sound like after a missed text or plan?"
+        ],
+        image:"images/ghostmodegreg.png"
+      },
+      { id:23, handle:"SteadyAsSheGoes", gender:"F", age:40,
+        bio:"Calm, capable, and clear. I like ease with depth and kindness with backbone. Peace is my flex—but I’m learning that true peace includes truth, not silence.",
+        interests:["Slow mornings","meal prep","tidy calendars","unhurried walks"],
+        flags:{
+          green:["Reliable","self‑aware","values repair"],
+          yellow:["Over‑functions; struggles to ask for help"],
+          red:["Shuts down conflict to protect peace"]
+        },
+        why:"Avoiding hard conversations keeps things quiet—not close. Repair requires courage, not just calm.",
+        prompts:[
+          "When did ‘peacekeeping’ cost you authenticity?",
+          "What support do you need to speak up sooner?",
+          "How can a partner recognize you’re overwhelmed before you shut down?"
+        ],
+        image:"images/steadyasshegoes.png"
+      },
+      { id:24, handle:"AchievementAddict", gender:"F", age:33,
+        bio:"Goals on goals—feelings later. I’m ambitious and polished and I schedule everything, including self‑care. Practicing letting some things be messy in real time.",
+        interests:["Productivity podcasts","goal trackers","early flights","shiny presentations"],
+        flags:{
+          green:["Self‑motivated","reliable","intentional"],
+          yellow:["Work first, connection later… and later keeps moving"],
+          red:["Treats intimacy like a task; low tolerance for mess"]
+        },
+        why:"Achievement can numb anxiety but can’t meet attachment needs. Being known is not a checkbox.",
+        prompts:[
+          "Where does structure support your intimacy—and where does it suffocate it?",
+          "What would ‘unoptimized’ connection look like this week?",
+          "Which feelings do you postpone and why?"
+        ],
+        image:"images/achievementaddict.png"
+      },
+      { id:25, handle:"AllGasNoBrakes", gender:"M", age:26,
+        bio:"Charismatic and chronically busy. I stack bookings, chase buzz, and swear I’ll slow down ‘soon.’ Learning the art of the no and the value of the present.",
+        interests:["Overbooked weekends","new bars","group trips","DMs that say ‘pull up’"],
+        flags:{
+          green:["Energetic","social","optimistic"],
+          yellow:["FOMO‑driven choices; distracted presence"],
+          red:["Flaky follow‑through; overpromises"]
+        },
+        why:"Constant motion can hide fear of stillness and intimacy. Attention is love’s oxygen.",
+        prompts:[
+          "What do you fear might surface in stillness?",
+          "How can you protect ‘us time’ like a headliner slot?",
+          "What’s a recent ‘no’ that would have helped your connection?"
+        ],
+        image:"images/allgasnobrakes.png"
+      },
+      { id:26, handle:"SnackQueen91", gender:"F", age:32,
+        bio:"Comfort is my love language. I bake for you, check on you, and smooth edges with sweetness. Working on naming my needs instead of hiding them in cookies.",
+        interests:["Baking","cozy nights","hosting friends","comfort shows"],
+        flags:{
+          green:["Nurturing","generous","consistent"],
+          yellow:["Comfort first; growth later"],
+          red:["Uses caretaking to dodge conflict or needs"]
+        },
+        why:"Comfort protects, but can prevent repair and honesty. Sugar isn’t a substitute for truth.",
+        prompts:[
+          "What’s hard to ask for directly—and how could you try anyway?",
+          "How do you want care reciprocated (specifically)?",
+          "When did ‘being nice’ keep you from being real?"
+        ],
+        image:"images/snackqueen91.png"
+      },
+      { id:27, handle:"BetBigBryce", gender:"M", age:39,
+        bio:"No risk, no story. I love grand gestures, big bets, and bold beginnings. Learning to build slow wins too—like showing up on a random Tuesday.",
+        interests:["Poker nights","start‑up ideas","surprise trips","high‑stakes fun"],
+        flags:{
+          green:["Brave","decisive","generous"],
+          yellow:["Future‑casts big; under‑delivers on repair"],
+          red:["High‑risk choices with relational fallout"]
+        },
+        why:"Trust grows through consistent deposits, not jackpots. Romance without reliability burns out.",
+        prompts:[
+          "What are three boring ways to prove you’re safe?",
+          "How do you repair when a gamble backfires?",
+          "What’s a small promise you can keep weekly?"
+        ],
+        image:"images/betbigbryce.png"
+      },
+      { id:28, handle:"AdrenalineAndy", gender:"M", age:30,
+        bio:"If it’s not scary, it’s not Saturday. I chase thrills and hype friends up. My growth edge is slowing down long enough to feel—and to let you feel, too.",
+        interests:["Trail runs","cliff jumps","fast drives","post‑ride tacos"],
+        flags:{
+          green:["Protective","loyal","brings adventure"],
+          yellow:["Hard time slowing down to connect"],
+          red:["Risk over reflection; dismisses fear"]
+        },
+        why:"Adrenaline can numb anxiety; intimacy needs stillness and listening.",
+        prompts:[
+          "What practice helps you switch from action to attention?",
+          "How do you respond to a partner’s fear without fixing it?",
+          "Where could ‘safe and steady’ be your new thrill?"
+        ],
+        image:"images/adrenalineandy.png"
+      },
+      { id:29, handle:"LoveOnLoan", gender:"F", age:29,
+        bio:"I love the beginning best. Meet‑cute master and chemistry connoisseur. Learning to love the middle—where grocery lists and quiet loyalty live.",
+        interests:["Rom‑coms","first‑date outfits","long texts","candlelight"],
+        flags:{
+          green:["Affectionate","attentive","romantic"],
+          yellow:["Struggles with routine intimacy"],
+          red:["Serial honeymooner; exits at first plateau"]
+        },
+        why:"Infatuation is a spark, not the story. Security grows in the middle chapters.",
+        prompts:[
+          "What makes routine feel romantic to you?",
+          "How do you recognize ‘steady love’ before you get bored?",
+            "What support do you need when novelty fades?"
+        ],
+        image:"images/loveonloan.png"
+      },
+      { id:30, handle:"RootedRuben", gender:"M", age:38,
+        bio:"Slow, steady, sincere. I’m grounded, community‑minded, and warm; I show love by showing up—over time. Risk isn’t my default, but growth matters to me.",
+        interests:["Neighborhood hangs","volunteering","home‑cooked meals","quiet weekends"],
+        flags:{
+          green:["Loyal","dependable","values repair and service"],
+          yellow:["Needs time to warm up; guarded early"],
+          red:["May avoid risk that growth requires"]
+        },
+        why:"Slowness isn’t disinterest—it’s choosing roots over rush. Depth needs time, not theatrics.",
+        prompts:[
+          "How can partners read your yes when it’s quiet?",
+          "Where could you take a small relational risk this month?",
+          "What does repair look like in your language?"
+        ],
+        image:"images/rootedruben.png"
+      }
+    ];
+
+    // --- STATE -------------------------------------------------------------
+    let index = 0;
+    const imgEl = document.getElementById('profileImg');
+    const badgeEl = document.getElementById('badge');
+    const handleEl = document.getElementById('handle');
+    const metaEl = document.getElementById('meta');
+    const bioEl = document.getElementById('bio');
+    const chipsEl = document.getElementById('chips');
+    const interestsEl = document.getElementById('interests');
+    const flagsEl = document.getElementById('flags');
+    const promptsEl = document.getElementById('prompts');
+    const whyEl = document.getElementById('why');
+    const counterEl = document.getElementById('counter');
+    const openImageEl = document.getElementById('openImage');
+    const flagsWrap = document.getElementById('flagsWrap');
+    const promptsWrap = document.getElementById('promptsWrap');
+    const whyWrap = document.getElementById('whyWrap');
+    const countGreen = document.getElementById('countGreen');
+    const countYellow = document.getElementById('countYellow');
+    const countRed = document.getElementById('countRed');
+
+    // Persist selected flags per profile during the session
+    const VOTES = new Map(); // key: profile.id, value: Set of "g-0","y-1","r-2" etc
+
+    function updateCounts() {
+      const set = VOTES.get(PROFILES[index].id) || new Set();
+      let g=0,y=0,r=0;
+      set.forEach(key => {
+        if (key.startsWith('g-')) g++;
+        else if (key.startsWith('y-')) y++;
+        else if (key.startsWith('r-')) r++;
+      });
+      countGreen.textContent = g;
+      countYellow.textContent = y;
+      countRed.textContent = r;
+    }
+
+    function render(i) {
+      const p = PROFILES[i]; if (!p) return; index = i;
+      // image
+      imgEl.src = p.image; imgEl.alt = p.handle + ' image'; openImageEl.href = p.image;
+      // header
+      badgeEl.textContent = '#' + p.id; handleEl.textContent = p.handle; metaEl.textContent = p.gender + ', ' + p.age; bioEl.textContent = p.bio;
+      // chips
+      chipsEl.innerHTML=''; [ ['Green','var(--green)'], ['Yellow','var(--yellow)'], ['Red','var(--red)'] ].forEach(([label,color])=>{ const s=document.createElement('span'); s.className='chip'; s.style.borderColor=color; s.textContent=label+' Flags'; chipsEl.appendChild(s); });
+      // interests
+      interestsEl.innerHTML = (p.interests||[]).map(x => '<li>'+x+'</li>').join('');
+      // flags (clickable)
+      flagsEl.innerHTML = '';
+      const current = VOTES.get(p.id) || new Set();
+      const makeLi = (text, color, idx) => {
+        const li = document.createElement('li');
+        li.textContent = (color==='g'?'✅ Green Flag: ':(color==='y'?'⚠️ Yellow Flag: ':'🚩 Red Flag: ')) + text;
+        li.className = color==='g'?'flag-green':(color==='y'?'flag-yellow':'flag-red');
+        const key = color+'-'+idx; if (current.has(key)) li.classList.add('selected');
+        li.dataset.key = key; li.dataset.color = color;
+        li.addEventListener('click', ()=>{
+          if (li.classList.contains('selected')) { li.classList.remove('selected'); current.delete(key); }
+          else { li.classList.add('selected'); current.add(key); }
+          VOTES.set(p.id, current); updateCounts();
+        });
+        return li;
+      };
+      (p.flags?.green||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'g',i)));
+      (p.flags?.yellow||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'y',i)));
+      (p.flags?.red||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'r',i)));
+      // why it matters
+      whyEl.textContent = p.why || '';
+      // prompts
+      promptsEl.innerHTML = (p.prompts||[]).map(x => '<li>'+x+'</li>').join('');
+      // footer counter and counts
+      counterEl.textContent = (i+1) + ' / ' + PROFILES.length;
+      updateCounts();
+    }
+
+    // nav
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const randBtn = document.getElementById('randomBtn');
+    const toggleFlags = document.getElementById('toggleFlags');
+    const togglePrompts = document.getElementById('togglePrompts');
+    const toggleWhy = document.getElementById('toggleWhy');
+    const resetVotes = document.getElementById('resetVotes');
+    const copySelected = document.getElementById('copySelected');
+
+    prevBtn.addEventListener('click', () => render((index - 1 + PROFILES.length) % PROFILES.length));
+    nextBtn.addEventListener('click', () => render((index + 1) % PROFILES.length));
+    randBtn.addEventListener('click', () => render(Math.floor(Math.random() * PROFILES.length)));
+    toggleFlags.addEventListener('click', () => { flagsWrap.style.display = (flagsWrap.style.display==='none')? '' : 'none'; });
+    togglePrompts.addEventListener('click', () => { promptsWrap.style.display = (promptsWrap.style.display==='none')? '' : 'none'; });
+    toggleWhy.addEventListener('click', () => { whyWrap.style.display = (whyWrap.style.display==='none')? '' : 'none'; });
+    resetVotes.addEventListener('click', () => { VOTES.delete(PROFILES[index].id); render(index); });
+    copySelected.addEventListener('click', async () => {
+      const p = PROFILES[index];
+      const items = [...flagsEl.querySelectorAll('li')].filter(li => li.classList.contains('selected')).map(li => '- '+li.textContent);
+      const text = 'Selected Flags — ' + p.handle + ' (Set 3)\n\n' + (items.join('\n')||'(none selected)');
+      try { await navigator.clipboard.writeText(text); copySelected.textContent = '✅ Copied!'; setTimeout(()=> copySelected.textContent='📋 Copy Selected Flags', 1200); } catch(e) { alert('Could not copy to clipboard.'); }
+    });
+
+    // keyboard
+    window.addEventListener('keydown', (e) => { if (e.key==='ArrowLeft') prevBtn.click(); if (e.key==='ArrowRight') nextBtn.click(); if (e.key?.toLowerCase()==='r') randBtn.click(); });
+
+    // init
+    render(0);
+  </script>
+</body>
+</html>
