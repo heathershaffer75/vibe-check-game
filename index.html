@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check – Hub</title>
+  <style>
+    :root{--bg:#0b1020;--panel:#0f172a;--ink:#e5e7eb;--muted:#9ca3af;--accent:#38bdf8;--card:#0d1527;--shadow:0 35px 80px rgba(0,0,0,.35);--radius:18px}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;background:radial-gradient(1400px 900px at 75% -20%,#0b1324 0%,var(--bg) 60%),linear-gradient(180deg,#0b1020,#0a0e1a);color:var(--ink)}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 14px 80px}
+    header{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+    .logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#22d3ee,#60a5fa);display:grid;place-items:center;color:#07121e;font-weight:900;box-shadow:var(--shadow)}
+    h1{margin:0;font-size:28px}
+    p.sub{margin:6px 0 16px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:8px}
+    .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.25em}
+    .t{font-weight:800;font-size:20px}
+    a.btn{margin-top:auto;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--ink);text-decoration:none;font-weight:700}
+    a.btn:hover{transform:translateY(-1px)}
+    footer{margin-top:18px;color:var(--muted);font-size:12px}
+    .num{background:#0b1424;border:1px solid #1a2638;border-radius:10px;padding:2px 6px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">VC</div>
+    <div>
+      <h1>Vibe Check Game Hub</h1>
+      <p class="sub">Select a set or activity to launch</p>
+    </div>
+  </header>
+
+  <section class="grid">
+    <!-- Sets 1–10 -->
+    <article class="card"><div class="k">Set <span class="num">1</span></div><div class="t">Dating profiles & flags</div><a class="btn" href="set1/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">2</span></div><div class="t">More profiles & scenarios</div><a class="btn" href="set2/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">3</span></div><div class="t">Expanded prompts</div><a class="btn" href="set3/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">4</span></div><div class="t">Fresh scenarios</div><a class="btn" href="set4/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">5</span></div><div class="t">Advanced insights</div><a class="btn" href="set5/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">6</span></div><div class="t">Latest additions</div><a class="btn" href="set6/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">7</span></div><div class="t">Bonus characters</div><a class="btn" href="set7/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">8</span></div><div class="t">New twists</div><a class="btn" href="set8/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">9</span></div><div class="t">Latest set</div><a class="btn" href="set9/">Open ▶</a></article>
+    <article class="card"><div class="k">Set <span class="num">10</span></div><div class="t">Profiles 81–90</div><a class="btn" href="set10/">Open ▶</a></article>
+
+    <!-- Other Games -->
+    <article class="card"><div class="k">Commstyles</div><div class="t">Communication styles game</div><a class="btn" href="commstyles/">Open ▶</a></article>
+    <article class="card"><div class="k">Attachment Arcade</div><div class="t">Attachment patterns in action</div><a class="btn" href="attachment-arcade/">Open ▶</a></article>
+    <article class="card"><div class="k">Conflict Arcade</div><div class="t">Conflict & resolution scenarios</div><a class="btn" href="conflict-arcade/">Open ▶</a></article>
+    <article class="card"><div class="k">Channel Surfing</div><div class="t">Relationship channels & themes</div><a class="btn" href="channel-surfing/">Open ▶</a></article>
+    <article class="card"><div class="k">Vibe Check (Classic)</div><div class="t">Original dating game</div><a class="btn" href="vibecheck/">Open ▶</a></article>
+  </section>
+
+  <footer>
+    Upload this file to your repo root as <b>index.html</b>. If your hub lives in a subfolder, change each link accordingly.
+  </footer>
+</div>
+</body>
+</html>
