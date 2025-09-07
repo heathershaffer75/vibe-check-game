@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check: Communication Styles</title>
+<style>
+  :root{
+    --bg:#0f172a; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --accent:#22d3ee;
+    --red:#ef4444; --yellow:#f59e0b; --green:#10b981; --blue:#60a5fa;
+    --shadow:0 10px 25px rgba(0,0,0,.35); --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+       background: radial-gradient(1200px 800px at 10% -5%, #1e293b 0%, #0b1020 45%, #070b16 100%); color:var(--text); line-height:1.55;}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 80px}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:20px}
+  .logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#22d3ee,#60a5fa);
+        display:grid;place-items:center;color:#07121e;font-weight:900;box-shadow:var(--shadow)}
+  h1{margin:0;font-size:28px;letter-spacing:.3px}
+  h2{font-size:18px;margin:6px 0 0;color:var(--muted);font-weight:500}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0));
+        border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .imgbox{aspect-ratio:16/10;background:#0b1224;display:grid;place-items:center;position:relative;border-bottom:1px solid rgba(255,255,255,.06)}
+  .imgbox img{width:100%;height:100%;object-fit:cover;display:block}
+  .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;letter-spacing:.3px;padding:10px;text-align:center;
+       transition:opacity .25s ease, visibility .25s ease}
+  .ph.hide{opacity:0;visibility:hidden}
+  .content{padding:14px 14px 6px}
+  .name{font-weight:800;font-size:18px;margin-bottom:2px}
+  .tag{color:var(--muted);font-size:13px;margin-bottom:10px}
+  .desc{font-size:14px;color:#dbe5ff;opacity:.9;margin-bottom:10px}
+  .flags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+  button.flag{appearance:none;border:none;cursor:pointer;padding:8px 10px;border-radius:999px;font-weight:700;font-size:12px;
+              letter-spacing:.3px;color:#0a0f1e;box-shadow:inset 0 -2px rgba(0,0,0,.25)}
+  .f-red{background:var(--red)} .f-yellow{background:var(--yellow)} .f-green{background:var(--green)} .f-blue{background:var(--blue)}
+  details{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;margin:10px 0 12px;padding:10px 12px}
+  summary{cursor:pointer;font-weight:800;color:#cbd5e1}
+  .meta{display:grid;grid-template-columns:1fr;gap:6px;margin-top:8px}
+  .row b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:#cbd5e1;opacity:.9}
+  .row p{margin:2px 0 0;font-size:14px;color:#e5e7eb}
+  footer{margin-top:22px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">VC</div>
+      <div>
+        <h1>Vibe Check: Communication Styles</h1>
+        <h2>Red / Yellow / Green flags + “Why It Matters” • Scenario Bank for live prompts</h2>
+      </div>
+    </header>
+
+    <section class="grid" id="grid"></section>
+  </div>
+
+<script>
+const profiles = [
+  { id:"rapidfireriley", name:"RapidFireRiley (F, 28)", tagline:"Text now, talk later.", img:"./images/rapidfireriley.png",
+    desc:"Riley loves the buzz of constant contact. She sends dozens of short texts and feels uneasy if she doesn’t hear back quickly.",
+    flags:{red:"Overwhelms partners with nonstop messages; reacts to pauses with anxiety.",yellow:"Struggles to respect different texting rhythms.",green:"High-energy, transparent, keeps communication flowing.",why:"Responsiveness isn’t the same as reliability."},
+    expanded:{attachment:"Anxious-leaning — equates responsiveness with security.",style:"Many short texts; avoids delayed conversations.",conflict:"Panics when left on read.",growth:"Practice self-soothing during pauses.",repair:"“I might not reply until after work; I’ll text when I’m free.”"}
+  },
+  { id:"draftboxdan", name:"DraftBoxDan (M, 34)", tagline:"Let me think about it…", img:"./images/draftboxdan.png",
+    desc:"Dan writes long, thoughtful replies—eventually. He means well but time slips away.",
+    flags:{red:"Leaves people hanging.",yellow:"Good intentions, poor time awareness.",green:"Deep, meaningful responses when ready.",why:"Thoughtfulness lands best when it’s timely."},
+    expanded:{attachment:"Avoidant-leaning — needs space to think.",style:"Composes essays, sends late.",conflict:"Silence during overwhelm.",growth:"Send quick acknowledgments.",repair:"“Need time to respond—will text tonight.”"}
+  },
+  { id:"emojialla", name:"EmojiElla (F, 26)", tagline:"Why type when 😂🔥👏 will do?", img:"./images/emojialla.png",
+    desc:"Ella communicates with emojis, gifs, and memes. Playful, but depth can get lost.",
+    flags:{red:"Avoids direct talk in serious moments.",yellow:"Tone can be misread.",green:"Keeps energy light and engaging.",why:"Humor needs clarity too."},
+    expanded:{attachment:"Anxious-avoidant mix — connection through play.",style:"Visual replies; avoids long text.",conflict:"Deflects with jokes when emotions rise.",growth:"Pair emojis with one sentence of intent.",repair:"“Jokes aside—here’s what I mean…”"}
+  },
+  { id:"voicenotevictor", name:"VoiceNoteVictor (M, 31)", tagline:"Say it, don’t spray it.", img:"./images/voicenotevictor.png",
+    desc:"Victor prefers voice notes to capture tone and warmth. Not everyone loves listening back.",
+    flags:{red:"Hard to reference later.",yellow:"Expects others to match his medium.",green:"Tone reduces misunderstandings.",why:"Medium must feel mutual."},
+    expanded:{attachment:"Secure-leaning.",style:"Short voice clips.",conflict:"Frustrated if others won’t respond in kind.",growth:"Offer choices.",repair:"Add a one-line typed summary."}
+  },
+  { id:"scenesettersam", name:"SceneSetterSam (F, 36)", tagline:"Can we talk in person?", img:"./images/scenesettersam.png",
+    desc:"Sam prefers phone or face-to-face over screens. Presence matters—sometimes too much.",
+    flags:{red:"Dismisses digital contact as ‘less real’.",yellow:"Can feel rigid about formats.",green:"Grounded, attuned.",why:"Flexibility prevents logistical conflict."},
+    expanded:{attachment:"Secure with a streak of control.",style:"Prefers calls/IRL.",conflict:"Pushes for calls at bad times.",growth:"Expand tolerance for timely texts.",repair:"Agree on windows."}
+  },
+  { id:"paragraphpat", name:"ParagraphPat (M, 29)", tagline:"Brevity is not my thing.", img:"./images/paragraphpat.png",
+    desc:"Pat answers everything with an essay. Intent is care; impact can be overwhelm.",
+    flags:{red:"Floods with detail.",yellow:"Misses the moment while crafting.",green:"Thorough, thoughtful.",why:"Match length to the moment."},
+    expanded:{attachment:"Anxious-preoccupied.",style:"Multi-paragraph messages.",conflict:"Info-dumps when stressed.",growth:"Ask preference: short or long?",repair:"Lead with a one-liner."}
+  },
+  { id:"onewordwanda", name:"OneWordWanda (F, 33)", tagline:"K.", img:"./images/onewordwanda.png",
+    desc:"Wanda keeps it minimal. Efficient, but emotional cues go missing.",
+    flags:{red:"Can read as cold during tender talks.",yellow:"Shuts down under tension.",green:"Clear, concise, low-drama.",why:"Brevity needs reassurance words."},
+    expanded:{attachment:"Avoidant.",style:"One-word answers.",conflict:"Withdraws instead of clarifying.",growth:"Add 3–5 reassurance words.",repair:"“Busy now—text you after 6.”"}
+  },
+  { id:"ghostreplygabe", name:"GhostReplyGabe (M, 27)", tagline:"Sorry, just saw this…", img:"./images/ghostreplygabe.png",
+    desc:"Gabe often ‘forgets’ to reply—especially when things get deep.",
+    flags:{red:"Disconnects at depth.",yellow:"Blames busyness.",green:"Easygoing when engaged.",why:"Accountability builds trust."},
+    expanded:{attachment:"Avoidant.",style:"Inconsistent responses.",conflict:"Disappears at vulnerability.",growth:"Name the pattern; set small goals.",repair:"Autoresponses help."}
+  },
+  { id:"doubletexterdee", name:"DoubleTexterDee (F, 30)", tagline:"Hello?? You there??", img:"./images/doubletexterdee.png",
+    desc:"Dee fires follow-ups fast when there’s no reply. Care looks like pressure.",
+    flags:{red:"Stacks messages; ramps anxiety.",yellow:"Reads silence as danger.",green:"Persistent, engaged, responsive.",why:"Build tolerance for uncertainty."},
+    expanded:{attachment:"Anxious.",style:"Multiple pings quickly.",conflict:"Escalates when unsure.",growth:"Build ‘safe silence’ windows.",repair:"Agree on busy-hour expectations."}
+  },
+  { id:"capslockcarl", name:"CapsLockCarl (M, 38)", tagline:"I’M NOT YELLING!!!", img:"./images/capslockcarl.png",
+    desc:"Carl types in ALL CAPS with !!! and ??? for emphasis—often reads as anger.",
+    flags:{red:"Tone feels hostile.",yellow:"Intensity over clarity.",green:"Direct, enthusiastic.",why:"Tone cues shape safety."},
+    expanded:{attachment:"Mixed.",style:"Caps + punctuation storms.",conflict:"Escalates with formatting.",growth:"Use emphasis sparingly.",repair:"State intent plainly."}
+  }
+];
+
+function el(tag, props={}, children=[]) {
+  const e = document.createElement(tag);
+  Object.assign(e, props);
+  if (props.className) e.setAttribute('class', props.className);
+  (Array.isArray(children)?children:[children]).filter(Boolean).forEach(c=>{
+    if (typeof c === 'string') e.appendChild(document.createTextNode(c));
+    else e.appendChild(c);
+  });
+  return e;
+}
+
+// Tries alt filename for EmojiElla if the first load fails.
+function tryAlternateEmojiPath(orig){
+  if (!/emojialla\.png$/.test(orig)) return null;
+  return orig.replace('emojialla.png', 'emojiella.png');
+}
+
+function imgWithPlaceholder(src, alt){
+  const box = el('div', {className:'imgbox'});
+  const img = el('img', {alt});
+  const ph  = el('div', {className:'ph'}, alt);
+  let triedAlt = false;
+
+  const handleError = () => {
+    if (!triedAlt) {
+      const altSrc = tryAlternateEmojiPath(src);
+      if (altSrc) { triedAlt = true; img.src = altSrc; return; }
+    }
+    img.style.display = 'none';
+    ph.textContent = `Missing image: ${src}`;
+    ph.classList.remove('hide');
+  };
+
+  img.addEventListener('load', () => { ph.classList.add('hide'); });
+  img.addEventListener('error', handleError);
+  img.src = src;
+
+  box.appendChild(img);
+  box.appendChild(ph);
+  return box;
+}
+
+const grid = document.getElementById('grid');
+profiles.forEach(p => {
+  const card = el('article', {className:'card'});
+  card.appendChild(imgWithPlaceholder(p.img, p.name));
+  const c = el('div', {className:'content'});
+  c.appendChild(el('div', {className:'name'}, p.name));
+  c.appendChild(el('div', {className:'tag'}, p.tagline));
+  c.appendChild(el('div', {className:'desc'}, p.desc));
+
+  const flags = el('div', {className:'flags'});
+  flags.appendChild(el('button', {className:'flag f-red',   onclick(){alert(p.flags.red)}},   '🔴 Red'));
+  flags.appendChild(el('button', {className:'flag f-yellow',onclick(){alert(p.flags.yellow)}},'🟡 Yellow'));
+  flags.appendChild(el('button', {className:'flag f-green', onclick(){alert(p.flags.green)}}, '🟢 Green'));
+  flags.appendChild(el('button', {className:'flag f-blue',  onclick(){alert(p.flags.why)}},   '🔵 Why It Matters'));
+  c.appendChild(flags);
+
+  const det = el('details');
+  det.appendChild(el('summary', {}, 'Expanded Sections'));
+  const meta = el('div', {className:'meta'});
+  [['Attachment Vibe', p.expanded.attachment],
+   ['Communication Style', p.expanded.style],
+   ['Conflict Habit', p.expanded.conflict],
+   ['Growth Edge', p.expanded.growth],
+   ['Ideal Repair', p.expanded.repair]].forEach(([label, text]) => {
+    const row = el('div', {className:'row'});
+    row.appendChild(el('b', {}, label));
+    row.appendChild(el('p', {}, text));
+    meta.appendChild(row);
+  });
+  det.appendChild(meta);
+  c.appendChild(det);
+
+  card.appendChild(c);
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
