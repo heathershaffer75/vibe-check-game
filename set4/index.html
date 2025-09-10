@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check – Red/Yellow/Green Flags (Set 4)</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; line-height: 1.45; }
+  h1 { margin: 0 0 10px; }
+  .helper { color:#374151; margin-bottom:20px; }
+  .profile {
+    background: white; border-radius: 12px; padding: 20px; margin: 30px auto;
+    max-width: 980px; display: flex; gap: 20px;
+    border: 10px double #60a5fa; box-shadow: 0 0 20px rgba(96,165,250,.6);
+    background-image: radial-gradient(circle at top left,#eef6ff,#f0f4f8);
+  }
+  .profile img.profile-photo { border-radius: 10px; border: 3px solid #1f2937; width: 320px; height: auto; }
+  .logo-under-pic img { margin-top: 8px; width: 320px; height: auto; }
+  .profile-details { flex: 1; min-width: 0; }
+  .profile-name { font-size: 28px; font-weight: bold; }
+  .profile-tagline { font-size: 20px; font-style: italic; margin: 8px 0; }
+  .profile-bio { margin: 8px 0 10px; }
+  .profile-section { margin-top: 10px; }
+  .flag-block button {
+    margin: 4px 6px 4px 0; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none;
+  }
+  .red-btn { background: #ef4444; color: white; }
+  .yellow-btn { background: #facc15; color: black; }
+  .green-btn { background: #22c55e; color: white; }
+  .blue-btn { background: #3b82f6; color: white; }
+  .flag-red, .flag-yellow, .flag-green, .flag-blue { margin-top: 5px; padding: 10px; border-radius: 6px; display: none; }
+  .flag-red { background-color: #fecaca; color: #7f1d1d; }
+  .flag-yellow { background-color: #fef9c3; color: #78350f; }
+  .flag-green { background-color: #bbf7d0; color: #065f46; }
+  .flag-blue { background-color: #bfdbfe; color: #1e3a8a; }
+  .reflection-box { background-color: #f3f4f6; padding: 12px; border-radius: 8px; margin-top: 18px; }
+  hr.sep { border: 0; height: 1px; background: #e2e8f0; margin: 40px 0; }
+  @media (max-width: 860px) { .profile { flex-direction: column; align-items: center; } .profile img.profile-photo, .logo-under-pic img { width: 100%; max-width: 420px; } }
+</style>
+<script>
+  function revealFlag(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 4)</h1>
+<p class="helper"><strong>How to use:</strong> Read the profile, discuss, then click the buttons to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- 21 OpinionatedOscar -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="OpinionatedOscar" class="profile-photo" src="images/opinionatedoscar.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">OpinionatedOscar, 37</div>
+    <div class="profile-tagline">"I’ve got thoughts—lots of them."</div>
+    <div class="profile-bio">
+      Oscar is sharp, quick, and loves a debate. He can make any topic lively. When he’s excited,
+      he talks over people and mistakes strong opinions for care. He’s learning that curiosity and listening build closeness faster than hot takes.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Op-eds, think pieces, group chats, documentaries</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Talks more than he listens</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red21')">Red Flag</button>
+      <div class="flag-red" id="red21">Uses opinions to control the conversation</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow21')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow21">Dominates discussions; low curiosity</div>
+      <button class="green-btn" onclick="revealFlag('green21')">Green Flag</button>
+      <div class="flag-green" id="green21">Passionate, informed, engaged</div>
+      <button class="blue-btn" onclick="revealFlag('blue21')">Why It Matters</button>
+      <div class="flag-blue" id="blue21">Debate without curiosity can feel unsafe; respect and listening make space for both people.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>When does confidence turn into control?</li>
+        <li>How do you show curiosity when you disagree?</li>
+        <li>If Oscar were your roommate here, what would help balance talk time?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 22 CrystalClearCasey -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="CrystalClearCasey" class="profile-photo" src="images/crystalclearcasey.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">CrystalClearCasey, 30</div>
+    <div class="profile-tagline">"Trust your gut—and talk it out."</div>
+    <div class="profile-bio">
+      Casey is intuitive and ritual-loving. She reads energy well and cares about alignment.
+      When emotions get messy, she leans on vibes and avoids practical repair. She’s learning that intuition plus conversation makes relationships stronger.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Chakra meditations, moon rituals, crystal grids, Reiki</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Spiritual tools replace repair</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red22')">Red Flag</button>
+      <div class="flag-red" id="red22">Labels discomfort as “misaligned” instead of talking</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow22')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow22">Avoids conflict with “good vibes only”</div>
+      <button class="green-btn" onclick="revealFlag('green22')">Green Flag</button>
+      <div class="flag-green" id="green22">Mindful, reflective, values growth</div>
+      <button class="blue-btn" onclick="revealFlag('blue22')">Why It Matters</button>
+      <div class="flag-blue" id="blue22">Spirituality can regulate feelings, but repair needs clear words and accountability.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>When is intuition helpful—and when is it projection?</li>
+        <li>How could Casey ask for repair without blaming “energy”?</li>
+        <li>What ritual helps you calm down before a hard talk?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 23 HustleHardHarper -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="HustleHardHarper" class="profile-photo" src="images/hustlehardharper.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">HustleHardHarper, 32</div>
+    <div class="profile-tagline">"Big goals, real love—both matter."</div>
+    <div class="profile-bio">
+      Harper is ambitious and organized. She loves plans, progress, and purpose.
+      She can push feelings to the side to keep momentum. She’s learning that intimacy needs time on the calendar, not leftovers.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Branding, business pods, power naps, group coaching</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Productivity crowds out presence</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red23')">Red Flag</button>
+      <div class="flag-red" id="red23">Treats connection like a task to optimize</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow23')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow23">Reschedules feelings for “later”</div>
+      <button class="green-btn" onclick="revealFlag('green23')">Green Flag</button>
+      <div class="flag-green" id="green23">Driven, dependable, goal‑oriented</div>
+      <button class="blue-btn" onclick="revealFlag('blue23')">Why It Matters</button>
+      <div class="flag-blue" id="blue23">Achievement calms anxiety, but closeness grows from presence, not performance.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Where does structure help your love life—and where does it choke it?</li>
+        <li>What would “unoptimized” connection look like this week?</li>
+        <li>Which feelings do you keep postponing?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 24 GhostHunterGavin -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="GhostHunterGavin" class="profile-photo" src="images/ghosthuntergavin.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">GhostHunterGavin, 35</div>
+    <div class="profile-tagline">"Not scared—just gone."</div>
+    <div class="profile-bio">
+      Gavin is playful and flirty, then hard to find when things get real.
+      He’ll vanish mid‑text or mid‑plan. He’s learning that honesty about limits is kinder than disappearing.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Horror flicks, urban legends, paranormal TikTok</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids repair with silence</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red24')">Red Flag</button>
+      <div class="flag-red" id="red24">Ghosts after closeness</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow24')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow24">Ambiguous plans; half‑present</div>
+      <button class="green-btn" onclick="revealFlag('green24')">Green Flag</button>
+      <div class="flag-green" id="green24">Fun, charming, low‑drama</div>
+      <button class="blue-btn" onclick="revealFlag('blue24')">Why It Matters</button>
+      <div class="flag-blue" id="blue24">Consistency builds safety. Disappearing protects the self but shakes the “we.”</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What’s a clear way to say “I need space” without ghosting?</li>
+        <li>How do you handle mixed signals?</li>
+        <li>What does repair look like after a missed plan?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 25 RescueProjectRiley -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="RescueProjectRiley" class="profile-photo" src="images/rescueprojectriley.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">RescueProjectRiley, 31</div>
+    <div class="profile-tagline">"I see potential—sometimes more than consent."</div>
+    <div class="profile-bio">
+      Riley is caring and quick to help. She’s drawn to people who need saving and then runs out of steam.
+      She’s learning that support means asking, not assuming—and taking care of herself too.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> DIY therapy kits, art journaling, “healing” content</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Fixing replaces relating</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red25')">Red Flag</button>
+      <div class="flag-red" id="red25">Self‑neglect while rescuing others</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow25')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow25">Offers help that wasn’t asked for</div>
+      <button class="green-btn" onclick="revealFlag('green25')">Green Flag</button>
+      <div class="flag-green" id="green25">Empathetic, nurturing, open</div>
+      <button class="blue-btn" onclick="revealFlag('blue25')">Why It Matters</button>
+      <div class="flag-blue" id="blue25">Care without boundaries becomes control or burnout. Consent and reciprocity matter.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What’s the line between support and self‑sacrifice?</li>
+        <li>How can Riley check consent before helping?</li>
+        <li>What would balanced care look like for you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 26 ConvoMonologConnor -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ConvoMonologConnor" class="profile-photo" src="images/convomonologconnor.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ConvoMonologConnor, 34</div>
+    <div class="profile-tagline">"Great stories—working on pauses."</div>
+    <div class="profile-bio">
+      Connor is lively and funny, always ready with a story. He means well, but can turn a check‑in into a monologue.
+      He’s learning to ask more questions and leave room for other voices.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Long voice notes, podcasts, “funny you should ask…”</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Shares more than he hears</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red26')">Red Flag</button>
+      <div class="flag-red" id="red26">Talks over people; ignores cues</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow26')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow26">Poor turn‑taking in conversations</div>
+      <button class="green-btn" onclick="revealFlag('green26')">Green Flag</button>
+      <div class="flag-green" id="green26">Engaging, outgoing, humorous</div>
+      <button class="blue-btn" onclick="revealFlag('blue26')">Why It Matters</button>
+      <div class="flag-blue" id="blue26">Feeling heard—not just being talked at—creates safety and closeness.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What does it feel like when you’re truly heard?</li>
+        <li>What’s one way to share airtime in a group?</li>
+        <li>How could Connor show curiosity without losing his style?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 27 ChillUntilTriggeredTrina -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ChillUntilTriggeredTrina" class="profile-photo" src="images/chilluntiltriggeredtrina.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ChillUntilTriggeredTrina, 33</div>
+    <div class="profile-tagline">"Go with the flow… until I don’t."</div>
+    <div class="profile-bio">
+      Trina is relaxed and funny—until she feels cornered. Then come sharp words or cold silence.
+      She’s learning regulation and direct asks so conflict doesn’t turn into punishment.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Bubble baths, yoga memes, reading the room</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Shuts down instead of speaking up</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red27')">Red Flag</button>
+      <div class="flag-red" id="red27">Passive aggression or stonewalling</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow27')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow27">Avoidant conflict style</div>
+      <button class="green-btn" onclick="revealFlag('green27')">Green Flag</button>
+      <div class="flag-green" id="green27">Independent, introspective, chill</div>
+      <button class="blue-btn" onclick="revealFlag('blue27')">Why It Matters</button>
+      <div class="flag-blue" id="blue27">Silence can feel like punishment; clear words help repair and keep trust.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What does healthy conflict look like for you?</li>
+        <li>How could Trina say “I need a break” without punishing?</li>
+        <li>What helps you stay present when you feel cornered?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 28 ValidationVacationVic -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ValidationVacationVic" class="profile-photo" src="images/validationvacationvic.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ValidationVacationVic, 28</div>
+    <div class="profile-tagline">"Tell me I’m okay—again."</div>
+    <div class="profile-bio">
+      Vic is outgoing and expressive. He loves compliments and reassurance, then spirals when they stop.
+      He’s learning to build inner steadiness so praise is a bonus, not a lifeline.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Mirror selfies, group hangs, texting after being left on read</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> External praise replaces self‑worth</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red28')">Red Flag</button>
+      <div class="flag-red" id="red28">Clings to reassurance; panic texts</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow28')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow28">Needs frequent approval</div>
+      <button class="green-btn" onclick="revealFlag('green28')">Green Flag</button>
+      <div class="flag-green" id="green28">Friendly, expressive, affectionate</div>
+      <button class="blue-btn" onclick="revealFlag('blue28')">Why It Matters</button>
+      <div class="flag-blue" id="blue28">Validation in doses is healthy; dependence makes relationships feel like a job interview.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What helps you feel secure from the inside?</li>
+        <li>How can partners give reassurance without overfunctioning?</li>
+        <li>What boundary would make praise feel good, not required?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 29 MicroStepMaya -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="MicroStepMaya" class="profile-photo" src="images/microstepmaya.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">MicroStepMaya, 30</div>
+    <div class="profile-tagline">"Small steps, real change."</div>
+    <div class="profile-bio">
+      Maya moves slowly and steadily—therapy, journaling, tiny goals. She warms up over time and may pull back when overwhelmed.
+      She’s learning to share her pace and ask for support clearly.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Healing playlists, post‑it goals, quiet wins</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Withdraws when scared</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red29')">Red Flag</button>
+      <div class="flag-red" id="red29">Self‑sabotage or sudden retreat</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow29')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow29">Slow to be vulnerable</div>
+      <button class="green-btn" onclick="revealFlag('green29')">Green Flag</button>
+      <div class="flag-green" id="green29">Self‑aware, consistent, humble</div>
+      <button class="blue-btn" onclick="revealFlag('blue29')">Why It Matters</button>
+      <div class="flag-blue" id="blue29">Pacing is healthy when named. Secrets and sudden distance erode trust.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>How could Maya share her pace so others don’t guess?</li>
+        <li>What support helps when you feel overwhelmed?</li>
+        <li>How do you celebrate progress over perfection?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 30 TMITravis -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="TMITravis" class="profile-photo" src="images/tmitravis.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/vibecheck-strip-420.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">TMITravis, 31</div>
+    <div class="profile-tagline">"Honest fast—working on slow."</div>
+    <div class="profile-bio">
+      Travis shares everything early—childhood, trauma, all of it. He wants to be real, but the pace can overwhelm partners.
+      He’s learning that consent and timing make vulnerability feel safe.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> DM confessions, late‑night text walls, openness</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Over‑disclosure replaces intimacy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red30')">Red Flag</button>
+      <div class="flag-red" id="red30">Uses trauma dumps to rush closeness</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow30')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow30">Weak boundaries or pacing</div>
+      <button class="green-btn" onclick="revealFlag('green30')">Green Flag</button>
+      <div class="flag-green" id="green30">Open, sincere, willing to feel</div>
+      <button class="blue-btn" onclick="revealFlag('blue30')">Why It Matters</button>
+      <div class="flag-blue" id="blue30">Sharing is not the same as connecting; pacing and consent protect both people.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What’s a consent check you can use before sharing something heavy?</li>
+        <li>How do you know when openness is helping—not flooding?</li>
+        <li>What “slow step” would make Travis feel safer?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
