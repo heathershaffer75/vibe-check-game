@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- VC_BUILD:set7-expanded-clarity | 2025-09-10 23:02:48 UTC -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="vc-build" content="set7-expanded-clarity" />
+  <title>Vibe Check – Set 7 (Profiles 51–60)</title>
+  <style>
+    :root { --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --chip:#1f2937; --green:#10b981; --yellow:#f59e0b; --red:#ef4444; --card:#0b1220; --shadow:rgba(0,0,0,.45); --radius:16px; }
+    *{ box-sizing: border-box; } html,body{ height:100%; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial; background: radial-gradient(1200px 800px at 80% -10%, #0b1220 0%, var(--bg) 65%); color: var(--ink); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .title{ font-weight:800; letter-spacing:.2px; line-height:1.1; }
+    .title .kicker{ display:block; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:1.4px; text-transform:uppercase; }
+    .title .main{ font-size:clamp(22px,3.4vw,34px); }
+    .build{ font-size:12px; color:#9ca3af; margin-top:4px }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    button,.ghost{ background:linear-gradient(180deg,#1f2937,#0f172a); color:var(--ink); border:1px solid #263244; padding:10px 14px; border-radius:12px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-weight:600; box-shadow:0 6px 18px var(--shadow); transition: transform .06s ease, background .2s ease, border-color .2s ease; }
+    button:hover{ transform:translateY(-1px); border-color:#334155; } button:active{ transform:translateY(0); }
+    .ghost{ text-decoration:none; opacity:.85; }
+    .grid{ display:grid; grid-template-columns:420px 1fr; gap:18px; } @media(max-width:980px){ .grid{grid-template-columns:1fr;} }
+    .card{ background:linear-gradient(180deg,#0d1527,var(--card)); border:1px solid #1f2a3a; border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px var(--shadow); }
+    .imagebox{ position:relative; aspect-ratio:4/5; background:#0b1020; display:flex; align-items:center; justify-content:center; }
+    .imagebox img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .badge{ position:absolute; left:12px; top:12px; background:#0f172a; border:1px solid #223048; padding:6px 10px; border-radius:999px; font-size:12px; color:#9ca3af; z-index:3; }
+    .panel{ padding:18px 18px 20px; }
+    .handle{ font-size:22px; font-weight:800; } .meta{ color:var(--muted); font-size:14px; margin-top:2px; } .bio{ margin:12px 0 14px; color:#d1d5db; line-height:1.6; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; } .chip{ background:var(--chip); border:1px solid #243042; color:#cbd5e1; font-size:12px; padding:6px 10px; border-radius:999px; }
+    .flags,.prompts,.interests,.why{ background:#0c1425; border:1px solid #1a2536; padding:14px; border-radius:14px; }
+    .section-title{ font-weight:700; font-size:13px; color:var(--muted); letter-spacing:.6px; text-transform:uppercase; margin-bottom:8px; }
+    .flag-list,.prompt-list,.interest-list{ margin:0; padding-left:18px; }
+    .flag-list li{ margin:6px 0; cursor:pointer; user-select:none; border-radius:10px; padding:4px 6px; transition: background .15s ease, transform .05s ease; }
+    .flag-list li:hover{ transform: translateY(-1px); }
+    .flag-green{ color:var(--green); } .flag-yellow{ color:var(--yellow); } .flag-red{ color:var(--red); }
+    .selected{ outline:2px solid #334155; background:#0f172a; }
+    .voteBar{ display:flex; gap:10px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:8px; }
+    .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+    .g{ background:var(--green); } .y{ background:var(--yellow);} .r{ background:var(--red);} 
+    .stack{ display:grid; gap:12px; }
+    footer{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted); font-size:12px; }
+    .kbd{ background:#0b1424; border:1px solid #1a2638; padding:2px 6px; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; color:#cbd5e1; }
+    .spacer{ flex:1 1 auto; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <span class="kicker">Vibe Check Game</span>
+        <span class="main">Set 7 — Dating Profiles (51–60)</span>
+        <div class="build">Build: set7-expanded-clarity • 2025-09-10 23:02:48 UTC</div>
+      </div>
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous profile">◀ Prev</button>
+        <button id="randomBtn" aria-label="Random profile">🔀 Random</button>
+        <button id="nextBtn" aria-label="Next profile">Next ▶</button>
+        <button id="toggleFlags">👁️ Toggle Flags</button>
+        <button id="togglePrompts">🗣️ Toggle Prompts</button>
+        <button id="toggleWhy">💡 Toggle Why It Matters</button>
+        <button id="resetVotes">♻️ Reset Votes</button>
+        <button id="copySelected">📋 Copy Selected Flags</button>
+        <a class="ghost" id="openImage" target="_blank" rel="noreferrer">Open Image</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="imagebox">
+          <img id="profileImg" alt="Profile image" />
+          <div class="badge" id="badge">#51</div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <div class="card panel">
+          <div class="handle" id="handle">Handle</div>
+          <div class="meta" id="meta">—</div>
+          <p class="bio" id="bio"></p>
+          <div class="chips" id="chips"></div>
+          <div class="interests">
+            <div class="section-title">Interests</div>
+            <ul class="interest-list" id="interests"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="flagsWrap">
+          <div class="flags">
+            <div class="section-title">Flag Analysis</div>
+            <div class="voteBar">
+              <span><span class="dot g"></span> Green: <strong id="countGreen">0</strong></span>
+              <span><span class="dot y"></span> Yellow: <strong id="countYellow">0</strong></span>
+              <span><span class="dot r"></span> Red: <strong id="countRed">0</strong></span>
+            </div>
+            <ul class="flag-list" id="flags"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="whyWrap">
+          <div class="why">
+            <div class="section-title">Why It Matters</div>
+            <div id="why"></div>
+          </div>
+        </div>
+
+        <div class="card panel" id="promptsWrap">
+          <div class="prompts">
+            <div class="section-title">Reflection Prompts</div>
+            <ul class="prompt-list" id="prompts"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Tips: Click a flag to select/deselect. Use <span class="kbd">←</span>/<span class="kbd">→</span> arrows to navigate profiles.</div>
+      <div class="spacer"></div>
+      <div id="counter">1 / 10</div>
+    </footer>
+  </div>
+  <script>
+    const PROFILES = [{'id': 51, 'handle': 'DeepDiveDana', 'gender': 'F', 'age': 30, 'bio': 'Dana loves real talk. On early dates she asks about childhood, fears, and big dreams because she wants to feel close quickly. Small talk feels fake to her, so she skips ahead to deep subjects. This can feel connecting to some people and overwhelming to others. She’s learning to go deep, but with consent and pacing.', 'interests': ['Tarot spreads', 'late‑night heart‑to‑hearts', 'intimacy quizzes', 'emotion‑heavy playlists'], 'flags': {'green': ['Emotionally open', 'curious about people', 'intentional'], 'yellow': ['Pushes for depth before safety is set'], 'red': ['Uses fast vulnerability to force closeness']}, 'why': 'Depth builds trust when it’s wanted by both people. Moving slowly helps closeness feel safe, not pressured.', 'prompts': ['What’s one light topic Dana could start with before going deep?', 'How could she ask permission to talk about heavier stuff? (write one sentence)', 'Name a sign the other person is ready for deeper talk.'], 'image': 'images/deepdivedana.png'}, {'id': 52, 'handle': 'PettyPatrick', 'gender': 'M', 'age': 34, 'bio': 'Patrick notices every detail—including mistakes. He holds onto little hurts and brings them up later, sometimes with sarcasm. He believes this keeps things fair, but it often keeps fights alive. He’s working on letting small things go and naming big things once, clearly.', 'interests': ['Screenshot receipts', 'passive‑aggressive memes', 'revenge playlists', 'long memory'], 'flags': {'green': ['Values fairness', 'remembers agreements'], 'yellow': ['Keeps score in daily life'], 'red': ['Uses old mistakes to win new arguments']}, 'why': 'Score‑keeping kills safety. Repair means naming the hurt, fixing it, and then truly putting it down.', 'prompts': ['Write a simple ‘let it go’ sentence Patrick could try.', 'What’s one hurt worth addressing directly (not sarcastically)?', 'How can a partner ask for a clean slate after repair?'], 'image': 'images/pettypatrick.png'}, {'id': 53, 'handle': 'WellnessWanda', 'gender': 'F', 'age': 31, 'bio': 'Wanda tracks sleep, food, and steps—and tries to track feelings too. When conflict happens, she offers tips and routines instead of naming emotions. She wants to be healthy, but sometimes uses ‘wellness’ to avoid messy talks. She’s learning that feeling first makes fixing work better.', 'interests': ['Biohacking', 'smoothies', 'cold plunges', 'habit apps'], 'flags': {'green': ['Proactive about self‑care', 'disciplined'], 'yellow': ['Optimizes before she empathizes'], 'red': ['Uses wellness steps to dodge feelings and repair']}, 'why': 'Habits help, but feelings need room too. People feel loved when they’re heard before they’re coached.', 'prompts': ['What’s a feeling Wanda could name before offering a tip?', 'Write a one‑line empathy statement she could use.', 'Name a time when a hug or pause helped more than advice.'], 'image': 'images/wellnesswanda.png'}, {'id': 54, 'handle': 'LaughTrackLenny', 'gender': 'M', 'age': 32, 'bio': 'Lenny is funny and quick. He lightens heavy moments with jokes and can make a tense room breathe again. But when someone needs to be taken seriously, he still cracks a joke. He’s learning to read the moment and leave space for feelings.', 'interests': ['Stand‑up clips', 'ironic memes', 'banter', 'comedy podcasts'], 'flags': {'green': ['Warm and disarming', 'great at easing tension'], 'yellow': ['Jokes during serious talks'], 'red': ['Uses humor to avoid accountability or empathy']}, 'why': 'Humor heals when it follows care, not when it replaces it. Listening first makes jokes feel safe, not dismissive.', 'prompts': ['Write a simple line Lenny could say before joking.', 'What’s one clear sign it’s time to stop joking?', 'How can a partner ask for ‘serious first, funny later’?'], 'image': 'images/laughtracklenny.png'}, {'id': 55, 'handle': 'TherapyThesaurusTheo', 'gender': 'M', 'age': 29, 'bio': 'Theo knows therapy words and loves to analyze patterns. In conflict, he explains the psychology of what happened instead of owning his part. He sounds wise, but partners can feel talked down to. He’s practicing fewer labels and more repair.', 'interests': ['Psych TikTok', 'journaling', 'naming attachment styles', 'book quotes'], 'flags': {'green': ['Emotionally literate', 'self‑reflective'], 'yellow': ['Over‑labels normal feelings'], 'red': ['Uses ‘insight’ to dodge responsibility']}, 'why': 'Insight matters, but integrity matters more. ‘I’m sorry, I did X, I’ll do Y next time’ lands better than a lecture.', 'prompts': ['Turn this into repair: ‘You’re triggered’ → (write a caring version).', 'Write a one‑line accountability statement Theo could use.', 'What’s one action he can take this week to show change?'], 'image': 'images/therapythesaurustheo.png'}, {'id': 56, 'handle': 'AlmostReadyRenee', 'gender': 'F', 'age': 35, 'bio': 'Renee wants love but often says she’s ‘not ready yet.’ She likes closeness, then pauses when commitment shows up. People feel mixed signals and wait around. She’s learning to be honest about her timeline and stop promising what she can’t give.', 'interests': ['Healing podcasts', 'vision boards', 'starting therapy (again)', 'talking about timing'], 'flags': {'green': ['Self‑aware about fear', 'cares about doing it right'], 'yellow': ['Delays decisions and sends warm messages'], 'red': ['Keeps people in limbo while staying unavailable']}, 'why': 'Clarity is kindness. Honest timelines prevent hurt and help both people choose well.', 'prompts': ['Write one clear message Renee could send about her pace.', 'What boundary could protect the other person while she decides?', 'Name a small step that shows she’s moving forward—not stalling.'], 'image': 'images/almostreadyrenee.png'}, {'id': 57, 'handle': 'SituationshipStan', 'gender': 'M', 'age': 34, 'bio': 'Stan likes easy plans and no labels. He enjoys cuddles, talks, and daily check‑ins, but avoids the word ‘partner.’ The closeness feels real, yet the future is fuzzy. He’s learning that freedom and clarity can live together.', 'interests': ['Chill dates', 'vague texts', 'late‑night playlists', 'long ‘hangouts’'], 'flags': {'green': ['Low‑pressure and fun', 'emotionally present in the moment'], 'yellow': ['Sends mixed signals about commitment'], 'red': ['Takes partner benefits without shared plans']}, 'why': 'Undefined can feel exciting at first and painful later. Naming what it is protects both hearts.', 'prompts': ['Write a simple ‘what are we?’ question that’s calm, not heavy.', 'What label or plan would make this feel safe for you?', 'Name a sign that it’s time to decide.'], 'image': 'images/situationshipstan.png'}, {'id': 58, 'handle': 'SpiritualSkip', 'gender': 'M', 'age': 39, 'bio': 'Skip talks about alignment and timing. When he forgets plans or hurts someone, he explains it with cosmic language instead of repair. His beliefs are sincere, but they can become excuses. He’s practicing grounded follow‑through and plain apologies.', 'interests': ['Burning sage', 'quotes', 'moon water', 'synchronicity stories'], 'flags': {'green': ['Reflective and values purpose'], 'yellow': ['Explains instead of apologizing'], 'red': ['Uses spirituality to avoid accountability']}, 'why': 'Faith can guide actions, not replace them. Repair still needs ‘I’m sorry’ and changed behavior.', 'prompts': ['Turn ‘divine timing’ into a real apology in one sentence.', 'What reminder could help Skip keep simple promises?', 'How can a partner ask for action—not a speech?'], 'image': 'images/spiritualskip.png'}, {'id': 59, 'handle': 'OversharerOlivia', 'gender': 'F', 'age': 30, 'bio': 'Olivia tells her whole story on date one. She wants to be honest and to skip awkwardness, but it can feel like too much too fast. Later she may feel exposed and pull away. She’s learning to share in layers and check how the other person feels.', 'interests': ['TMI confessions', 'long texts', 'trauma dumps', 'oversharing humor'], 'flags': {'green': ['Open and sincere', 'easy to know'], 'yellow': ['Shares private details before trust is set'], 'red': ['Overwhelms partner and then retreats']}, 'why': 'Pacing protects your heart. Layered sharing keeps both people comfortable and connected.', 'prompts': ['What’s a safe ‘first layer’ Olivia could share?', 'Write a one‑line check‑in she could ask while sharing.', 'Name a sign it’s time to pause and change topics.'], 'image': 'images/oversharerolivia.png'}, {'id': 60, 'handle': 'FlashbackFreddie', 'gender': 'M', 'age': 36, 'bio': 'Freddie is nostalgic and talks about his ex often. Songs, places, and stories keep pulling the past into the present. He cares about history, but it makes new partners feel like they’re competing with a ghost. He’s practicing leaving the past in the past and building new memories.', 'interests': ['Old playlists', 'story‑time about the ex', 'memory spots', 'long sighs'], 'flags': {'green': ['Loyal and sentimental'], 'yellow': ['Not fully finished with old feelings'], 'red': ['Triangulates current partners with the past']}, 'why': 'Honoring the past is healthy; living in it isn’t. New love needs space that isn’t shared with old stories.', 'prompts': ['Write a kind boundary a partner could set about ex talk.', 'Name one new ritual Freddie could start with a new partner.', 'What’s a sign he is actually ready to date?'], 'image': 'images/flashbackfreddie.png'}];
+
+    let index = 0;
+    const imgEl = document.getElementById('profileImg');
+    const badgeEl = document.getElementById('badge');
+    const handleEl = document.getElementById('handle');
+    const metaEl = document.getElementById('meta');
+    const bioEl = document.getElementById('bio');
+    const chipsEl = document.getElementById('chips');
+    const interestsEl = document.getElementById('interests');
+    const flagsEl = document.getElementById('flags');
+    const promptsEl = document.getElementById('prompts');
+    const whyEl = document.getElementById('why');
+    const counterEl = document.getElementById('counter');
+    const openImageEl = document.getElementById('openImage');
+    const flagsWrap = document.getElementById('flagsWrap');
+    const promptsWrap = document.getElementById('promptsWrap');
+    const whyWrap = document.getElementById('whyWrap');
+    const countGreen = document.getElementById('countGreen');
+    const countYellow = document.getElementById('countYellow');
+    const countRed = document.getElementById('countRed');
+
+    const VOTES = new Map();
+
+    function updateCounts() {
+      const set = VOTES.get(PROFILES[index].id) || new Set();
+      let g=0,y=0,r=0;
+      set.forEach(key => {
+        if (key.startsWith('g-')) g++;
+        else if (key.startsWith('y-')) y++;
+        else if (key.startsWith('r-')) r++;
+      });
+      countGreen.textContent = g;
+      countYellow.textContent = y;
+      countRed.textContent = r;
+    }
+
+    function render(i) {
+      const p = PROFILES[i]; if (!p) return; index = i;
+      imgEl.src = p.image; imgEl.alt = p.handle + ' image'; openImageEl.href = p.image;
+      badgeEl.textContent = '#' + p.id; handleEl.textContent = p.handle; metaEl.textContent = p.gender + ', ' + p.age; bioEl.textContent = p.bio;
+      chipsEl.innerHTML=''; [ ['Green','var(--green)'], ['Yellow','var(--yellow)'], ['Red','var(--red)'] ].forEach(([label,color])=>{ const s=document.createElement('span'); s.className='chip'; s.style.borderColor=color; s.textContent=label+' Flags'; chipsEl.appendChild(s); });
+      interestsEl.innerHTML = (p.interests||[]).map(x => '<li>'+x+'</li>').join('');
+      flagsEl.innerHTML = '';
+      const current = VOTES.get(p.id) || new Set();
+      const makeLi = (text, color, idx) => {
+        const li = document.createElement('li');
+        li.textContent = (color==='g'?'✅ Green Flag: ':(color==='y'?'⚠️ Yellow Flag: ':'🚩 Red Flag: ')) + text;
+        li.className = color==='g'?'flag-green':(color==='y'?'flag-yellow':'flag-red');
+        const key = color+'-'+idx; if (current.has(key)) li.classList.add('selected');
+        li.dataset.key = key; li.dataset.color = color;
+        li.addEventListener('click', ()=>{
+          if (li.classList.contains('selected')) { li.classList.remove('selected'); current.delete(key); }
+          else { li.classList.add('selected'); current.add(key); }
+          VOTES.set(p.id, current); updateCounts();
+        });
+        return li;
+      };
+      (p.flags?.green||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'g',i)));
+      (p.flags?.yellow||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'y',i)));
+      (p.flags?.red||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'r',i)));
+      whyEl.textContent = p.why || '';
+      promptsEl.innerHTML = (p.prompts||[]).map(x => '<li>'+x+'</li>').join('');
+      counterEl.textContent = (i+1) + ' / ' + PROFILES.length;
+      updateCounts();
+    }
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const randBtn = document.getElementById('randomBtn');
+    const toggleFlags = document.getElementById('toggleFlags');
+    const togglePrompts = document.getElementById('togglePrompts');
+    const toggleWhy = document.getElementById('toggleWhy');
+    const resetVotes = document.getElementById('resetVotes');
+    const copySelected = document.getElementById('copySelected');
+
+    prevBtn.addEventListener('click', () => render((index - 1 + PROFILES.length) % PROFILES.length));
+    nextBtn.addEventListener('click', () => render((index + 1) % PROFILES.length));
+    randBtn.addEventListener('click', () => render(Math.floor(Math.random() * PROFILES.length)));
+    toggleFlags.addEventListener('click', () => { flagsWrap.style.display = (flagsWrap.style.display==='none')? '' : 'none'; });
+    togglePrompts.addEventListener('click', () => { promptsWrap.style.display = (promptsWrap.style.display==='none')? '' : 'none'; });
+    toggleWhy.addEventListener('click', () => { whyWrap.style.display = (whyWrap.style.display==='none')? '' : 'none'; });
+    resetVotes.addEventListener('click', () => { VOTES.delete(PROFILES[index].id); render(index); });
+    copySelected.addEventListener('click', async () => {
+      const p = PROFILES[index];
+      const items = [...flagsEl.querySelectorAll('li')].filter(li => li.classList.contains('selected')).map(li => '- '+li.textContent);
+      const text = 'Selected Flags — ' + p.handle + ' (Set 7)\n\n' + (items.join('\n')||'(none selected)');
+      try { await navigator.clipboard.writeText(text); copySelected.textContent = '✅ Copied!'; setTimeout(()=> copySelected.textContent='📋 Copy Selected Flags', 1200); } catch(e) { alert('Could not copy to clipboard.'); }
+    });
+
+    window.addEventListener('keydown', (e) => { if (e.key==='ArrowLeft') prevBtn.click(); if (e.key==='ArrowRight') nextBtn.click(); if (e.key?.toLowerCase()==='r') randBtn.click(); });
+
+    render(0);
+  </script>
+</body>
+</html>
