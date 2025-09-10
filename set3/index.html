@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check – Red/Yellow/Green Flags (Set 3)</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; line-height: 1.45; }
+  h1 { margin: 0 0 10px; }
+  .helper { color:#374151; margin-bottom:20px; }
+  .profile {
+    background: white; border-radius: 12px; padding: 20px; margin: 30px auto;
+    max-width: 980px; display: flex; gap: 20px;
+    border: 10px double #60a5fa; box-shadow: 0 0 20px rgba(96,165,250,.6);
+    background-image: radial-gradient(circle at top left,#eef6ff,#f0f4f8);
+  }
+  .profile img.profile-photo { border-radius: 10px; border: 3px solid #1f2937; width: 320px; height: auto; }
+  .logo-under-pic img { margin-top: 8px; width: 320px; height: auto; }
+  .profile-details { flex: 1; min-width: 0; }
+  .profile-name { font-size: 28px; font-weight: bold; }
+  .profile-tagline { font-size: 20px; font-style: italic; margin: 8px 0; }
+  .profile-bio { margin: 8px 0 10px; }
+  .profile-section { margin-top: 10px; }
+  .flag-block button {
+    margin: 4px 6px 4px 0; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none;
+  }
+  .red-btn { background: #ef4444; color: white; }
+  .yellow-btn { background: #facc15; color: black; }
+  .green-btn { background: #22c55e; color: white; }
+  .blue-btn { background: #3b82f6; color: white; }
+  .flag-red, .flag-yellow, .flag-green, .flag-blue { margin-top: 5px; padding: 10px; border-radius: 6px; display: none; }
+  .flag-red { background-color: #fecaca; color: #7f1d1d; }
+  .flag-yellow { background-color: #fef9c3; color: #78350f; }
+  .flag-green { background-color: #bbf7d0; color: #065f46; }
+  .flag-blue { background-color: #bfdbfe; color: #1e3a8a; }
+  .reflection-box { background-color: #f3f4f6; padding: 12px; border-radius: 8px; margin-top: 18px; }
+  hr.sep { border: 0; height: 1px; background: #e2e8f0; margin: 40px 0; }
+  @media (max-width: 860px) { .profile { flex-direction: column; align-items: center; } .profile img.profile-photo, .logo-under-pic img { width: 100%; max-width: 420px; } }
+</style>
+<script>
+  function revealFlag(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 3)</h1>
+<p class="helper"><strong>How to use:</strong> Read the profile together, discuss, then click the buttons to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- 21 ChaosCraver92 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="ChaosCraver92" class="profile-photo" src="images/chaoscraver92.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">ChaosCraver92, 31</div>
+    <div class="profile-tagline">"Louder, faster, more."</div>
+    <div class="profile-bio">
+      Magnetic and high-energy. Loves concerts, neon nights, and last‑minute plans. Calm can feel boring, so they chase big feelings.
+      They’re learning that steady can be exciting too—and that reliability keeps connection safe.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Live shows, city lights, spontaneous road trips, late‑night adventures</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Confuses intensity with intimacy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red21')">Red Flag</button>
+      <div class="flag-red" id="red21">Creates drama to feel connected</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow21')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow21">Plans change fast; hard to lock in</div>
+      <button class="green-btn" onclick="revealFlag('green21')">Green Flag</button>
+      <div class="flag-green" id="green21">Passionate, creative, brings life</div>
+      <button class="blue-btn" onclick="revealFlag('blue21')">Why It Matters</button>
+      <div class="flag-blue" id="blue21">Intensity can hide fear of ordinary closeness. Stability builds trust.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>When does passion tip into instability?</li>
+        <li>What does “grounded fun” look like to you?</li>
+        <li>If they were your roommate, what would you enjoy and what would wear you out?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 22 GhostModeGreg -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="GhostModeGreg" class="profile-photo" src="images/ghostmodegreg.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">GhostModeGreg, 35</div>
+    <div class="profile-tagline">"Here for the vibe—working on the follow‑through."</div>
+    <div class="profile-bio">
+      Charming starter, inconsistent finisher. Likes low‑key hangs and easy laughter, but disappears when feelings get real.
+      Practicing staying, clarifying, and repairing instead of vanishing.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Movies, dry humor, chill nights, polite exits</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids repair by going silent</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red22')">Red Flag</button>
+      <div class="flag-red" id="red22">Ghosts after closeness; breadcrumbing</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow22')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow22">Hot‑cold texts; unclear plans</div>
+      <button class="green-btn" onclick="revealFlag('green22')">Green Flag</button>
+      <div class="flag-green" id="green22">Low‑drama, respects space</div>
+      <button class="blue-btn" onclick="revealFlag('blue22')">Why It Matters</button>
+      <div class="flag-blue" id="blue22">Clarity is care. Silence protects you but shakes the relationship.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What helps you stay and talk instead of shut down?</li>
+        <li>How can you say “I need space” without disappearing?</li>
+        <li>What does a good repair text sound like?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 23 SteadyAsSheGoes -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="SteadyAsSheGoes" class="profile-photo" src="images/steadyasshegoes.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">SteadyAsSheGoes, 40</div>
+    <div class="profile-tagline">"Peace with backbone."</div>
+    <div class="profile-bio">
+      Calm and capable. Loves ease with depth and kindness with boundaries. Keeps life tidy and steady, but can mistake silence for peace.
+      Learning that true peace includes truth, not just quiet.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Slow mornings, meal prep, tidy calendars, unhurried walks</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids hard talks to keep the calm</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red23')">Red Flag</button>
+      <div class="flag-red" id="red23">Shuts down conflict to keep the peace</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow23')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow23">Over‑functions; won’t ask for help</div>
+      <button class="green-btn" onclick="revealFlag('green23')">Green Flag</button>
+      <div class="flag-green" id="green23">Reliable, self‑aware, values repair</div>
+      <button class="blue-btn" onclick="revealFlag('blue23')">Why It Matters</button>
+      <div class="flag-blue" id="blue23">Quiet isn’t closeness. Repair takes honesty and courage.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>When did “keeping the peace” cost you your truth?</li>
+        <li>What help would you ask for sooner next time?</li>
+        <li>How do you know you’re shutting down instead of speaking up?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 24 AchievementAddict -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AchievementAddict" class="profile-photo" src="images/achievementaddict.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AchievementAddict, 33</div>
+    <div class="profile-tagline">"Goals first… feelings learning to ride along."</div>
+    <div class="profile-bio">
+      Ambitious and polished. Schedules everything—including self‑care. Feels safest with a plan and a clean inbox.
+      Growth edge: let some moments be messy and real, not optimized.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Productivity pods, goal trackers, early flights, shiny decks</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Treats intimacy like a task</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red24')">Red Flag</button>
+      <div class="flag-red" id="red24">Low tolerance for emotional mess</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow24')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow24">Work first; connection later (and later keeps moving)</div>
+      <button class="green-btn" onclick="revealFlag('green24')">Green Flag</button>
+      <div class="flag-green" id="green24">Self‑motivated, reliable, intentional</div>
+      <button class="blue-btn" onclick="revealFlag('blue24')">Why It Matters</button>
+      <div class="flag-blue" id="blue24">Achievements ease anxiety, but don’t meet attachment needs. Being known isn’t a checkbox.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Where does structure help your love life—and where does it choke it?</li>
+        <li>What would an “unoptimized” date look like this week?</li>
+        <li>Which feelings do you keep postponing?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 25 AllGasNoBrakes -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AllGasNoBrakes" class="profile-photo" src="images/allgasnobrakes.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AllGasNoBrakes, 26</div>
+    <div class="profile-tagline">"Booked and busy—learning to slow down."</div>
+    <div class="profile-bio">
+      Charismatic and always on the move. Loves buzzy weekends and “pull up” plans.
+      Says yes to everything, which can mean distracted presence and flaky follow‑through.
+      Learning the power of “no” and the gift of focused attention.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> New bars, group trips, pop‑ups, spontaneous hangs</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> FOMO runs the schedule</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red25')">Red Flag</button>
+      <div class="flag-red" id="red25">Overpromises; misses plans</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow25')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow25">Half‑present; phone-first</div>
+      <button class="green-btn" onclick="revealFlag('green25')">Green Flag</button>
+      <div class="flag-green" id="green25">Energetic, social, optimistic</div>
+      <button class="blue-btn" onclick="revealFlag('blue25')">Why It Matters</button>
+      <div class="flag-blue" id="blue25">Constant motion can hide fear of stillness. Attention is love’s oxygen.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What do you worry might surface if you slow down?</li>
+        <li>How can you protect “us time” like a headline set?</li>
+        <li>What’s one “no” that would help your relationships?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 26 SnackQueen91 -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="SnackQueen91" class="profile-photo" src="images/snackqueen91.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">SnackQueen91, 32</div>
+    <div class="profile-tagline">"Comfort first—truth too."</div>
+    <div class="profile-bio">
+      Nurturing and generous. Bakes, checks in, and keeps things cozy.
+      Tends to smooth over tension with sweetness instead of saying what she needs.
+      Working on asking directly and letting care go both ways.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Baking, cozy nights, hosting friends, comfort shows</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Uses caretaking to dodge conflict</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red26')">Red Flag</button>
+      <div class="flag-red" id="red26">Hides needs behind niceness</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow26')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow26">Comfort now; growth later</div>
+      <button class="green-btn" onclick="revealFlag('green26')">Green Flag</button>
+      <div class="flag-green" id="green26">Steady, caring, consistent</div>
+      <button class="blue-btn" onclick="revealFlag('blue26')">Why It Matters</button>
+      <div class="flag-blue" id="blue26">Comfort protects, but it’s not a substitute for honesty and repair.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What’s hard for you to ask for directly?</li>
+        <li>How do you want care returned—specifically?</li>
+        <li>When did being “nice” keep you from being real?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 27 BetBigBryce -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="BetBigBryce" class="profile-photo" src="images/betbigbryce.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">BetBigBryce, 39</div>
+    <div class="profile-tagline">"Grand gestures—and Tuesday follow‑through."</div>
+    <div class="profile-bio">
+      Loves big bets, bold beginnings, and surprise trips.
+      Generous and decisive—but repair and routine promises can lag behind the fireworks.
+      Learning that trust is built in small, steady deposits.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Poker nights, start‑up ideas, surprise trips, high‑stakes fun</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Romance without reliability</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red27')">Red Flag</button>
+      <div class="flag-red" id="red27">Takes risky swings with fallout</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow27')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow27">Big future talk; weak repair</div>
+      <button class="green-btn" onclick="revealFlag('green27')">Green Flag</button>
+      <div class="flag-green" id="green27">Brave, decisive, generous</div>
+      <button class="blue-btn" onclick="revealFlag('blue27')">Why It Matters</button>
+      <div class="flag-blue" id="blue27">Jackpots feel great, but trust grows from small promises kept.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What are 3 “boring” ways to prove you’re safe?</li>
+        <li>How do you repair when a gamble backfires?</li>
+        <li>What small promise could you keep weekly?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 28 AdrenalineAndy -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="AdrenalineAndy" class="profile-photo" src="images/adrenalineandy.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">AdrenalineAndy, 30</div>
+    <div class="profile-tagline">"If it’s not scary, it’s not Saturday."</div>
+    <div class="profile-bio">
+      Thrill‑seeker who pumps up friends and leads the charge.
+      Slowing down is hard; feelings can feel like a speed bump.
+      Learning to switch from action to attention—and to let fear be heard.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Trail runs, cliff jumps, fast drives, post‑ride tacos</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Risk over reflection</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red28')">Red Flag</button>
+      <div class="flag-red" id="red28">Dismisses fear; pushes limits</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow28')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow28">Hard time slowing to connect</div>
+      <button class="green-btn" onclick="revealFlag('green28')">Green Flag</button>
+      <div class="flag-green" id="green28">Protective, loyal, brings adventure</div>
+      <button class="blue-btn" onclick="revealFlag('blue28')">Why It Matters</button>
+      <div class="flag-blue" id="blue28">Adrenaline can numb anxiety; intimacy needs stillness and listening.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What helps you switch from action to attention?</li>
+        <li>How do you respond to a partner’s fear without fixing?</li>
+        <li>Where could “safe and steady” be your new thrill?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 29 LoveOnLoan -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="LoveOnLoan" class="profile-photo" src="images/loveonloan.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">LoveOnLoan, 29</div>
+    <div class="profile-tagline">"Great at the beginning—practicing the middle."</div>
+    <div class="profile-bio">
+      Romantic and attentive. Loves the spark, the outfits, the long texts.
+      Gets restless in the routine middle where real life lives.
+      Learning to spot steady love and make the everyday feel special.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Rom‑coms, candlelight, first‑date looks, long texts</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Chases honeymoon; exits at plateau</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red29')">Red Flag</button>
+      <div class="flag-red" id="red29">Leaves when novelty fades</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow29')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow29">Struggles with routine intimacy</div>
+      <button class="green-btn" onclick="revealFlag('green29')">Green Flag</button>
+      <div class="flag-green" id="green29">Affectionate, attentive, romantic</div>
+      <button class="blue-btn" onclick="revealFlag('blue29')">Why It Matters</button>
+      <div class="flag-blue" id="blue29">Infatuation is a spark, not the story. Security grows in the middle chapters.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>What makes everyday love feel special to you?</li>
+        <li>How do you notice “steady love” before you get bored?</li>
+        <li>What support helps when novelty dips?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 30 RootedRuben -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="RootedRuben" class="profile-photo" src="images/rootedruben.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">RootedRuben, 38</div>
+    <div class="profile-tagline">"Slow, steady, sincere."</div>
+    <div class="profile-bio">
+      Grounded and community‑minded. Shows love by showing up, over time.
+      Warms up slowly and prefers safe bets—but growth still matters to him.
+      Values service, repair, and small daily care.
+    </div>
+    <div class="profile-section"><strong>Interests:</strong> Neighborhood hangs, volunteering, home‑cooked meals, quiet weekends</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids risk that could grow the relationship</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red30')">Red Flag</button>
+      <div class="flag-red" id="red30">Plays it so safe that growth stalls</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow30')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow30">Guarded early; slow to open</div>
+      <button class="green-btn" onclick="revealFlag('green30')">Green Flag</button>
+      <div class="flag-green" id="green30">Loyal, dependable, repairs well</div>
+      <button class="blue-btn" onclick="revealFlag('blue30')">Why It Matters</button>
+      <div class="flag-blue" id="blue30">Slowness isn’t disinterest—it’s choosing roots over rush. Depth takes time.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>How can partners read your “yes” when it’s quiet?</li>
+        <li>Where could you take one small risk this month?</li>
+        <li>What does repair look like in your language?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
