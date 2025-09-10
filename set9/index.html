@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Check – Set 9 (Profiles 71–80) — Expanded</title>
+  <style>
+    :root { --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --chip:#1f2937; --green:#10b981; --yellow:#f59e0b; --red:#ef4444; --card:#0b1220; --shadow:rgba(0,0,0,.45); --radius:16px; }
+    *{ box-sizing: border-box; } html,body{ height:100%; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial; background: radial-gradient(1200px 800px at 80% -10%, #0b1220 0%, var(--bg) 65%); color: var(--ink); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .title{ font-weight:800; letter-spacing:.2px; line-height:1.1; }
+    .title .kicker{ display:block; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:1.4px; text-transform:uppercase; }
+    .title .main{ font-size:clamp(22px,3.4vw,34px); }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    button,.ghost{ background:linear-gradient(180deg,#1f2937,#0f172a); color:var(--ink); border:1px solid #263244; padding:10px 14px; border-radius:12px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-weight:600; box-shadow:0 6px 18px var(--shadow); transition: transform .06s ease, background .2s ease, border-color .2s ease; }
+    button:hover{ transform:translateY(-1px); border-color:#334155; } button:active{ transform:translateY(0); }
+    .ghost{ text-decoration:none; opacity:.85; }
+    .grid{ display:grid; grid-template-columns:420px 1fr; gap:18px; } @media(max-width:980px){ .grid{grid-template-columns:1fr;} }
+    .card{ background:linear-gradient(180deg,#0d1527,var(--card)); border:1px solid #1f2a3a; border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px var(--shadow); }
+    .imagebox{ position:relative; aspect-ratio:4/5; background:#0b1020; display:flex; align-items:center; justify-content:center; }
+    .imagebox img{ width:100%; height:100%; object-fit:cover; }
+    .badge{ position:absolute; left:12px; top:12px; background:#0f172a; border:1px solid #223048; padding:6px 10px; border-radius:999px; font-size:12px; color:var(--muted); }
+    .panel{ padding:18px 18px 20px; }
+    .handle{ font-size:22px; font-weight:800; } .meta{ color:var(--muted); font-size:14px; margin-top:2px; } .bio{ margin:12px 0 14px; color:#d1d5db; line-height:1.55; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; } .chip{ background:var(--chip); border:1px solid #243042; color:#cbd5e1; font-size:12px; padding:6px 10px; border-radius:999px; }
+    .flags,.prompts,.interests,.why{ background:#0c1425; border:1px solid #1a2536; padding:14px; border-radius:14px; }
+    .section-title{ font-weight:700; font-size:13px; color:var(--muted); letter-spacing:.6px; text-transform:uppercase; margin-bottom:8px; }
+    .flag-list,.prompt-list,.interest-list{ margin:0; padding-left:18px; }
+    .flag-list li{ margin:6px 0; cursor:pointer; user-select:none; border-radius:10px; padding:4px 6px; transition: background .15s ease, transform .05s ease; }
+    .flag-list li:hover{ transform: translateY(-1px); }
+    .flag-green{ color:var(--green); } .flag-yellow{ color:var(--yellow); } .flag-red{ color:var(--red); }
+    .selected{ outline:2px solid #334155; background:#0f172a; }
+    .voteBar{ display:flex; gap:10px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:8px; }
+    .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+    .g{ background:var(--green); } .y{ background:var(--yellow);} .r{ background:var(--red);} 
+    .stack{ display:grid; gap:12px; }
+    footer{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted); font-size:12px; }
+    .kbd{ background:#0b1424; border:1px solid #1a2638; padding:2px 6px; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; color:#cbd5e1; }
+    .spacer{ flex:1 1 auto; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <span class="kicker">Vibe Check Game</span>
+        <span class="main">Set 9 — Dating Profiles (71–80) — Expanded & Simplified</span>
+      </div>
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous profile">◀ Prev</button>
+        <button id="randomBtn" aria-label="Random profile">🔀 Random</button>
+        <button id="nextBtn" aria-label="Next profile">Next ▶</button>
+        <button id="toggleFlags">👁️ Toggle Flags</button>
+        <button id="togglePrompts">🗣️ Toggle Prompts</button>
+        <button id="toggleWhy">💡 Toggle Why</button>
+        <button id="resetVotes">♻️ Reset Votes</button>
+        <button id="copySelected">📋 Copy Selected Flags</button>
+        <a class="ghost" id="openImage" target="_blank" rel="noreferrer">Open Image</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="imagebox">
+          <img id="profileImg" alt="Profile image" />
+          <div class="badge" id="badge">#71</div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <div class="card panel">
+          <div class="handle" id="handle">IcebergIvy</div>
+          <div class="meta" id="meta">F, 31</div>
+          <p class="bio" id="bio"></p>
+          <div class="chips" id="chips"></div>
+          <div class="interests">
+            <div class="section-title">Interests</div>
+            <ul class="interest-list" id="interests"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="flagsWrap">
+          <div class="flags">
+            <div class="section-title">Flag Analysis</div>
+            <div class="voteBar">
+              <span><span class="dot g"></span> Green: <strong id="countGreen">0</strong></span>
+              <span><span class="dot y"></span> Yellow: <strong id="countYellow">0</strong></span>
+              <span><span class="dot r"></span> Red: <strong id="countRed">0</strong></span>
+            </div>
+            <ul class="flag-list" id="flags"></ul>
+          </div>
+        </div>
+
+        <div class="card panel" id="whyWrap">
+          <div class="why">
+            <div class="section-title">Why It Matters</div>
+            <div id="why"></div>
+          </div>
+        </div>
+
+        <div class="card panel" id="promptsWrap">
+          <div class="prompts">
+            <div class="section-title">Reflection Prompts (Short & Concrete)</div>
+            <ul class="prompt-list" id="prompts"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Tips: Click a flag to select/deselect. Use <span class="kbd">←</span>/<span class="kbd">→</span> arrows to navigate profiles.</div>
+      <div class="spacer"></div>
+      <div id="counter">1 / 10</div>
+    </footer>
+  </div>
+
+  <script>
+    const PROFILES = [
+      { id:71, handle:"IcebergIvy", gender:"F", age:31,
+        bio:"Quiet at first, deep underneath. I need time to trust before I share. I show care with small actions, not big speeches. If you rush me, I freeze. If you’re patient, I open up and stay steady.",
+        interests:["Solitude","slow-burn talks","poetry","quiet acts of care"],
+        flags:{ green:["Thoughtful and loyal over time","Respects boundaries"], yellow:["Slow to warm up; needs patience"], red:["May shut down instead of speak up"]},
+        why:"Some people share slowly. Patience builds safety; pressure shuts it down.",
+        prompts:[
+          "Name one small sign you give when you start to trust.",
+          "What’s a kind way to say “I need more time”?",
+          "How can a partner show patience without pushing?"
+        ],
+        image:"images/icebergivy.png"
+      },
+      { id:72, handle:"GhostTownGabe", gender:"M", age:33,
+        bio:"Great first dates, then I disappear when feelings get real. I’m not trying to hurt anyone—I panic and avoid hard talks. I’m practicing short, honest messages instead of silence. I want to learn how to stay.",
+        interests:["Sudden silences","dodging “the talk”","reappearing later","solo time"],
+        flags:{ green:["Gives space; not controlling"], yellow:["Sends mixed signals when stressed"], red:["Ghosts after closeness or conflict"]},
+        why:"Disappearing protects the self but hurts the bond. Clarity and repair are kinder.",
+        prompts:[
+          "What’s a simple text you can send instead of ghosting?",
+          "How do you ask for space without vanishing?",
+          "What does repair look like after you pulled away?"
+        ],
+        image:"images/ghosttowngabe.png"
+      },
+      { id:73, handle:"LoveBombLila", gender:"F", age:34,
+        bio:"I go all‑in fast—long texts, big plans, intense feelings. I love the rush, then feel tired and unsure. I’m learning slow affection: steady check‑ins, small plans, real follow‑through.",
+        interests:["Grand gestures","future‑talk","constant texting"],
+        flags:{ green:["Warm and expressive"], yellow:["Paces fast; hard to sustain"], red:["Uses intensity instead of consistency"]},
+        why:"Passion is loud; safety is steady. Slow care keeps trust alive.",
+        prompts:[
+          "What’s one “slow care” action you can do weekly?",
+          "How will you know your pace is too fast?",
+          "How do you show love when the rush is gone?"
+        ],
+        image:"images/lovebomblila.png"
+      },
+      { id:74, handle:"ChecklistChaz", gender:"M", age:35,
+        bio:"I like clear standards and neat boxes. If you don’t match the list, I swipe away. I’m realizing great partners don’t come pre‑sorted. I’m practicing curiosity over checklists.",
+        interests:["App filters","self‑help pods","exact preferences"],
+        flags:{ green:["Knows values; plans ahead"], yellow:["Rigid expectations"], red:["Confuses control with compatibility"]},
+        why:"Standards help; rigidity harms. Curiosity sees the person, not the box.",
+        prompts:[
+          "Circle one “must‑have” that could become a “nice‑to‑have.”",
+          "What’s a question you can ask instead of judging fast?",
+          "Where has flexibility helped you before?"
+        ],
+        image:"images/checklistchaz.png"
+      },
+      { id:75, handle:"SecureSam", gender:"F", age:36,
+        bio:"I say what I mean and show up when I say I will. I like calm check‑ins, shared plans, and simple repair when we miss. I’m not flashy—but I’m safe, steady, and kind.",
+        interests:["Follow‑through","clear texts","quiet weekends","repair talks"],
+        flags:{ green:["Consistent and caring","Good at repair"], yellow:["May feel “boring” to chaos‑chasers"], red:[]},
+        why:"Security can feel new if you’re used to drama. Steady love is still real love.",
+        prompts:[
+          "What does “safe” look like in daily life for you?",
+          "How do you give reassurance without overdoing it?",
+          "Name a small repair script you like to use."
+        ],
+        image:"images/securesam.png"
+      },
+      { id:76, handle:"AffirmationAva", gender:"F", age:30,
+        bio:"I’m big on positivity—notes on mirrors, pep talks, vision boards. I forget that sad and mad are allowed too. I’m working on sharing the hard stuff without sugarcoating it.",
+        interests:["Affirmations","journals","oils","vision boards"],
+        flags:{ green:["Encouraging and hopeful"], yellow:["Skips hard feelings to “stay positive”"], red:["Avoids conflict with spiritual/positive bypassing"]},
+        why:"All feelings belong. Real support includes the messy moments.",
+        prompts:[
+          "Finish this: “Today I felt ____ and it makes sense because ____.”",
+          "What’s one honest sentence you can say in conflict?",
+          "How can a partner tell you hard truth kindly?"
+        ],
+        image:"images/affirmationava.png"
+      },
+      { id:77, handle:"HalfInHenry", gender:"M", age:37,
+        bio:"I’m warm, then distant. I want closeness but get scared when it’s steady. I’m practicing small, reliable habits—same‑day replies, honest “I’m not ready” talks, and planned dates I keep.",
+        interests:["Casual brunch","late texts","half plans"],
+        flags:{ green:["Open and affectionate"], yellow:["Hot‑and‑cold patterns"], red:["Backs away when stakes rise"]},
+        why:"In‑and‑out contact confuses the bond. Simple routines build trust fast.",
+        prompts:[
+          "Pick one habit you can keep for 2 weeks.",
+          "What words will you use when you feel the urge to pull back?",
+          "How can your partner tell you “I need steady” in one sentence?"
+        ],
+        image:"images/halfinhenry.png"
+      },
+      { id:78, handle:"BlameShiftBrenda", gender:"F", age:34,
+        bio:"I’m quick to explain why things weren’t my fault. It keeps me safe—but also stuck. I’m learning to look for my slice of the pie and say a real apology when it’s mine.",
+        interests:["Receipts","rant videos","warning‑sign threads"],
+        flags:{ green:["Protective and outspoken"], yellow:["Defensive with feedback"], red:["Avoids accountability"]},
+        why:"Growth needs ownership. Even a small slice of honesty changes everything.",
+        prompts:[
+          "Finish this: “My part was ____.”",
+          "What’s your two‑line apology formula?",
+          "How can you ask for feedback in a safe way?"
+        ],
+        image:"images/blameshiftbrenda.png"
+      },
+      { id:79, handle:"PermissionToFeelPhil", gender:"M", age:31,
+        bio:"I feel deeply and show it. I cry, I name needs, and I check in often. Sometimes I flood myself and others. I’m learning breaks, grounding, and asking “Do you have space right now?”",
+        interests:["Therapy groups","heart pods","handwritten notes"],
+        flags:{ green:["Emotionally fluent and caring"], yellow:["Can get overwhelmed"], red:[]},
+        why:"Feelings connect us. Pacing and consent keep it safe for both people.",
+        prompts:[
+          "What helps you slow down big feelings?",
+          "Ask before sharing: “Do you have space for this?”",
+          "Name one need clearly in 10 words or less."
+        ],
+        image:"images/permissiontofeelphil.png"
+      },
+      { id:80, handle:"ChecklistChelsea", gender:"F", age:35,
+        bio:"Planner at heart. I love lists, timelines, and clear goals. I can forget that love is a person, not a project. I’m practicing curiosity, play, and unplanned moments.",
+        interests:["Bullet journals","boards","color‑coded plans"],
+        flags:{ green:["Organized and dependable"], yellow:["Struggles with spontaneity"], red:["Controls to manage anxiety"]},
+        why:"Plans are helpful; people are human. Flexibility makes room for real life.",
+        prompts:[
+          "Circle one plan you can loosen this week.",
+          "What’s a playful date with no agenda?",
+          "How do you remind yourself to ask feelings, not just facts?"
+        ],
+        image:"images/checklistchelsea.png"
+      }
+    ];
+
+    // --- STATE & RENDER ----------------------------------------------------
+    let index = 0;
+    const imgEl = document.getElementById('profileImg');
+    const badgeEl = document.getElementById('badge');
+    const handleEl = document.getElementById('handle');
+    const metaEl = document.getElementById('meta');
+    const bioEl = document.getElementById('bio');
+    const chipsEl = document.getElementById('chips');
+    const interestsEl = document.getElementById('interests');
+    const flagsEl = document.getElementById('flags');
+    const promptsEl = document.getElementById('prompts');
+    const whyEl = document.getElementById('why');
+    const counterEl = document.getElementById('counter');
+    const openImageEl = document.getElementById('openImage');
+    const flagsWrap = document.getElementById('flagsWrap');
+    const promptsWrap = document.getElementById('promptsWrap');
+    const whyWrap = document.getElementById('whyWrap');
+    const countGreen = document.getElementById('countGreen');
+    const countYellow = document.getElementById('countYellow');
+    const countRed = document.getElementById('countRed');
+
+    const VOTES = new Map();
+
+    function updateCounts() {
+      const set = VOTES.get(PROFILES[index].id) || new Set();
+      let g=0,y=0,r=0;
+      set.forEach(key => {
+        if (key.startsWith('g-')) g++;
+        else if (key.startsWith('y-')) y++;
+        else if (key.startsWith('r-')) r++;
+      });
+      countGreen.textContent = g;
+      countYellow.textContent = y;
+      countRed.textContent = r;
+    }
+
+    function render(i) {
+      const p = PROFILES[i]; if (!p) return; index = i;
+      imgEl.src = p.image; imgEl.alt = p.handle + ' image'; openImageEl.href = p.image;
+      badgeEl.textContent = '#' + p.id; handleEl.textContent = p.handle; metaEl.textContent = p.gender + ', ' + p.age; bioEl.textContent = p.bio;
+      chipsEl.innerHTML=''; [ ['Green','var(--green)'], ['Yellow','var(--yellow)'], ['Red','var(--red)'] ].forEach(([label,color])=>{ const s=document.createElement('span'); s.className='chip'; s.style.borderColor=color; s.textContent=label+' Flags'; chipsEl.appendChild(s); });
+      interestsEl.innerHTML = (p.interests||[]).map(x => '<li>'+x+'</li>').join('');
+
+      flagsEl.innerHTML = '';
+      const current = VOTES.get(p.id) || new Set();
+      const makeLi = (text, color, idx) => {
+        const li = document.createElement('li');
+        li.textContent = (color==='g'?'✅ Green Flag: ':(color==='y'?'⚠️ Yellow Flag: ':'🚩 Red Flag: ')) + text;
+        li.className = color==='g'?'flag-green':(color==='y'?'flag-yellow':'flag-red');
+        const key = color+'-'+idx; if (current.has(key)) li.classList.add('selected');
+        li.dataset.key = key; li.dataset.color = color;
+        li.addEventListener('click', ()=>{
+          if (li.classList.contains('selected')) { li.classList.remove('selected'); current.delete(key); }
+          else { li.classList.add('selected'); current.add(key); }
+          VOTES.set(p.id, current); updateCounts();
+        });
+        return li;
+      };
+      (p.flags?.green||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'g',i)));
+      (p.flags?.yellow||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'y',i)));
+      (p.flags?.red||[]).forEach((t,i)=> flagsEl.appendChild(makeLi(t,'r',i)));
+      whyEl.textContent = p.why || '';
+      promptsEl.innerHTML = (p.prompts||[]).map(x => '<li>'+x+'</li>').join('');
+      counterEl.textContent = (i+1) + ' / ' + PROFILES.length;
+      updateCounts();
+    }
+
+    // nav + toggles
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const randBtn = document.getElementById('randomBtn');
+    const toggleFlags = document.getElementById('toggleFlags');
+    const togglePrompts = document.getElementById('togglePrompts');
+    const toggleWhy = document.getElementById('toggleWhy');
+    const resetVotes = document.getElementById('resetVotes');
+    const copySelected = document.getElementById('copySelected');
+
+    prevBtn.addEventListener('click', () => render((index - 1 + PROFILES.length) % PROFILES.length));
+    nextBtn.addEventListener('click', () => render((index + 1) % PROFILES.length));
+    randBtn.addEventListener('click', () => render(Math.floor(Math.random() * PROFILES.length)));
+    toggleFlags.addEventListener('click', () => { flagsWrap.style.display = (flagsWrap.style.display==='none')? '' : 'none'; });
+    togglePrompts.addEventListener('click', () => { promptsWrap.style.display = (promptsWrap.style.display==='none')? '' : 'none'; });
+    toggleWhy.addEventListener('click', () => { whyWrap.style.display = (whyWrap.style.display==='none')? '' : 'none'; });
+    resetVotes.addEventListener('click', () => { VOTES.delete(PROFILES[index].id); render(index); });
+    copySelected.addEventListener('click', async () => {
+      const p = PROFILES[index];
+      const items = [...flagsEl.querySelectorAll('li')].filter(li => li.classList.contains('selected')).map(li => '- '+li.textContent);
+      const text = 'Selected Flags — ' + p.handle + ' (Set 9 — Expanded)\\n\\n' + (items.join('\\n')||'(none selected)');
+      try { await navigator.clipboard.writeText(text); copySelected.textContent = '✅ Copied!'; setTimeout(()=> copySelected.textContent='📋 Copy Selected Flags', 1200); } catch(e) { alert('Could not copy to clipboard.'); }
+    });
+
+    // keyboard
+    window.addEventListener('keydown', (e) => { if (e.key==='ArrowLeft') prevBtn.click(); if (e.key==='ArrowRight') nextBtn.click(); if (e.key?.toLowerCase()==='r') randBtn.click(); });
+
+    // init
+    render(0);
+  </script>
+</body>
+</html>
