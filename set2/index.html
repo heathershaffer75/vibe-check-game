@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vibe Check – Red/Yellow/Green Flags (Set 2)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    padding: 20px;
+    line-height: 1.45;
+  }
+  h1 { margin: 0 0 10px; }
+  .helper { color:#374151; margin-bottom:20px; }
+  .profile {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 980px;
+    display: flex;
+    gap: 20px;
+    border: 10px double #fbbf24;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+    background-image: radial-gradient(circle at top left, #fffbea, #f0f4f8);
+  }
+  .profile img.profile-photo {
+    border-radius: 10px;
+    border: 3px solid #1f2937;
+    width: 320px;
+    height: auto;
+  }
+  .logo-under-pic img {
+    margin-top: 8px;
+    width: 320px;
+    height: auto;
+  }
+  .profile-details { flex: 1; min-width: 0; }
+  .profile-name { font-size: 28px; font-weight: bold; }
+  .profile-tagline { font-size: 20px; font-style: italic; margin: 8px 0; }
+  .profile-bio { margin: 8px 0 10px; }
+  .profile-section { margin-top: 10px; }
+  .profile-section ul { margin:6px 0 0 18px; }
+  .flag-block button {
+    margin: 4px 6px 4px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+  }
+  .red-btn { background: #ef4444; color: white; }
+  .yellow-btn { background: #facc15; color: black; }
+  .green-btn { background: #22c55e; color: white; }
+  .blue-btn { background: #3b82f6; color: white; }
+  .flag-red, .flag-yellow, .flag-green, .flag-blue {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 6px;
+    display: none;
+  }
+  .flag-red { background-color: #fecaca; color: #7f1d1d; }
+  .flag-yellow { background-color: #fef9c3; color: #78350f; }
+  .flag-green { background-color: #bbf7d0; color: #065f46; }
+  .flag-blue { background-color: #bfdbfe; color: #1e3a8a; }
+  .reflection-box {
+    background-color: #f3f4f6;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 18px;
+  }
+  hr.sep { border: 0; height: 1px; background: #e2e8f0; margin: 40px 0; }
+  @media (max-width: 860px) {
+    .profile { flex-direction: column; align-items: center; }
+    .profile img.profile-photo, .logo-under-pic img { width: 100%; max-width: 420px; }
+  }
+</style>
+<script>
+  function revealFlag(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+</head>
+<body>
+<h1>Vibe Check – Red/Yellow/Green Flags (Set 2)</h1>
+<p class="helper"><strong>How to use:</strong> Read the profile together, discuss, then click the buttons to reveal Red/Yellow/Green flags and “Why it matters.” Finish with the reflection questions.</p>
+
+<!-- 1 HighVibeHealer -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="HighVibeHealer" class="profile-photo" src="images/highvibehealer.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">HighVibeHealer, 34</div>
+    <div class="profile-tagline">"Good energy only—feet on the ground, heart in the sky."</div>
+    <div class="profile-bio">
+      Serene, ritual-loving, and deeply spiritual, HighVibeHealer lives by cycles of meditation, moon-bathing, and crystal routines.
+      They radiate calm and value inner alignment, though conflict can feel like a threat to that peace.
+      They’re learning that accountability and repair can be sacred, too.
+      Their vibe attracts attention—but avoiding hard emotions can leave a partner feeling dismissed or alone.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Arrival</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Iroh (Avatar: The Last Airbender)</div>
+    <div class="profile-section"><strong>Interests:</strong> Breathwork, sound baths, plant care, nature walks, tea ceremonies</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Spiritual bypassing when emotions feel heavy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red0')">Red Flag</button>
+      <div class="flag-red" id="red0">Calls conflict “low vibe” and avoids it</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow0')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow0">Stays calm but dismisses messy emotions</div>
+      <button class="green-btn" onclick="revealFlag('green0')">Green Flag</button>
+      <div class="flag-green" id="green0">Grounded, reflective, growth-oriented</div>
+      <button class="blue-btn" onclick="revealFlag('blue0')">Why It Matters</button>
+      <div class="flag-blue" id="blue0">Spiritual tools help calm emotions—but real repair takes talking things through.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you want a partner who avoids conflict to protect “good vibes”? Why or why not?</li>
+        <li>Have you ever tried to “zen” your way around a fight instead of talking it through?</li>
+        <li>What does spiritually aligned accountability look like for you?</li>
+        <li>If HighVibeHealer were your roommate here, what would be helpful and what might be frustrating?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 2 BananaBreadBen -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="BananaBreadBen" class="profile-photo" src="images/bananabreadben.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">BananaBreadBen, 33</div>
+    <div class="profile-tagline">"I show love in loaves—and follow-through."</div>
+    <div class="profile-bio">
+      Ben is warm, steady, and reliable—the kind of guy who remembers your favorite jam and always has a fresh loaf ready.
+      He believes food and caretaking can solve most problems, which sometimes makes him skip the deeper talks.
+      He loves cozy nights, board games, and fixing things around the house.
+      Ben means well, but when emotions get heavy, he often distracts with caretaking instead of sitting in the discomfort.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Chef</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Bob Belcher (Bob’s Burgers)</div>
+    <div class="profile-section"><strong>Interests:</strong> Baking, farmer’s markets, game nights, home projects</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Can equate fixing/feeding with emotional intimacy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red1')">Red Flag</button>
+      <div class="flag-red" id="red1">Gives food/care instead of talking about problems</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow1')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow1">Keeps things “pleasant” to dodge big feelings</div>
+      <button class="green-btn" onclick="revealFlag('green1')">Green Flag</button>
+      <div class="flag-green" id="green1">Dependable, generous, follows through</div>
+      <button class="blue-btn" onclick="revealFlag('blue1')">Why It Matters</button>
+      <div class="flag-blue" id="blue1">Acts of service are great—but emotional presence matters too.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you want Ben as your partner on a really hard mental health day? Why or why not?</li>
+        <li>How do you know when someone is caring for you vs. avoiding a harder talk?</li>
+        <li>What’s one way you’ve tried to “fix or feed” instead of feel?</li>
+        <li>If Ben were your roommate here, would his style help you or frustrate you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 3 HungryForMore -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="HungryForMore" class="profile-photo" src="images/hungryformore.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">HungryForMore, 27</div>
+    <div class="profile-tagline">"Life’s a buffet—why pick just one entrée?"</div>
+    <div class="profile-bio">
+      Full of energy and always chasing the next thrill, HungryForMore jumps from one adventure to the next—salsa on Tuesday, lifting on Wednesday, road-tripping on Thursday.
+      They love novelty and enthusiasm, but sometimes confuse excitement with compatibility.
+      Their spontaneity makes them fun to be around, while reliability and follow-through are still skills they’re learning to value.
+      They’re practicing how to keep promises even when the spark fades.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Baby Driver</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Johnny Storm (Fantastic Four)</div>
+    <div class="profile-section"><strong>Interests:</strong> Dance, travel deals, CrossFit, street food, live music</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Mistakes excitement for compatibility</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red2')">Red Flag</button>
+      <div class="flag-red" id="red2">Makes big plans but doesn’t follow through</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow2')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow2">Talks about the future without a plan</div>
+      <button class="green-btn" onclick="revealFlag('green2')">Green Flag</button>
+      <div class="flag-green" id="green2">Adventurous, fun, full of energy</div>
+      <button class="blue-btn" onclick="revealFlag('blue2')">Why It Matters</button>
+      <div class="flag-blue" id="blue2">Excitement is fun, but consistency keeps relationships strong.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you depend on HungryForMore for an important commitment? Why or why not?</li>
+        <li>How do you balance excitement with stability in your own life?</li>
+        <li>Have you ever confused chemistry with compatibility?</li>
+        <li>If they were your roommate here, what would you enjoy and what would worry you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 4 CodeSwitchCasey -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="CodeSwitchCasey" class="profile-photo" src="images/codeswitchcasey.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">CodeSwitchCasey, 30</div>
+    <div class="profile-tagline">"Good at fitting in—still figuring out who I really am."</div>
+    <div class="profile-bio">
+      Casey is adaptable and observant, able to blend into many groups and make people feel comfortable.
+      They’re great at connecting people and bridging differences, but sometimes hide behind shifting personas to keep the peace.
+      Authenticity can get lost, leaving partners unsure where Casey truly stands.
+      They’re practicing being honest sooner, even if it risks tension.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Everything Everywhere All at Once</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Miles Morales (Spider-Verse)</div>
+    <div class="profile-section"><strong>Interests:</strong> Urban walks, fusion food, language learning, community events</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Over-adapts to fit partner; authenticity gets diluted</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red3')">Red Flag</button>
+      <div class="flag-red" id="red3">Changes personality to please people</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow3')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow3">Hides feelings to keep the peace</div>
+      <button class="green-btn" onclick="revealFlag('green3')">Green Flag</button>
+      <div class="flag-green" id="green3">Empathetic, aware, great at connecting</div>
+      <button class="blue-btn" onclick="revealFlag('blue3')">Why It Matters</button>
+      <div class="flag-blue" id="blue3">Flexibility is good—but being real builds trust.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you feel comfortable dating someone who changes depending on the room?</li>
+        <li>Where do you shrink to fit instead of showing your full self?</li>
+        <li>What would it take to share needs without fearing rejection?</li>
+        <li>If Casey were your roommate here, what strengths and challenges would you see?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 5 EvenSteven -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="EvenSteven" class="profile-photo" src="images/evensteven.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">EvenSteven, 37</div>
+    <div class="profile-tagline">"Consistency is sexy."</div>
+    <div class="profile-bio">
+      Calm, dependable, and present, Steven is the person who always shows up when he says he will.
+      He values order and reliability, creating a stable base for those around him.
+      While consistency is a strength, he sometimes confuses routine with emotional intimacy.
+      Conflict can bring out flatness instead of vulnerability, leaving partners craving more depth.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Pursuit of Happyness</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Samwise Gamgee (LOTR)</div>
+    <div class="profile-section"><strong>Interests:</strong> Reading, minimalism, quiet cafes, long walks</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Equates reliability with emotional intimacy</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red4')">Red Flag</button>
+      <div class="flag-red" id="red4">Shuts down emotions to avoid conflict</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow4')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow4">Thinks intensity means instability</div>
+      <button class="green-btn" onclick="revealFlag('green4')">Green Flag</button>
+      <div class="flag-green" id="green4">Steady, reliable, trustworthy</div>
+      <button class="blue-btn" onclick="revealFlag('blue4')">Why It Matters</button>
+      <div class="flag-blue" id="blue4">Reliability is great—but sharing feelings makes it meaningful.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you feel emotionally close to someone like Steven, or just safe?</li>
+        <li>When does consistency feel grounding vs. when does it feel flat?</li>
+        <li>How do you respond when a partner needs intensity for reassurance?</li>
+        <li>If Steven were your roommate here, what would you appreciate or struggle with?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 6 EmpathyEater -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="EmpathyEater" class="profile-photo" src="images/empathyeater.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">EmpathyEater, 29</div>
+    <div class="profile-tagline">"I feel everything—sometimes before you do."</div>
+    <div class="profile-bio">
+      Tender and highly attuned, EmpathyEater absorbs the moods and struggles of those around them.
+      They are compassionate and quick to help, but often neglect their own needs until burnout sets in.
+      Their over-empathizing can turn them into a rescuer instead of a partner.
+      They’re practicing boundaries to protect their care and their energy.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Farewell</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Deanna Troi (Star Trek: TNG)</div>
+    <div class="profile-section"><strong>Interests:</strong> Volunteering, memoirs, long talks, tea dates, gentle yoga</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Over-empathizes, under-requests; burns out quietly</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red5')">Red Flag</button>
+      <div class="flag-red" id="red5">Takes on other people’s emotions as their own</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow5')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow5">Struggles to say no; burns out quietly</div>
+      <button class="green-btn" onclick="revealFlag('green5')">Green Flag</button>
+      <div class="flag-green" id="green5">Compassionate, caring, emotionally aware</div>
+      <button class="blue-btn" onclick="revealFlag('blue5')">Why It Matters</button>
+      <div class="flag-blue" id="blue5">Empathy is powerful—but without boundaries it becomes unhealthy.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you want a partner who feels everything you feel? Why or why not?</li>
+        <li>Where do you take responsibility for feelings that aren’t yours?</li>
+        <li>What boundary would protect your care from burnout?</li>
+        <li>If they were your roommate here, would their empathy help or drain you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 7 SimpleSarah -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="SimpleSarah" class="profile-photo" src="images/simplesarah.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">SimpleSarah, 36</div>
+    <div class="profile-tagline">"Quiet mornings, honest evenings."</div>
+    <div class="profile-bio">
+      Sarah is grounded and present, enjoying little things like books, fresh fruit, and slow weekends.
+      She values peace and stability, but sometimes confuses low-drama with low-effort.
+      When emotions feel messy, she may step back instead of engaging.
+      She offers calmness and steadiness, and she’s learning that growth takes some brave conversations.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Little Women (2019)</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Beth Harmon (The Queen’s Gambit)</div>
+    <div class="profile-section"><strong>Interests:</strong> Farmer’s markets, journaling, picnics, local libraries</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Avoids risk; can conflate low-drama with low-effort</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red6')">Red Flag</button>
+      <div class="flag-red" id="red6">Avoids tough talks to keep life “easy”</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow6')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow6">Pulls away when emotions get messy</div>
+      <button class="green-btn" onclick="revealFlag('green6')">Green Flag</button>
+      <div class="flag-green" id="green6">Calming, steady, low-drama</div>
+      <button class="blue-btn" onclick="revealFlag('blue6')">Why It Matters</button>
+      <div class="flag-blue" id="blue6">Peace is good—but growth takes some discomfort.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you want a partner who avoids conflict for the sake of peace?</li>
+        <li>When does “simple” become “stuck” for you?</li>
+        <li>What brave conversation would make your calm more connected?</li>
+        <li>If Sarah were your roommate here, how would her style affect you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 8 MrFixIt -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="MrFixIt" class="profile-photo" src="images/mrfixit.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">MrFixIt, 40</div>
+    <div class="profile-tagline">"Give me a problem—and some room to solve it."</div>
+    <div class="profile-bio">
+      MrFixIt is practical, loyal, and quick to offer solutions.
+      He shows love through fixing and building—both with tools and with plans.
+      Sometimes he minimizes emotions as “not useful,” which can leave people feeling unheard.
+      He’s learning that listening and validation often need to come before problem-solving.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Martian</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Phil Dunphy (Modern Family)</div>
+    <div class="profile-section"><strong>Interests:</strong> Tools, DIY videos, weekend projects, road trips with purpose</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Solves instead of feels; defensiveness when solutions aren’t wanted</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red7')">Red Flag</button>
+      <div class="flag-red" id="red7">Dismisses feelings as “not useful”</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow7')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow7">Keeps score of all the things he’s fixed</div>
+      <button class="green-btn" onclick="revealFlag('green7')">Green Flag</button>
+      <div class="flag-green" id="green7">Reliable, hardworking, helpful</div>
+      <button class="blue-btn" onclick="revealFlag('blue7')">Why It Matters</button>
+      <div class="flag-blue" id="blue7">Problem-solving is valuable—but listening first builds trust.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you want someone to fix your problems or sit with your feelings first?</li>
+        <li>How do you tell when a partner wants help vs. presence?</li>
+        <li>What helps you tolerate unsolved feelings?</li>
+        <li>If MrFixIt were your roommate here, what would you expect?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 9 FunNowCryLater -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="FunNowCryLater" class="profile-photo" src="images/funnowcrylater.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">FunNowCryLater, 27</div>
+    <div class="profile-tagline">"I bring the party—and I’m learning the morning after."</div>
+    <div class="profile-bio">
+      FunNowCryLater is playful, spontaneous, and loves bringing big energy into any space.
+      They thrive on big laughs and bold plans, and sometimes push the pace past what’s wise.
+      Beneath the sparkle, they struggle with consequences and avoid grief or repair.
+      They’re learning how to choose fun that doesn’t cost tomorrow.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> Booksmart</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Harley Quinn (animated)</div>
+    <div class="profile-section"><strong>Interests:</strong> Theme parties, sunrise hikes after no sleep, karaoke, festival fits</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Escapes heaviness with “fun”; avoids grief and repair</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red8')">Red Flag</button>
+      <div class="flag-red" id="red8">Runs from consequences; disappears when things get serious</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow8')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow8">Fears being “boring”; struggles to plan ahead</div>
+      <button class="green-btn" onclick="revealFlag('green8')">Green Flag</button>
+      <div class="flag-green" id="green8">Fun, affectionate, full of life</div>
+      <button class="blue-btn" onclick="revealFlag('blue8')">Why It Matters</button>
+      <div class="flag-blue" id="blue8">Fun is important—but lasting joy means responsibility too.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you trust FunNowCryLater to follow through on an important plan?</li>
+        <li>What kind of fun supports tomorrow’s you?</li>
+        <li>How do you repair when jokes were covering pain?</li>
+        <li>If they were your roommate here, how would their energy affect you?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- 10 TedTalkTom -->
+<div class="profile">
+  <div class="left-column">
+    <img alt="TedTalkTom" class="profile-photo" src="images/tedtalktom.png" />
+    <div class="logo-under-pic"><img alt="Vibe Check Logo" src="images/logo.png" /></div>
+  </div>
+  <div class="profile-details">
+    <div class="profile-name">TedTalkTom, 42</div>
+    <div class="profile-tagline">"Big ideas, small ego, steady presence."</div>
+    <div class="profile-bio">
+      Tom is thoughtful, community-minded, and loves mentoring others.
+      He enjoys a good debate, coaching Little League, and even a Saturday mulch run.
+      When nervous, he can over-explain or slip into lecture mode, which makes connection harder.
+      He’s learning that curiosity and questions build closeness better than constant advice.
+    </div>
+    <div class="profile-section"><strong>Favorite Movie:</strong> The Secret Life of Walter Mitty</div>
+    <div class="profile-section"><strong>Fictional Character:</strong> Coach Taylor (Friday Night Lights)</div>
+    <div class="profile-section"><strong>Interests:</strong> Community projects, podcasts, Little League, compost piles</div>
+    <div class="profile-section"><strong>Blind Spot:</strong> Uses teaching to avoid vulnerability</div>
+    <div class="profile-section flag-block">
+      <button class="red-btn" onclick="revealFlag('red9')">Red Flag</button>
+      <div class="flag-red" id="red9">Lectures instead of listening</div>
+      <button class="yellow-btn" onclick="revealFlag('yellow9')">Yellow Flag</button>
+      <div class="flag-yellow" id="yellow9">Turns conflict into speeches; slow to apologize</div>
+      <button class="green-btn" onclick="revealFlag('green9')">Green Flag</button>
+      <div class="flag-green" id="green9">Grounded, supportive, community-minded</div>
+      <button class="blue-btn" onclick="revealFlag('blue9')">Why It Matters</button>
+      <div class="flag-blue" id="blue9">Advice can wait—connection grows from listening first.</div>
+    </div>
+    <div class="reflection-box">
+      <strong>Reflection Questions:</strong>
+      <ul>
+        <li>Would you feel close to someone who teaches more than they share?</li>
+        <li>When do you teach to feel safe instead of share to feel close?</li>
+        <li>What question helps you listen longer before solving?</li>
+        <li>If Tom were your roommate here, how would he show up?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
